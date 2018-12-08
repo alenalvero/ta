@@ -11,6 +11,7 @@
 |
 */
 // Route::get('home', 'TestController@index');
+Route::group(['middleware'=>['auth']], function(){
 Route::get('home', 'PelangganController@index');
 
 // Route::get('karyawan/destroy/{id}', 'KaryawanController@destroy');
@@ -26,7 +27,7 @@ Route::resource('paket_tour', 'Paket_tourController');
 Route::resource('pelanggan', 'PelangganController');
 Route::resource('pemesanan', 'PemesananController');
 Route::resource('karyawan1', 'Karyawan1Controller');
-Route::resource('user', 'UserController');
+Route::resource('user', 'UserController')->middleware('auth');
 Route::resource('bis', 'BisController');
 Route::resource('konfirmasi_pembayaran', 'Konfirmasi_pembayaranController');
 Route::resource('trayek', 'TrayekController');
@@ -49,11 +50,14 @@ Route::get('trayek/edit/{id}', 'TrayekController@edit');
 Route::get('trayek/destroy/{id}', 'TrayekController@destroy');
 Route::get('/get_wisata/{id}', 'TrayekController@get_wisata');
 
+});
+
 Route::get('/', function () {
-    return view('welcome');}
-);
+    return view('welcome');
+});
 
 Auth::routes();
 
+Route::get('/user','UserController@index')->name('user');
 
 
