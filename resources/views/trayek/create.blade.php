@@ -30,7 +30,7 @@
             </div>
             <!-- /.box-header -->
         
-          <form class="form-horizontal" action="{{url('trayek')}}" method="post">
+          <form class="form-horizontal" action="{{url('admin/trayek')}}" method="post">
             {{csrf_field()}}
             
             <div class="box-body">

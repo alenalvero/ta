@@ -30,7 +30,7 @@
             </div>
             <!-- /.box-header -->
         
-          <form class="form-horizontal" action="{{url('bis')}}" method="post">
+          <form class="form-horizontal" action="{{url('admin/bis')}}" method="post">
             {{csrf_field()}}
             <div class="box-body">
               <div class="form-group">

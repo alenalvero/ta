@@ -24,7 +24,7 @@
             <div class="box-header">
               <table>
             <td>
-              <a href='{{url('user/create') }}'><button class="btn bg-maroon btn-flat margin"  type="button">Create</button></a>
+              <a href='{{url('admin/user/create') }}'><button class="btn bg-maroon btn-flat margin"  type="button">Create</button></a>
             </td>
             </table>
             </div>
@@ -53,9 +53,8 @@
                 
             <td> 
               <div class="btn-group">
-           <a href='{{url('user/destroy/'.$item->id) }}'> <button class="btn btn-danger btn-flat btn-xs" type="button"><i class="fa fa-align-left"></i></button></a>
-      <a href='{{url('user/'.$item->id.'/edit') }}'>  <button class="btn btn-info btn-flat btn-xs" type="button"><i class="fa fa-align-right"></i></button></a>             
-            <button class="btn btn-warning btn-flat btn-xs" type="button"><i class="fa fa-align-center"></i></button>
+           <a href='{{url('admin/user/destroy/'.$item->id) }}'> <button class="btn btn-danger btn-flat btn-xs" type="button"><i class="fa fa-align-left"></i></button></a>
+      <a href='{{url('admin/user/'.$item->id.'/edit') }}'>  <button class="btn btn-info btn-flat btn-xs" type="button"><i class="fa fa-align-right"></i></button></a>             
             </div>
             </td>
                 

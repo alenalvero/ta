@@ -41,7 +41,7 @@ class BisController extends Controller
 		$bis->harga = $request->input('harga');
 		$bis->save();
 
-		return redirect('bis');
+		return redirect('admin/bis');
 	}
 
 	public function edit( $id)
@@ -61,7 +61,7 @@ class BisController extends Controller
 		$bis->harga = $request->input('harga');
 		$bis->save();
 
-		return redirect('bis');
+		return redirect('admin/bis');
 	}
 
 	public function destroy($id)
@@ -69,7 +69,7 @@ class BisController extends Controller
 
 		\DB::table('biss')->where('id', '=', $id)->delete();
 		\Session::flash('message','Data Berhasi Di Hapus');
-		return \Redirect::to('bis');
+		return \Redirect::to('admin/bis');
 		
 	}
 

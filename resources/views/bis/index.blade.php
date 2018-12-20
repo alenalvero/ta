@@ -24,7 +24,7 @@
             <div class="box-header">
               <table>
             <td>
-              <a href='{{url('bis/create') }}'><button class="btn bg-maroon btn-flat margin"  type="button">Create</button></a>
+              <a href='{{url('admin/bis/create') }}'><button class="btn bg-maroon btn-flat margin"  type="button"><i class="fa fa-plus"><b> Create</b></i></button></a>
             </td>
             </table>
             </div>
@@ -53,8 +53,8 @@
                 
             <td> 
               <div class="btn-group">
-        <a href='{{url('bis/destroy/'.$item->id) }}'>    <button class="btn btn-danger btn-flat btn-xs" type="button"><i class="fa fa-align-left"></i></button></a>
-        <a href='{{url('bis/'.$item->id.'/edit') }}'>    <button class="btn btn-info btn-flat btn-xs" type="button"><i class="fa fa-align-right"></i></button></a>             
+        <a href='{{url('admin/bis/destroy/'.$item->id) }}'>    <button class="btn btn-danger btn-flat btn-xs" type="button"><i class="fa fa-times"></i></button></a>
+        <a href='{{url('admin/bis/'.$item->id.'/edit') }}'>    <button class="btn btn-info btn-flat btn-xs" type="button"><i class="fa fa-align-right"></i></button></a>             
             </div>
             </td>
                 

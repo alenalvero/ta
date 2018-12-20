@@ -111,42 +111,55 @@ return [
         
         
         'MENU',
-        [
-            'text' => 'Pelanggan',
-            'url'  => '/pelanggan',
-            'icon' => 'user',
-        ],
-        
+                
         
         [
             'text' => 'Pemesanan',
-            'url'  => '/pemesanan',
             'icon' => 'tasks',
+            'submenu' =>[
+                [
+                    'text' => 'Pemesanan Individu',
+                    'icon' => 'tasks',
+                    'url'  => 'admin/pemesanan',
+                ],
+                [
+                    'text' => 'Pemesanan Paket',
+                    'icon' => 'navicon',
+                    'url'  => 'admin/pemesanan',
+                ],
+
+            ],
+
+        ],
+        [
+            'text' => 'Paket Tour',
+            'url'  => 'admin/paket_tour',
+            'icon' => 'taxi',
         ],
         [
             'text' => 'Bis',
-            'url'  => '/bis',
+            'url'  => 'admin/bis',
             'icon' => 'taxi',
         ],
         [
             'text' => 'Trayek',
-            'url'  => '/trayek',
+            'url'  => 'admin/trayek',
             'icon' => 'map',
         ],
         [
             'text' => 'Tempat Wisata',
-            'url'  => '/tempat_wisata',
+            'url'  => 'admin/tempat_wisata',
             'icon' => 'picture-o',
         ],
         [
             'text' => 'Pembayaran',
-            'url'  => '/konfirmasi_pembayaran',
+            'url'  => 'admin/konfirmasi_pembayaran',
             'icon' => 'money',
         ],
         
         [
             'text' => 'User',
-            'url'  => '/user',
+            'url'  => 'admin/user',
             'icon' => 'user-plus',
         ],
         

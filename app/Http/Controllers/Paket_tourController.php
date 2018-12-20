@@ -26,8 +26,8 @@ class Paket_tourController extends Controller
 
 	public function create()
 	{
-		$view = view('create');
-		$view->paket_tour = Paket_tour::findOrFail($id);
+		$view = view('paket_tour.create');
+		//$view->paket_tour = Paket_tour::findOrFail($id);
 		return $view;
 	}
 
@@ -35,13 +35,25 @@ class Paket_tourController extends Controller
 
 	public function store (Request $request)
 	{
-		$paket_tour = new Paket_tour;
-		$paket_tour->nama_tour = $request->input('nama_tour');
-		$paket_tour->harga = $request->input('harga');
-		$paket_tour->keterangan = $request->input('keterangan');
-		$paket_tour->save();
+		$paket_tour = "N";
+		if($request->hasFile('foto'));	
+		{ 
+			$destination = "images";
+			$foto = $request->file('foto');
+			$foto->move($destination, $foto->getClientOriginalName());
+			$paket_tour = "Y";
+		}
 
-		return $paket_tour;
+		if($paket_tour="Y")
+		{
+			$paket_tour = new Paket_tour;
+			$paket_tour->nama_tour = $request->input('nama_tour');
+			$paket_tour->harga = $request->input('harga');
+			$paket_tour->foto = $foto->getClientOriginalName();
+			$paket_tour->keterangan = $request->input('keterangan');
+			$paket_tour->save();
+		}
+		return redirect ('admin/paket_tour');
 	}
 
 	public function edit( $id)

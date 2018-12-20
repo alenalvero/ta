@@ -24,7 +24,7 @@
             <div class="box-header">
               <table>
             <td>
-              <a href='{{url('karyawan1/create') }}'><button class="btn bg-maroon btn-flat margin"  type="button">Create</button></a>
+              <a href='{{url('admin/karyawan1/create') }}'><button class="btn bg-maroon btn-flat margin"  type="button">Create</button></a>
             </td>
             </table>
             </div>

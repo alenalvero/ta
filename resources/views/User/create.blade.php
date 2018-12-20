@@ -30,7 +30,7 @@
             </div>
             <!-- /.box-header -->
         
-          <form class="form-horizontal" action="{{url('user')}}" method="post">
+          <form class="form-horizontal" action="{{url('admin/user')}}" method="post">
             {{csrf_field()}}
             <div class="box-body">
               <div class="form-group">
@@ -47,7 +47,7 @@
               </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="password" >Password</label>
-                  <div class="col-sm-10">
+                  <div class="col-sm-5">
                     <input name="password" class="form-control" placeholder="Masukkan Password" type="text">
                   </div>
               </div>
@@ -55,7 +55,9 @@
                   <div class="col-sm-offset-2 col-sm-10">
                     <div class="checkbox">
                       <label>
-                        <input type="checkbox" name="type"> Klik untuk tipe Administrator
+                        <input type="checkbox" name="type" value="on"> Klik untuk tipe Administrator
+                        <br>
+                        <input type="checkbox" name="type" value="off"> Klik untuk tipe Operator
                       </label>
                     </div>
                   </div>

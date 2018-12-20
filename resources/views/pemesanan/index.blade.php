@@ -33,11 +33,10 @@
                 <thead>
                 <tr>
                   <th>Nama Pelanggan</th>
-                  <th>Kota</th>
-                  <th>Jumlah Orang</th>
+                  <th>Trayek</th>
+                
                   <th>Tanggal Pesan</th>
-                  <th>Bis</th>
-                  <th>Jumlah Total</th>
+                 
                   <th>Status</th>                
                   <th>Pembayaran</th>
                   <th>Aksi</th>  
@@ -49,10 +48,8 @@
                   <td>{{$item->id_pelanggan}}</td>
                   <td>{{$item->id_trayek}}
                   </td>
-                  <td>{{$item->jumlah_orang}}</td>
-                  <td>{{$item->id_bis}}</td>
                   <td>{{$item->tgl}}</td>
-                   <td>{{$item->jumlah_total}}</td> 
+                  
                   <td>{{$item->status}}</td>
                   <td>{{$item->id_konfirmasi}}</td>
                  

@@ -24,7 +24,7 @@
             <div class="box-header">
               <table>
             <td>
-              <a href='{{url('tempat_wisata/create') }}'><button class="btn bg-maroon btn-flat margin"  type="button">Create</button></a>
+              <a href='{{url('admin/tempat_wisata/create') }}'><button class="btn bg-maroon btn-flat margin"  type="button">Create</button></a>
             </td>
             </table>
             </div>
@@ -53,8 +53,8 @@
                 
             <td> 
               <div class="btn-group">
-    <a href='{{url('tempat_wisata/destroy/'.$tempat->id) }}'>    <button class="btn btn-danger btn-flat btn-xs" type="button"><i class="fa fa-align-left"></i></button></a>
-    <a href='{{url('tempat_wisata/'.$tempat->id.'/edit') }}'><button class="btn btn-info btn-flat btn-xs" type="button"><i class="fa fa-align-right"></i></button></a>             
+    <a href='{{url('admin/tempat_wisata/destroy/'.$tempat->id) }}'>    <button class="btn btn-danger btn-flat btn-xs" type="button"><i class="fa fa-align-left"></i></button></a>
+    <a href='{{url('admin/tempat_wisata/'.$tempat->id.'/edit') }}'><button class="btn btn-info btn-flat btn-xs" type="button"><i class="fa fa-align-right"></i></button></a>             
             </div>
   
             </td>

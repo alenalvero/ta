@@ -112,6 +112,7 @@
                   <td>A</td>
                 </tr>
                 <tr>
+              
                   <td>Trident</td>
                   <td>Internet
                     Explorer 6

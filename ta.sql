@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2018 at 03:49 AM
+-- Generation Time: Dec 20, 2018 at 01:13 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.0.32
 
@@ -42,7 +42,8 @@ CREATE TABLE `biss` (
 --
 
 INSERT INTO `biss` (`id`, `jenis_bis`, `nama_po`, `harga`, `created_at`, `updated_at`) VALUES
-(1, 'Large', 'Sugeng Rahayu', 9999999, NULL, NULL);
+(1, 'Large', 'Sugeng Rahayu', 9999999, NULL, NULL),
+(2, 'dsdadadad', 'sdadasd', 45353, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -127,7 +128,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2018_11_10_165300_create_paket_tours_table', 1),
 (3, '2018_11_10_165302_create_pelanggans_table', 1),
 (4, '2018_11_10_165303_create_karyawans_table', 1),
-(5, '2018_11_10_165311_create_pemesanans_table', 1),
 (6, '2018_11_10_165322_create_detail_paket_tours_table', 1),
 (7, '2018_11_27_154223_create_password_resets_table', 2),
 (8, '2018_11_27_154247_create_users_table', 3),
@@ -135,20 +135,20 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (10, '2018_11_27_155129_create_users_table', 4),
 (11, '2018_12_02_202816_create_kotas_table', 5),
 (12, '2018_12_02_203831_create_biss_table', 5),
-(13, '2018_11_10_165312_create_pemesanans_table', 6),
-(14, '2018_11_10_165313_create_pemesanans_table', 7),
 (15, '2018_12_02_205828_create_konfirmasi_biss_table', 8),
 (16, '2018_12_02_212434_create_konfirmasi_pembayarans_table', 8),
 (17, '2018_12_02_212435_create_konfirmasi_pembayarans_table', 9),
 (18, '2018_11_27_155130_create_users_table', 10),
 (19, '2018_11_27_155131_create_users_table', 11),
 (20, '2018_12_02_212436_create_konfirmasi_pembayarans_table', 12),
-(21, '2018_11_10_165314_create_pemesanans_table', 13),
 (22, '2018_12_02_202817_create_kotas_table', 14),
 (23, '2018_12_04_103330_create_tempat_wisatas_table', 15),
 (24, '2018_12_04_103331_create_tempat_wisatas_table', 16),
 (25, '2018_12_04_104310_create_trayeks_table', 17),
-(26, '2018_11_10_165316_create_pemesanans_table', 18);
+(29, '2018_11_10_165310_create_paket_tours_table', 21),
+(30, '2018_11_10_165311_create_paket_tours_table', 22),
+(34, '2018_11_10_165321_create_pemesanans_table', 23),
+(35, '2018_12_14_221857_create_pemesanan_paket_tours_table', 23);
 
 -- --------------------------------------------------------
 
@@ -160,6 +160,7 @@ CREATE TABLE `paket_tours` (
   `id` int(10) UNSIGNED NOT NULL,
   `nama_tour` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `harga` int(11) NOT NULL,
+  `foto` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `keterangan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -169,8 +170,11 @@ CREATE TABLE `paket_tours` (
 -- Dumping data for table `paket_tours`
 --
 
-INSERT INTO `paket_tours` (`id`, `nama_tour`, `harga`, `keterangan`, `created_at`, `updated_at`) VALUES
-(1, 'asdasdas', 4342342, 'dsadsdsa', '2018-11-28 17:00:00', '2018-11-29 17:00:00');
+INSERT INTO `paket_tours` (`id`, `nama_tour`, `harga`, `foto`, `keterangan`, `created_at`, `updated_at`) VALUES
+(1, 'Paket 1', 34324, 'Bodong1.PNG', 'dsdadadadsadsadas', NULL, NULL),
+(2, 'paket2', 10000, 'Desert.jpg', 'ndksnksdnjs', NULL, NULL),
+(3, 'paket 3', 80000, 'Tulips.jpg', 'dsadsadsadda', NULL, NULL),
+(4, 'paket 4', 60000, 'Jellyfish.jpg', 'sdsadasdasdasda', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -187,45 +191,40 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pelanggans`
---
-
-CREATE TABLE `pelanggans` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `telp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `alamat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `keterangan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `pelanggans`
---
-
-INSERT INTO `pelanggans` (`id`, `nama`, `telp`, `alamat`, `email`, `keterangan`, `created_at`, `updated_at`) VALUES
-(1, 'alen', '53425', 'fhhjksdbfjdshfj', 'hkdjshfjsh', 'hdjshfkjdsh', NULL, NULL),
-(2, 'bayu', '48589345', 'ndjasndksjb', 'djksadbjasgd', 'djkbfjdsbfhds', NULL, NULL),
-(4, 'fhdjshfjshjkf', '5353', 'ndjsnfjkdsb', 'fskhfdskjfhj', 'fhdskhfskjfh', NULL, NULL),
-(5, 'jfksjfksj', '53543', 'fjkfjkdsfjkshfj', 'fjkshfkjsdfhj', 'fksjhfskjhf', NULL, NULL);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `pemesanans`
 --
 
 CREATE TABLE `pemesanans` (
   `id` int(10) UNSIGNED NOT NULL,
-  `id_pelanggan` int(10) UNSIGNED DEFAULT NULL,
-  `jumlah_orang` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_user` int(10) UNSIGNED NOT NULL,
+  `nama_pelanggan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `alamat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_telp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jumlah_orang` int(11) NOT NULL,
   `id_trayek` int(10) UNSIGNED DEFAULT NULL,
   `id_bis` int(10) UNSIGNED DEFAULT NULL,
   `tgl` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jumlah_total` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_konfirmasi` int(10) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pemesanan_paket_tours`
+--
+
+CREATE TABLE `pemesanan_paket_tours` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `id_user` int(10) UNSIGNED NOT NULL,
+  `nama_pelanggan_paket` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alamat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_telp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_paket` int(10) UNSIGNED DEFAULT NULL,
+  `tgl` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_konfirmasi` int(10) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -301,7 +300,12 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `type`, `remember_token`, `created_at`, `updated_at`) VALUES
 (3, 'alen1234', 'kakakakakaka', '$2y$10$6V8YLYEHlRtE1Tt3zfXHQeZsbjUioHqIbPF5NxPMsm9nS/zCf9mES', 'operator', 'r72I5AcnfC2dR2wMb5BbdgHePQdUvXASXGliEJHaR0qZsWVlnH5v3QC7GbcA', '2018-12-03 07:09:05', '2018-12-04 14:03:03'),
-(4, 'dsadadssa', 'sadsdsa', '$2y$10$OcH/MWlnOeM.JLfIsjzXH.PqID17aBD/mKzN7Gv5q0j6DUTTMkply', 'admin', NULL, '2018-12-05 09:11:52', '2018-12-05 09:11:52');
+(4, 'dsadadssa', 'sadsdsa', '$2y$10$OcH/MWlnOeM.JLfIsjzXH.PqID17aBD/mKzN7Gv5q0j6DUTTMkply', 'admin', NULL, '2018-12-05 09:11:52', '2018-12-05 09:11:52'),
+(5, 'admin', 'admin@yahoo.com', '$2y$10$hjVNnY28/AvHmzrPE2nj7.uSG6EOH.soIx5GsF2qpacSLfunN4d8W', 'admin', 'bJUsekx163cUeJf7kvKdO49hzdgRPa1oiLfJCXQovqlM7AovENkxZnfGNBPu', '2018-12-14 11:53:07', '2018-12-14 11:53:07'),
+(6, 'dsaadasd', 'sadsad', '$2y$10$AOo5i.rNq4SQtMaij8u0Ke6Lv5tj3ZAeCLglkw.cZQidzWNB1cBd2', 'user', NULL, '2018-12-16 20:05:55', '2018-12-16 20:05:55'),
+(7, 'dsada', 'sdadasd', '$2y$10$D0DD9t3mB6FY/hlKSFer3ew0w3Zh/2w/7sRwNSSt8hraZNZpNV.uK', 'admin', NULL, '2018-12-16 20:07:26', '2018-12-16 20:07:26'),
+(8, 'dasdsdasdas', 'dsadasdsada', '$2y$10$amrZ7VDf7bsRyrRRJaxrzu6M3SAzry8Px7BlSi7PXcVk2Ro1Q/S0C', 'operator', NULL, '2018-12-16 20:09:10', '2018-12-16 20:09:10'),
+(9, 'cxzczczxCXZC', 'CXZCZXC', '$2y$10$qvhLY.OJhbcxx.TFWNadSu.oHXTREy6SdXIocB87ZnGroDmdVEP3C', 'admin', NULL, '2018-12-16 20:09:26', '2018-12-16 20:09:26');
 
 --
 -- Indexes for dumped tables
@@ -344,20 +348,23 @@ ALTER TABLE `paket_tours`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pelanggans`
---
-ALTER TABLE `pelanggans`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `pemesanans`
 --
 ALTER TABLE `pemesanans`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `pemesanan_pelanggan_index` (`id_pelanggan`),
+  ADD KEY `pemesanan_user_index` (`id_user`),
   ADD KEY `pemesanan_trayek_index` (`id_trayek`),
   ADD KEY `pemesanan_bis_index` (`id_bis`),
   ADD KEY `pemesanan_konfirmasi_index` (`id_konfirmasi`);
+
+--
+-- Indexes for table `pemesanan_paket_tours`
+--
+ALTER TABLE `pemesanan_paket_tours`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `pemesananPaket_user_index` (`id_user`),
+  ADD KEY `pemesananPaket_paket_index` (`id_paket`),
+  ADD KEY `pemesananPaket_konfirmasi_index` (`id_konfirmasi`);
 
 --
 -- Indexes for table `tempat_wisatas`
@@ -388,7 +395,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `biss`
 --
 ALTER TABLE `biss`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `karyawans`
@@ -412,24 +419,24 @@ ALTER TABLE `kotas`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `paket_tours`
 --
 ALTER TABLE `paket_tours`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `pelanggans`
---
-ALTER TABLE `pelanggans`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `pemesanans`
 --
 ALTER TABLE `pemesanans`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pemesanan_paket_tours`
+--
+ALTER TABLE `pemesanan_paket_tours`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
@@ -448,7 +455,7 @@ ALTER TABLE `trayeks`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
@@ -460,8 +467,16 @@ ALTER TABLE `users`
 ALTER TABLE `pemesanans`
   ADD CONSTRAINT `pemesanan_bis_foreign` FOREIGN KEY (`id_bis`) REFERENCES `biss` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `pemesanan_konfirmasi_foreign` FOREIGN KEY (`id_konfirmasi`) REFERENCES `konfirmasi_pembayarans` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `pemesanan_pelanggan_foreign` FOREIGN KEY (`id_pelanggan`) REFERENCES `pelanggans` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `pemesanan_trayek_foreign` FOREIGN KEY (`id_trayek`) REFERENCES `trayeks` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `pemesanan_trayek_foreign` FOREIGN KEY (`id_trayek`) REFERENCES `trayeks` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `pemesanan_user_foreign` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `pemesanan_paket_tours`
+--
+ALTER TABLE `pemesanan_paket_tours`
+  ADD CONSTRAINT `pemesananPaket_konfirmasi_foreign` FOREIGN KEY (`id_konfirmasi`) REFERENCES `konfirmasi_pembayarans` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `pemesananPaket_paket_foreign` FOREIGN KEY (`id_paket`) REFERENCES `paket_tours` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `pemesananPaket_user_foreign` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tempat_wisatas`

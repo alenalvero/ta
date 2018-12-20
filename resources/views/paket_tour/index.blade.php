@@ -24,7 +24,7 @@
             <div class="box-header">
               <table>
             <td>
-              <a href='{{url('home/create') }}'><button class="btn bg-maroon btn-flat margin"  type="button">Create</button></a>
+              <a href='{{url('admin/paket_tour/create') }}'><button class="btn bg-maroon btn-flat margin"  type="button">Create</button></a>
             </td>
             </table>
             </div>
@@ -36,6 +36,7 @@
                 <tr>
                   <th>Nama Tour</th>
                   <th>Harga</th>
+                  <th>Foto</th>
                   <th>Keterangan</th>
                                   
                   <th>Aksi</th>  
@@ -47,6 +48,7 @@
                   <td>{{$item->nama_tour}}</td>
                   <td>{{$item->harga}}
                   </td>
+                  <td><img src="{{asset('images/'.$item->foto)}}" height="50" width="50"></td> 
                   <td>{{$item->keterangan}}</td>
                   
                  

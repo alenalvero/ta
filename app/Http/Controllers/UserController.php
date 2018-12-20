@@ -47,9 +47,12 @@ class UserController extends Controller
     	$type = 'admin';
 
     }
+    elseif ($request->input('type')=='off' ) {
+        $type = 'operator';
+    }
     else
     {
-     	$type='operator';
+     	$type='user';
     }
      $user->type = $type;
      
@@ -57,7 +60,7 @@ class UserController extends Controller
 
      $user->save();
 
-     return redirect('user');
+     return redirect('admin/user');
     }
 
     public function edit($id)

@@ -68,7 +68,7 @@ class Tempat_wisataController extends Controller
 		$tempat_wisata->harga = $request->input('harga');
 		$tempat_wisata->save();
 
-		return redirect('tempat_wisata');
+		return redirect('admin/tempat_wisata');
 	}
 
 	public function destroy($id)
@@ -76,7 +76,7 @@ class Tempat_wisataController extends Controller
 
 		\DB::table('tempat_wisatas')->where('id', '=', $id)->delete();
 		\Session::flash('message','Data Berhasi Di Hapus');
-		return \Redirect::to('tempat_wisata');
+		return \Redirect::to('admin/tempat_wisata');
 	}
 
 	public function sendMail()

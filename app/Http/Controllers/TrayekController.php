@@ -50,7 +50,7 @@ class TrayekController extends Controller
 		$trayek->id_tempat_wisata = $request->input('id_tempat_wisata');
 		$trayek->save();
 
-		return redirect('trayek');
+		return redirect('admin/trayek');
 	}
 
 	public function edit( $id)
