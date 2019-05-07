@@ -43,27 +43,30 @@
                 </tr>
                 </thead>
                 <tbody>
-@foreach($pemesanan as $item)
+          @foreach($pemesanan as $item)
                 <tr>
-                  <td>{{$item->id_pelanggan}}</td>
-                  <td>{{$item->id_trayek}}
+                  <td></td>
+                  <td>
                   </td>
-                  <td>{{$item->tgl}}</td>
+                  <td></td>
                   
-                  <td>{{$item->status}}</td>
-                  <td>{{$item->id_konfirmasi}}</td>
-                 
+                  <td></td>
+                  <td>
+                  @if(!is_null($item->id_bis))
+                  {{$item->harga_total()}}
+                  @endif
+                  </td>
                 
             <td> 
               <div class="btn-group">
             <button class="btn btn-danger btn-flat btn-xs" type="button"><i class="fa fa-align-left"></i></button>
-        <button class="btn btn-info btn-flat btn-xs" type="button"><i class="fa fa-align-right"></i></button>             
+            <a href='{{url('operator/pemesanan/'.$item->id.'/edit') }}'><button class="btn btn-info btn-flat btn-xs" type="button"><i class="fa fa-align-right"></i></button></a>             
             <button class="btn btn-warning btn-flat btn-xs" type="button"><i class="fa fa-align-center"></i></button>
             </div>
             </td>
                 
                 </tr>
- @endforeach 
+            @endforeach 
                 </tfoot>
               </table>
             </div>

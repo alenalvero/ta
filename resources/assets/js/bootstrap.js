@@ -49,7 +49,7 @@ if (token) {
 
 // window.Echo = new Echo({
 //     broadcaster: 'pusher',
-//     key: 'your-pusher-key',
-//     cluster: 'mt1',
+//     key: '5568815a687e7953bb70',
+//     cluster: 'ap1',
 //     encrypted: true
 // });

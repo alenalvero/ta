@@ -45,7 +45,8 @@ class Karyawan1Controller extends Controller
      $karyawan->telp = $request->input('telp');
      $karyawan->save();
 
-     return redirect('karyawan1');
+     dd('dsdsadas');
+    return redirect('karyawan1');
     }
 
     public function edit( $id)

@@ -120,12 +120,12 @@ return [
                 [
                     'text' => 'Pemesanan Individu',
                     'icon' => 'tasks',
-                    'url'  => 'admin/pemesanan',
+                    'url'  => 'operator/pemesanan',
                 ],
                 [
                     'text' => 'Pemesanan Paket',
                     'icon' => 'navicon',
-                    'url'  => 'admin/pemesanan',
+                    'url'  => 'operator/pemesanan_paket_tour',
                 ],
 
             ],
@@ -133,27 +133,27 @@ return [
         ],
         [
             'text' => 'Paket Tour',
-            'url'  => 'admin/paket_tour',
+            'url'  => 'operator/paket_tour',
             'icon' => 'taxi',
         ],
         [
             'text' => 'Bis',
-            'url'  => 'admin/bis',
+            'url'  => 'operator/bis',
             'icon' => 'taxi',
         ],
         [
             'text' => 'Trayek',
-            'url'  => 'admin/trayek',
+            'url'  => 'operator/trayek',
             'icon' => 'map',
         ],
         [
             'text' => 'Tempat Wisata',
-            'url'  => 'admin/tempat_wisata',
+            'url'  => 'operator/tempat_wisata',
             'icon' => 'picture-o',
         ],
         [
             'text' => 'Pembayaran',
-            'url'  => 'admin/konfirmasi_pembayaran',
+            'url'  => 'operator/konfirmasi_pembayaran',
             'icon' => 'money',
         ],
         

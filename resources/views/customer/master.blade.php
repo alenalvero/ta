@@ -24,32 +24,38 @@
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700" rel="stylesheet">
 	
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="{{asset('css/animate.css')}}">
 	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="css/icomoon.css">
+	<link rel="stylesheet" href="{{asset('css/icomoon.css')}}">
 	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
 
 	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="css/magnific-popup.css">
+	<link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}">
 
 	<!-- Flexslider  -->
-	<link rel="stylesheet" href="css/flexslider.css">
+	<link rel="stylesheet" href="{{asset('css/flexslider.css')}}">
 
 	<!-- Owl Carousel -->
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
+	<link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
 	
 	<!-- Date Picker -->
-	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
+	<link rel="stylesheet" href="{{asset('css/bootstrap-datepicker.css')}}">
 	<!-- Flaticons  -->
-	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+	<link rel="stylesheet" href="{{asset('fonts/flaticon/font/flaticon.css')}}">
 
 	<!-- Theme style  -->
-	<link rel="stylesheet" href="css/style.css">
-
+	<link rel="stylesheet" href="{{asset('css/style.css')}}">
+	<style type="text/css">
+	.mymenu{
+		background-color: #f5f5f5;
+	}
+	</style>
+	@yield('css')
 	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
+	<script src="{{asset('js/modernizr-2.6.2.min.js')}}"></script>
+	
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
@@ -62,24 +68,9 @@
 
 	<div id="page">
 		<nav class="colorlib-nav" role="navigation">
-			<div class="top">
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-4">
-							<p class="site">www.waroktour.com</p>
-						</div>
-						<div class="col-xs-8 text-right">
-							<p class="num">Call: +01-123-456</p>
-							<ul class="colorlib-social">
-								<li><a href="#"><i class="icon-twitter"></i></a></li>
-								<li><a href="#"><i class="icon-facebook"></i></a></li>
-								
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="top-menu">
+			
+
+			<div class="top-menu mymenu">
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-2">
@@ -93,6 +84,9 @@
 	
 								<li><a href="/about">About</a></li>
 								<li><a href="contact.html">Contact</a></li>
+							@if(Auth::check())
+								<li><a href="/profile">Profile</a></li>
+							@endif
 							</ul>
 						</div>
 					</div>
@@ -162,24 +156,24 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	</div>
 	
 	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
+	<script src="{{asset('js/jquery.min.js')}}"></script>
 	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="{{asset('js/jquery.easing.1.3.js')}}"></script>
 	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="{{asset('js/bootstrap.min.js')}}"></script>
 	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="{{asset('js/jquery.waypoints.min.js')}}"></script>
 	<!-- Flexslider -->
-	<script src="js/jquery.flexslider-min.js"></script>
+	<script src="{{asset('js/jquery.flexslider-min.js')}}"></script>
 	<!-- Owl carousel -->
-	<script src="js/owl.carousel.min.js"></script>
+	<script src="{{asset('js/owl.carousel.min.js')}}"></script>
 	<!-- Magnific Popup -->
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/magnific-popup-options.js"></script>
+	<script src="{{asset('js/jquery.magnific-popup.min.js')}}"></script>
+	<script src="{{asset('js/magnific-popup-options.js')}}"></script>
 	<!-- Date Picker -->
-	<script src="js/bootstrap-datepicker.js"></script>
+	<script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
 	<!-- Main -->
-	<script src="js/main.js"></script>
+	<script src="{{asset('js/main.js')}}"></script>
 	@yield('script')
 	</body>
 </html>

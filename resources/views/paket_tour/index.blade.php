@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'AdminLTE')
+@section('title', 'Warok Tour')
 
 @section('content_header')
     <h1>
@@ -24,7 +24,7 @@
             <div class="box-header">
               <table>
             <td>
-              <a href='{{url('admin/paket_tour/create') }}'><button class="btn bg-maroon btn-flat margin"  type="button">Create</button></a>
+              <a href='{{url('operator/paket_tour/create') }}'><button class="btn bg-maroon btn-flat margin"  type="button">Create</button></a>
             </td>
             </table>
             </div>
@@ -49,7 +49,7 @@
                   <td>{{$item->harga}}
                   </td>
                   <td><img src="{{asset('images/'.$item->foto)}}" height="50" width="50"></td> 
-                  <td>{{$item->keterangan}}</td>
+                  <td>{!!$item->keterangan!!}</td>
                   
                  
                 
@@ -66,6 +66,9 @@
                 </tfoot>
               </table>
             </div>
+            <div class="box-footer">
+          {!! $paket_tour->render() !!}
+              </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->

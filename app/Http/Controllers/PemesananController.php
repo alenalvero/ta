@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pemesanan;
+use App\Bis;
 use Illuminate\Http\Request;
 
 class PemesananController extends Controller
@@ -47,11 +48,11 @@ class PemesananController extends Controller
 
 	public function edit( $id)
 	{
-		$view = view('edit');
+		$view = view('pemesanan.edit');
 		$view->pemesanan= Pemesanan::findOrFail($id);
-		return $view;
-
 		
+		$view->bis = Bis::all();
+		return $view;
 	}
 	
 	public function update(Request $request, $id)

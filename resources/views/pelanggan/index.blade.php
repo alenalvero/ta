@@ -51,7 +51,7 @@
                 
             <td> 
               <div class="btn-group">
-          <a href='{{url('amdin/pelanggan/destroy/'.$item->id) }}'> <button class="btn btn-danger btn-flat btn-xs" type="button"><i class="fa fa-align-left"></i></button></a>
+          <a href='{{url('operator/pelanggan/destroy/'.$item->id) }}'> <button class="btn btn-danger btn-flat btn-xs" type="button"><i class="fa fa-align-left"></i></button></a>
             </div>
             </td>
                 

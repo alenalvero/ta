@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'AdminLTE')
+@section('title', 'Warok Tour')
 
 @section('content_header')
     <h1>
@@ -30,28 +30,27 @@
             </div>
             <!-- /.box-header -->
         
-          <form class="form-horizontal" action="{{url('admin/bis')}}" method="post">
+          <form class="form-horizontal" action="{{url('operator/bis')}}" method="post">
             {{csrf_field()}}
             <div class="box-body">
               <div class="form-group">
-                <label class="col-sm-2 control-label" for="jenis_bis" >Jenis Bis</label>
-                  <div class="col-sm-10">
-                    <input  class="form-control" placeholder="Masukkan Jenis Bis" name="jenis_bis" type="text">
-                  </div>
-              </div>
-              <div class="form-group">
                 <label class="col-sm-2 control-label" for="nama_po" >Nama PO</label>
-                  <div class="col-sm-10">
-                    <input name="nama_po" class="form-control" placeholder="Masukkan Nama PO" type="text">
+                  <div class="col-sm-4">
+                    <input name="nama_po" required=required class="form-control" placeholder="Masukkan Nama PO" type="text">
                   </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-2 control-label" for="harga" >Harga</label>
-                  <div class="col-sm-10">
-                    <input name="harga" class="form-control" placeholder="Masukkan Harga" type="text">
+                <label class="col-sm-2 control-label" for="harga_small" >Harga Small</label>
+                  <div class="col-sm-4">
+                    <input name="harga_small" required=required class="form-control" placeholder="Masukkan Harga" type="text">
                   </div>
               </div>
-              
+               <div class="form-group">
+                <label class="col-sm-2 control-label" for="harga_large" >Harga Large</label>
+                  <div class="col-sm-4">
+                    <input name="harga_large" required=required class="form-control" placeholder="Masukkan Harga" type="text">
+                  </div>
+              </div>
 
                             
  

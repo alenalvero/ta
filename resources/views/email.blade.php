@@ -1,0 +1,2 @@
+Nama: {{$nama}}
+Alamat: {{$alamat}}

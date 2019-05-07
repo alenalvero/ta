@@ -21,30 +21,29 @@
 			  	</ul>
 		  	</div>
 		</aside>
+		
 	
 		<div id="colorlib-rooms" class="colorlib-light-grey">
 			
 			<div class="container">
 				<div class="row">
-					@foreach($paket_tour as $item)	
+					@foreach($customer_PaketTour as $item)	
 					<div class="col-md-4 room-wrap animate-box">
 					<a href="{{asset('images/'.$item->foto)}}" class="room image-popup-link" style="background: url('{{asset('images/'.$item->foto)}}'); background-size:cover">
 					</a>
 						
 						<div class="desc text-center">
 							<span class="rate-star"><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span>
-							<h3>{{$item->nama_paket}}</h3>
+							
+							<h3>{{$item->nama_tour}}</h3>
 							<p class="price">
 								<span class="currency">Rp.</span>
 								<span class="price-room">{{$item->harga}}</span>
 								<span class="per">/ per package</span>
 							</p>
-							<ul>
-								<li><i class="icon-check"></i> {{$item->keterangan}}</li>
-								<li><i class="icon-check"></i> Breakfast included</li>
-								<li><i class="icon-check"></i> Price does not include VAT &amp; services fee</li>
-							</ul>
-							<p><a class="btn btn-primary">Book now!</a></p>
+							
+							<p><a href='{{url('customer_PaketTour/detail_paket/'.$item->id.'/detail') }}' class="btn btn-primary btn-warning">Detail</a></p>
+							<p><a href='{{url('customer_PaketTour/form_input_paket/'.$item->id.'/pesan') }}' class="btn btn-primary">Book now!</a></p>
 					
 						</div>
 					
@@ -53,6 +52,9 @@
 					@endforeach
 					
 				</div>
+				<div class="box-footer">
+          <center>{!! $customer_PaketTour->render() !!}</center>
+              </div>
 			</div>
 		</div>
 </table>		

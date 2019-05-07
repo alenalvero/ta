@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'AdminLTE')
+@section('title', 'Warok Tour')
 
 @section('content_header')
     <h1>
@@ -30,7 +30,7 @@
             </div>
             <!-- /.box-header -->
         
-          <form class="form-horizontal" action="{{url('tempat_wisata')}}" method="post">
+          <form class="form-horizontal" action="{{url('operator/tempat_wisata')}}" method="post">
             {{csrf_field()}}
             <div class="box-body">
               <div class="form-group">

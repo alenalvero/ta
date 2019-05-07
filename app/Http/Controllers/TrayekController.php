@@ -50,7 +50,7 @@ class TrayekController extends Controller
 		$trayek->id_tempat_wisata = $request->input('id_tempat_wisata');
 		$trayek->save();
 
-		return redirect('admin/trayek');
+		return redirect('operator/trayek');
 	}
 
 	public function edit( $id)
@@ -81,7 +81,7 @@ class TrayekController extends Controller
 		$trayek->id_tempat_wisata = $request->input('id_tempat_wisata');
 		$trayek->save();
 
-		return redirect('trayek');
+		return redirect('operator/trayek');
 	}
 
 	public function destroy($id)
@@ -89,7 +89,7 @@ class TrayekController extends Controller
 
 		\DB::table('trayeks')->where('id', '=', $id)->delete();
 		\Session::flash('message','Data Berhasi Di Hapus');
-		return \Redirect::to('trayek');
+		return \Redirect::to('operator/trayek');
 		
 	}
 

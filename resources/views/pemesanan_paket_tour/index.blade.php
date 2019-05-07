@@ -33,11 +33,11 @@
                 <thead>
                 <tr>
                   <th>Nama Pelanggan</th>
-                  <th>Trayek</th>
+                  <th>Alamat</th>
                 
-                  <th>Tanggal Pesan</th>
+                  <th>No Telf</th>
                  
-                  <th>Status</th>                
+                  <th>Paket</th>                
                   <th>Pembayaran</th>
                   <th>Aksi</th>  
                 </tr>
@@ -45,13 +45,15 @@
                 <tbody>
 @foreach($pemesanan_paket_tour as $item)
                 <tr>
-                  <td>{{$item->id_pelanggan}}</td>
-                  <td>{{$item->id_trayek}}
+                  <td>{{$item->nama_pelanggan_paket}}</td>
+                  <td>{{$item->alamat}}
                   </td>
-                  <td>{{$item->tgl}}</td>
+                  <td>{{$item->no_telp}}</td>
                   
-                  <td>{{$item->status}}</td>
-                  <td>{{$item->id_konfirmasi}}</td>
+                  <td>{{$item->paket_tour->nama_tour}}</td>
+                  <td>{{
+                  $item->konfirmasi_pembayaran != null ? $item->konfirmasi_pembayaran->status == 1 ? 'Sudah dibayar' : 'Menunggu verfikasi' : 'Belum dibayar'
+                  }}</td>
                  
                 
             <td> 
@@ -65,8 +67,12 @@
                 </tr>
  @endforeach 
                 </tfoot>
+                
               </table>
             </div>
+            <div class="box-footer">
+          {!! $pemesanan_paket_tour->render() !!}
+              </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->

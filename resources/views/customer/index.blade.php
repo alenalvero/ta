@@ -1,7 +1,9 @@
 @extends('customer.master')
 
 @section('content')
+
 <aside id="colorlib-hero">
+
 			<div class="flexslider">
 				<ul class="slides">
 			   	<li style="background-image: url(images/borobudur.jpg); background-size:cover">
@@ -68,14 +70,15 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 search-wrap">
-						<form method="post" class="colorlib-form">
+						<form method="post" class="colorlib-form" action="{{route('customer.create')}}">
+						{{csrf_field()}}
 		              	<div class="row">
-		                <div class="col-md-3">
+		                 <div class="col-md-3">
 		                  <div class="form-group">
 		                    <label for="date">Tanggal Berangkat</label>
 		                    <div class="form-field">
 		                      <i class="icon icon-calendar2"></i>
-		                      <input type="text" id="date" class="form-control date" placeholder="Check-in date">
+		                      <input name="tgl" type="text" id="date" class="form-control date" placeholder="Check-in date">
 		                    </div>
 		                  </div>
 		                </div>
@@ -84,36 +87,30 @@
 		                    <label for="jumlah">Jumlah Orang</label>
 		                    <div class="form-field">
 		                      <i class=""></i>
-		                      <input type="text" id="jumlah" class="form-control jumlah" placeholder="Jumlah Orang">
+		                      <input name="jumlah_orang" type="text" id="jumlah" class="form-control jumlah" placeholder="Jumlah Orang">
 		                    </div>
 		                  </div>
 		                </div>
 		                <div class="col-md-2">
 		                  <div class="form-group">
-		                    <label for="tujuan">Tujuan</label>
+		                    <label for="id_kota">Tujuan</label>
 		                    <div class="form-field">
 		                      <i class="icon icon-arrow-down3"></i>
-		                      <select name="tujuan" id="tujuan" class="form-control">
-		                        <option value="#">1</option>
-		                        <option value="#">2</option>
-		                        <option value="#">3</option>
-		                        <option value="#">4</option>
-		                        <option value="#">5+</option>
+		                      <select name="id_kota" id="kota" class="form-control">
+		                    @foreach ($kotas as $item)
+                    			<option value="{{ $item->id }}">{{$item->nama_kota}}</option>  
+                   			@endforeach
 		                      </select>
 		                    </div>
 		                  </div>
 		                </div>
 		                <div class="col-md-2">
 		                  <div class="form-group" id="box">
-		                    <label for="tempat_wisata">Tempat Wisata</label>
+		                    <label for="id_tempat_wisata">Tempat Wisata</label>
 		                    <div class="form-field">
 		                      <i class="icon icon-arrow-down3"></i>
-		                      <select name="tempat_wisata" id="tempat_wisata" class="form-control">
-		                        <option value="#">1</option>
-		                        <option value="#">2</option>
-		                        <option value="#">3</option>
-		                        <option value="#">4</option>
-		                        <option value="#">5+</option>
+		                      <select name="id_tempat_wisata[]" id="tempat_wisata" class="form-control tempat_wisata">
+		                       
 		                      </select>
 		                    </div>
 		                  </div>
@@ -174,53 +171,59 @@
 			</div>
 		</div>
 
-		<div id="colorlib-rooms" class="colorlib-light-grey">
+		<div id="colorlib-amenities">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
-						<span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span>
-						<h2>Paket Tour</h2>
-						<p>Kami siap melayani perjalanan Anda.</p>
-					</div>
-				</div>
-	
-		
-					
-					<div class="row">
-				
-					<div class="col-md-12 animate-box">
-						
-						<div class="owl-carousel owl-carousel2">
-						@foreach($paket_tour as $item)		
-							<div class="item">
-							<a href="{{asset('images/'.$item->foto)}}" class="room image-popup-link" style="background-image: url({{asset('images/'.$item->foto)}});"></a>
-								<div class="desc text-center">
-									<span class="rate-star"><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span>
-									
-									<h3>{{$item->nama_tour}}</h3>
-									
-									<br><br>
-									<ul>
-										<li><i class="icon-check"></i> Only 10 rooms are available</li>
-										<li><i class="icon-check"></i> Breakfast included</li>
-										<li><i class="icon-check"></i> Price does not include VAT &amp; services fee</li>
-									</ul>
-									
-								</div>
-								</a>
+					<div class="amenities-flex">
+						<div class="amenities-img animate-box" style="background-image: url(images/surabaya.jpg);"></div>
+						<div class="desc animate-box">
+							<p class="price">
+								<span class="free">Surabaya</span>
+							</p>
+						<p>Kota Surabaya (Jawa: Suroboyo/ꦯꦸꦫꦧꦪ, Madura: Sorěbějě/سَورَبَجَا) adalah ibu kota Provinsi Jawa Timur, Indonesia, sekaligus kota metropolitan terbesar di provinsi tersebut. 
+							Surabaya merupakan kota terbesar kedua di Indonesia setelah Jakarta. 
+							Kota ini terletak 796 km sebelah timur Jakarta, atau 415 km sebelah barat laut Denpasar, Bali. Surabaya terletak di pantai utara Pulau Jawa bagian timur dan berhadapan dengan Selat Madura serta Laut Jawa.
+						</p>
 							</div>
-							@endforeach
-						</div>
-
-					</div>
-				
-		
-				
-					<div class="col-md-12 text-center animate-box">
-						<a href="{{url('/customer_PaketTour') }}">View all rooms <i class="icon-arrow-right3"></i></a>
+						<div class="desc animate-box">
+							
+							<p class="price">
+								<span class="price-room">Free</span>
+							</p>
+							<p>Kota Bandung merupakan kota metropolitan terbesar di Provinsi Jawa Barat, 
+							sekaligus menjadi ibu kota provinsi tersebut. 
+							Kota ini terletak 140 km sebelah tenggara Jakarta, 
+							dan merupakan kota terbesar di wilayah Pulau Jawa bagian selatan.
+							Sedangkan wilayah Bandung Raya (Wilayah Metropolitan Bandung) merupakan metropolitan terbesar ketiga di Indonesia setelah Jabodetabek dan Gerbangkertosusila. 
+						</p>	
+							</div>
+						<div class="amenities-img animate-box" style="background-image: url(images/bandung.jpg);"></div>
+						<div class="amenities-img animate-box" style="background-image: url(images/bali.jpg);"></div>
+						<div class="desc animate-box">
+							<p class="price">
+								<span class="free">Bali</span>
+							</p>
+							<p>Bali adalah sebuah provinsi di Indonesia. Ibu kota provinsi ini adalah Denpasar. Bali juga merupakan salah satu pulau di Kepulauan Nusa Tenggara. 
+							Di awal kemerdekaan Indonesia, pulau ini termasuk dalam Provinsi Sunda Kecil yang beribu kota di Singaraja, dan kini terbagi menjadi 3 provinsi: Bali, Nusa Tenggara Barat, dan Nusa Tenggara Timur.
+							</p>
+							</div>
+						<div class="desc animate-box">
+							
+							<p class="price">
+								
+								<span class="price-room">Jogjakarta</span>	
+							</p>
+							<p>Daerah Istimewa Yogyakarta (Jawa: Dhaérah Istiméwa Ngayogyakarta) 
+							adalah Daerah Istimewa setingkat provinsi di Indonesia yang merupakan peleburan Negara Kesultanan Yogyakarta 
+							dan Negara Kadipaten Paku Alaman. 
+							Daerah Istimewa Yogyakarta terletak di bagian selatan Pulau Jawa, 
+							dan berbatasan dengan Provinsi Jawa Tengah dan Samudera Hindia. 
+							Daerah Istimewa yang memiliki luas 3.185,80 km2 ini terdiri atas satu kotamadya,
+							</p>
+							</div>
+						<div class="amenities-img animate-box" style="background-image: url(images/jogjakarta.jpg);"></div>
 					</div>
 				</div>
-				
 			</div>
 		</div>
 
@@ -305,12 +308,8 @@ $(document).ready(function() {
        $("#box").append(`
 	       	<div class="form-field">
 		        <i class="icon icon-arrow-down3"></i>
-	          <select name="tempat_wisata" id="tempat_wisata" class="form-control">
-	            <option value="#">1</option>
-	            <option value="#">2</option>
-	            <option value="#">3</option>
-	            <option value="#">4</option>
-	            <option value="#">5+</option>
+	          <select name="id_tempat_wisata[]" id="tempat_wisata" class="form-control tempat_wisata">
+	        
 	          </select>
 	        </div>`
 	        );
@@ -330,5 +329,21 @@ function hapus(e) {
 	$('#box').children().eq($(e).index()+1).remove();
 	$(e).remove();
 }
+</script>
+<script>
+$(document).ready(function() {
+  $('#kota').change(function() {
+    //console.log($('#kota').val())
+    $.ajax({
+      url: '/get_wisata/'+$('#kota').val(),
+      success: function(data) {
+        $('.tempat_wisata').children().remove();
+        for(var i = 0; i < data.length; i++) {
+          $('.tempat_wisata').append("<option value='"+data[i].id+"'>"+data[i].nama+"</option>");
+        }
+      }
+    });
+  });
+})
 </script>
 @stop

@@ -11,9 +11,14 @@ class Paket_tourController extends Controller
 
 	public function index()
 	{
-		$view = view('paket_tour.index');
-		$view->paket_tour = Paket_tour::all();
-		return $view;
+		$paket_tour = Paket_tour::all();
+		$paket_tour = Paket_tour::latest()->paginate(2);
+		
+		return view('paket_tour.index', compact('paket_tour'));
+
+		// $view = view('paket_tour.index');
+		// $view->paket_tour = Paket_tour::all();
+		// return $view;
 
 	}
 
@@ -53,7 +58,7 @@ class Paket_tourController extends Controller
 			$paket_tour->keterangan = $request->input('keterangan');
 			$paket_tour->save();
 		}
-		return redirect ('admin/paket_tour');
+		return redirect ('operator/paket_tour');
 	}
 
 	public function edit( $id)
@@ -73,7 +78,7 @@ class Paket_tourController extends Controller
 		$paket_tour->keterangan = $request->input('keterangan');
 		$paket_tour->save();
 
-		return $paket_tour;
+		return redirect ('operator/paket_tour');
 	}
 
 	public function destroy($id)
@@ -81,7 +86,7 @@ class Paket_tourController extends Controller
 
 		\DB::table('paket_tours')->where('id', '=', $id)->delete();
 		\Session::flash('message','Data Berhasi Di Hapus');
-		echo "oke";
+		return \Redirect::to('operator/paket_tour');
 		
 	}
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Paket_tour;
 use App\Pemesanan_paket_tour;
 use Illuminate\Http\Request;
 
@@ -11,15 +12,17 @@ class Pemesanan_paket_tourController extends Controller
 
 	public function index()
 	{
-		$view = view('pemesanan_paket_tour.index');
-		$view->pemesanan_paket_tour = Pemesanan_paket_tour::all();
-		return $view;
+		$pemesanan_paket_tour = Pemesanan_paket_tour::with('Paket_tour')->get();
+		$pemesanan_paket_tour = Pemesanan_paket_tour::with('konfirmasi_pembayaran')->get();
+		$pemesanan_paket_tour = Pemesanan_paket_tour::latest()->paginate(7);
 
+		return view('pemesanan_paket_tour.index',compact('pemesanan_paket_tour'));
+		
 	}
 
 	public function show($id)
 	{
-		$view = view('show');
+		$view = view('customer.detail_order');
 		$view->pemesanan_paket_tour = Pemesanan_paket_tour::findOrFail($id);
 		return $view;
 	}

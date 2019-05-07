@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'AdminLTE')
+@section('title', 'Warok Tour')
 
 @section('content_header')
     <h1>
@@ -30,7 +30,7 @@
             </div>
             <!-- /.box-header -->
         
-          <form class="form-horizontal" action="{{url('admin/paket_tour')}}" method="post" enctype="multipart/form-data">
+          <form class="form-horizontal" action="{{url('operator/paket_tour')}}" method="post" enctype="multipart/form-data">
             {{csrf_field()}}
             <div class="box-body">
               <div class="form-group">
@@ -54,7 +54,7 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="keterangan" >Keterangan</label>
                   <div class="col-sm-10">
-                    <textarea rows="4", cols="54" name="keterangan" class="form-control" placeholder="Masukkan Keterangan" ></textarea>
+                    <textarea id="article-ckeditor" name="keterangan" rows="10" cols="80"></textarea>
                   </div>
               </div>
               
@@ -84,4 +84,11 @@
     </section>
     <!-- /.content -->
   </div>
+@stop
+
+@section('js')
+    <script src="{{asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
+    <script>
+        CKEDITOR.replace( 'article-ckeditor' );
+    </script>
 @stop

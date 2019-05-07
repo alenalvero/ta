@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'AdminLTE')
+@section('title', 'Warok Tour')
 
 @section('content_header')
     <h1>
@@ -34,6 +34,7 @@
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
+                  <th>Id Pemesanan</th>
                   <th>Foto</th>
                   <th>Status</th>
                                 
@@ -43,7 +44,8 @@
                 <tbody>
 @foreach($konfirmasi_pembayaran as $item)
                 <tr>
-                  <td>{{$item->foto}}</td>
+                  <td>{{$item->id_pemesanan_paket}}</td>
+                  <td><img src="{{asset('images/'.$item->foto)}}" height="50" width="50"></td>
                   <td>{{$item->status}}
                   </td>
                  
@@ -53,6 +55,13 @@
             <button class="btn btn-danger btn-flat btn-xs" type="button"><i class="fa fa-align-left"></i></button>
         <button class="btn btn-info btn-flat btn-xs" type="button"><i class="fa fa-align-right"></i></button>             
             <button class="btn btn-warning btn-flat btn-xs" type="button"><i class="fa fa-align-center"></i></button>
+            @if($item->status == 2)
+            <form action="/operator/verifikasi" method="post">
+              {{csrf_field()}}
+              <input type="hidden" name="id" value="{{$item->id}}">
+              <button class="btn btn-success btn-flat btn-xs" type="submit"><i class="fa fa-check"></i></button>
+            </form>
+            @endif
             </div>
             </td>
                 

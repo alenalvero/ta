@@ -12,7 +12,7 @@ class BisController extends Controller
 	public function index()
 	{
 		$biss = Bis::all();
-		$biss = Bis::latest()->paginate(2);
+		$biss = Bis::latest()->paginate(5);
 		
 		return view('bis.index', compact('biss'));
 	}
@@ -36,12 +36,12 @@ class BisController extends Controller
 	public function store (Request $request)
 	{
 		$bis = new Bis;
-		$bis->jenis_bis = $request->input('jenis_bis');
+		$bis->harga_small = $request->input('harga_small');
 		$bis->nama_po = $request->input('nama_po');
-		$bis->harga = $request->input('harga');
+		$bis->harga_large = $request->input('harga_large');
 		$bis->save();
 
-		return redirect('admin/bis');
+		return redirect('operator/bis');
 	}
 
 	public function edit( $id)
@@ -56,12 +56,12 @@ class BisController extends Controller
 	public function update(Request $request, $id)
 	{
 		$bis = Bis::findOrFail($id);
-		$bis->jenis_bis = $request->input('jenis_bis');
+		$bis->harga_small = $request->input('harga_small');
 		$bis->nama_po = $request->input('nama_po');
-		$bis->harga = $request->input('harga');
+		$bis->harga_large = $request->input('harga_large');
 		$bis->save();
 
-		return redirect('admin/bis');
+		return redirect('operator/bis');
 	}
 
 	public function destroy($id)
@@ -69,7 +69,7 @@ class BisController extends Controller
 
 		\DB::table('biss')->where('id', '=', $id)->delete();
 		\Session::flash('message','Data Berhasi Di Hapus');
-		return \Redirect::to('admin/bis');
+		return \Redirect::to('operator/bis');
 		
 	}
 
