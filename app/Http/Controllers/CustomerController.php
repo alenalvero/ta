@@ -15,13 +15,13 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-    public function index()
+	public function index()
 	{
 		$customer = Customer::with('kota')->get();
 		$customer = Customer::with('tempat_wisata')->get();
 		$kotas = Kota::all();
 
-		return view('customer.index',compact('customer','kotas'));
+		return view('customer.index', compact('customer', 'kotas'));
 
 
 		$view = view('customer.index');
@@ -44,19 +44,18 @@ class CustomerController extends Controller
 			$detailpemesanan->id_pemesanan = $pemesanan->id;
 			$detailpemesanan->id_wisata = $detail_wisata;
 			$detailpemesanan->save();
-			
 		}
 
-		return redirect('/');	
+		return redirect('/');
 	}
 	public function pesan($id)
 	{
 		$view = view('customer.form_input_paket');
-		$view->paket_tour= Paket_tour::findOrFail($id);
+		$view->paket_tour = Paket_tour::findOrFail($id);
 		return $view;
 	}
 
-	public function store (Request $request)
+	public function store(Request $request)
 	{
 		$pemesanan_paket_tour = new Pemesanan_paket_tour;
 		$pemesanan_paket_tour->id_user = $request->input('id_user');
@@ -64,30 +63,32 @@ class CustomerController extends Controller
 		$pemesanan_paket_tour->alamat = $request->input('alamat');
 		$pemesanan_paket_tour->id_paket = $request->input('id_paket');
 		$pemesanan_paket_tour->tgl = $request->input('tgl');
-		
+
 		$pemesanan_paket_tour->save();
 
 		$data = [
-            'nama_pelanggan_paket' => $request->nama_pelanggan_paket,
-            'alamat' => $request->alamat,
-            'tanggal' => $request->tgl,
-            'id_paket'=> $request->id_paket
-                
-        ];
-        
-        $list_operator = User::where('type', 'operator')->get();        
-        dd($list_operator);
-        foreach ($list_operator as $list){
-		\Mail::send('email', $data,
-            function ($message) {
-                $message->to($list->email)->subject('Coba email');
-            }
-        );
-        }
-        
+			'nama_pelanggan_paket' => $request->nama_pelanggan_paket,
+			'alamat' => $request->alamat,
+			'tanggal' => $request->tgl,
+			'id_paket' => $request->id_paket
 
-        echo "oke";
-/*
+		];
+
+		$list_operator = User::where('type', 'operator')->get();
+		dd($list_operator);
+		foreach ($list_operator as $list) {
+			\Mail::send(
+				'email',
+				$data,
+				function ($message) {
+					$message->to($list->email)->subject('Coba email');
+				}
+			);
+		}
+
+
+		echo "oke";
+		/*
 
 		$pemesanan_detail = new Pemesanan_detail;
 		$pemesanan_detail->id_pemesanan = $pemesanan_paket_tour->id;
@@ -95,6 +96,4 @@ class CustomerController extends Controller
 */
 		return redirect('/profile');
 	}
-
-
 }
