@@ -68,8 +68,6 @@
 
 	<div id="page">
 		<nav class="colorlib-nav" role="navigation">
-			
-
 			<div class="top-menu mymenu">
 				<div class="container">
 					<div class="row">
@@ -80,13 +78,14 @@
 							<ul>
 								<li ><a href="/">Home</a></li>
 								<li ><a href="/customer_PaketTour">Paket Tour</a></li>
-								
-	
 								<li><a href="/about">About</a></li>
 								<li><a href="contact.html">Contact</a></li>
-							@if(Auth::check())
-								<li><a href="/profile">Profile</a></li>
-							@endif
+								<li><a href="/pelanggan/login">Login</a></li>
+								<li><a href="/pelanggan/daftar">Daftar</a></li>
+								@if(Auth::check())
+									<li><a href="/profile">Profile</a></li>
+									<li><a href="/pelanggan/logout">Logout</a></li>
+								@endif
 							</ul>
 						</div>
 					</div>

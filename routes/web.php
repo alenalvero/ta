@@ -68,7 +68,6 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 	//Route::get('blog/create', 'BlogController@create');
 	//Route::get('blog', 'BlogController@index');
 	//Route::get('email','BlogController@sendMail');
-
 	// Route::resource('karyawan', 'KaryawanController');
 	Route::resource('admin/user', 'UserController')->middleware('auth');
 	Route::get('admin/user/destroy/{id}', 'UserController@destroy');
@@ -76,8 +75,12 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 	Route::get('admin/user/edit/{id}', 'UserController@edit');
 });
 
-
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/pelanggan/daftar', 'PelangganController@daftar');
+Route::post('/pelanggan/proses_daftar', 'PelangganController@proses_daftar')->name('proses_daftar_pelanggan');
+
+Route::get('/pelanggan/login', 'PelangganController@login');
+Route::post('/pelanggan/proses_login', 'PelangganController@proses_login')->name('proses_login_pelanggan');
