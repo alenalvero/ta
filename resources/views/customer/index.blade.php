@@ -357,5 +357,20 @@
 		kolom.appendChild(checkbox);
 		parent.append(kolom);
 	}
+
+	function validasi_input() {
+		var elements = $('#daftar-pilihan-wisata input[type="checkbox"]:checked');
+		var btn_submit = $('#submit');
+
+		if(elements.length < 1) {
+			return false;
+		}
+
+		if($('form input:empty')) {
+			return false;
+		}
+
+		return true;
+	}
 </script>
 @stop
