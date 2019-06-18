@@ -21,6 +21,11 @@ class PelangganController extends Controller
             'email' => 'required',
             'nama' => 'required',
             'password' => ' required|confirmed'
+        ], [
+            'email.required' => 'Email harus diisi!',
+            'nama.required' => 'Nama lengkap harus diisi!',
+            'password.required' => 'Password harus diisi!',
+            'password.confirmed' => 'Password dan konfirmasi tidak sama!'
         ]);
 
         if ($validator->fails()) {
