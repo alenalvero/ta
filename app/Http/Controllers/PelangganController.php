@@ -43,7 +43,8 @@ class PelangganController extends Controller
 
         Auth::attempt([
             'email' => $r->email,
-            'password' => $r->password
+            'password' => $r->password,
+            'type' => 'user'
         ]);
 
         return redirect("/");
@@ -54,9 +55,21 @@ class PelangganController extends Controller
         return view('customer.login');
     }
 
+    public function proses_login(Request $r)
+    {
+        $credential = [
+            'email' => $r->email,
+            'password' => $r->password,
+            'type' => 'user'
+        ];
+
+        Auth::attempt($credential);
+        return redirect('/');
+    }
+
     public function logout()
     {
         Auth::logout();
-        redirect('/');
+        return redirect('/');
     }
 }
