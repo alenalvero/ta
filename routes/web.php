@@ -15,7 +15,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/check-user', 'WelcomeController@checkUser');
 });
 Route::group(
-	['middleware' => ['auth', 'role:operator']],
+	['middleware' => ['auth', 'role:operator|admin']],
 	function () {
 		Route::get('/operator', function () {
 			dd(auth()->user()->type);
