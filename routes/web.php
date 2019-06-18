@@ -84,3 +84,7 @@ Route::post('/pelanggan/proses_daftar', 'PelangganController@proses_daftar')->na
 
 Route::get('/pelanggan/login', 'PelangganController@login');
 Route::post('/pelanggan/proses_login', 'PelangganController@proses_login')->name('proses_login_pelanggan');
+
+Route::get('/pelanggan/logout', 'PelangganController@logout');
+
+Route::group(['middleware' => ['auth', 'role:user']], function () { });

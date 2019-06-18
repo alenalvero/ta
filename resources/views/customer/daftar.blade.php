@@ -19,17 +19,11 @@
       <h3>Daftar Akun Pelanggan  Warok Tour</h3>
       <div class="form-group">
         <label for="nama">Nama lengkap</label>
-        <input class="form-control" type="text" name="nama" id="nama" placeholder="Nama lengkap" 
-        @if(session('nama'))
-        value="{{session('nama')}}"
-        @endif >
+        <input class="form-control" type="text" name="nama" id="nama" placeholder="Nama lengkap" value="{{old('nama')}}">
       </div>
       <div class="form-group">
         <label for="email">Email</label>
-        <input class="form-control" type="email" name="email" id="email" placeholder="Email pengguna yang valid"
-        @if(session('email'))
-        value="{{session('email')}}"
-        @endif >
+        <input class="form-control" type="email" name="email" id="email" placeholder="Email pengguna yang valid" value="{{old('email')}}">
       </div>
       <div class="form-group">
         <label for="password">Password</label>

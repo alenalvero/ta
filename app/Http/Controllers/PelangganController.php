@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class PelangganController extends Controller
 {
@@ -35,11 +36,22 @@ class PelangganController extends Controller
         $user_baru->type = "user";
         $user_baru->save();
 
+        Auth::attempt([
+            'email' => $r->email,
+            'password' => $r->password
+        ]);
+
         return redirect("/");
     }
 
     public function login()
     {
         return view('customer.login');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        redirect('/');
     }
 }
