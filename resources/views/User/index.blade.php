@@ -16,7 +16,6 @@
 @stop
 
 @section('content')
-   
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
@@ -35,8 +34,7 @@
                 <thead>
                 <tr>
                   <th>Nama</th>
-                  <th>Email</th>
-                  <th>Password</th>                
+                  <th>Email</th>               
                   <th>Type</th>
                   <th>Aksi</th>  
                 </tr>
@@ -46,14 +44,10 @@
                 <tr>
                   <td>{{$item->name}}</td>
                   <td>{{$item->email}}</td>
-                  <td>{{$item->password}}</td>
                   <td>{{$item->type}}</td>
-                  
-                 
-                
             <td> 
               <div class="btn-group">
-           <a href='{{url('admin/user/destroy/'.$item->id) }}'> <button class="btn btn-danger btn-flat btn-xs" type="button"><i class="fa fa-align-left"></i></button></a>
+              <a href='{{url('admin/user/destroy/'.$item->id) }}' onclick="return confirm('Anda yakin ingin menghapus data ini?')"> <button class="btn btn-danger btn-flat btn-xs" type="button"><i class="fa fa-align-left"></i></button></a>
       <a href='{{url('admin/user/'.$item->id.'/edit') }}'>  <button class="btn btn-info btn-flat btn-xs" type="button"><i class="fa fa-align-right"></i></button></a>             
             </div>
             </td>
