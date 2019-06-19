@@ -22,6 +22,7 @@ Route::group(
 		});
 
 		Route::resource('operator/paket_tour', 'Paket_tourController');
+		Route::get('operator/paket_tour/destroy/{id}', 'Paket_tourController@destroy');
 		// Route::resource('operator/pelanggan', 'PelangganController');
 		Route::resource('operator/pemesanan', 'PemesananController');
 

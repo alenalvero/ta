@@ -61,7 +61,7 @@ class Paket_tourController extends Controller
 
 	public function edit($id)
 	{
-		$view = view('edit');
+		$view = view('paket_tour.edit');
 		$view->paket_tour = Paket_tour::findOrFail($id);
 		return $view;
 	}
