@@ -34,6 +34,7 @@ class CustomerController extends Controller
 		$data = $request->all();
 		// return $data;
 		$pemesanan = new Pemesanan;
+		$pemesanan->id_user = auth()->user()->id;
 		$pemesanan->tgl = $request->input('tgl');
 		$pemesanan->jumlah_orang = $request->input('jumlah_orang');
 		$pemesanan->id_kota = $request->input('id_kota');
@@ -95,5 +96,14 @@ class CustomerController extends Controller
 		$pemesanan_detail->id_wisata = 
 */
 		return redirect('/profile');
+	}
+
+	public function upload_struk($id)
+	{
+		$data = [
+			'id' => $id
+		];
+
+		return view('customer.upload_struk');
 	}
 }

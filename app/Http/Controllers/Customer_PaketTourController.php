@@ -38,7 +38,7 @@ class Customer_PaketTourController extends Controller
 	public function store(Request $request)
 	{
 		$pemesanan_paket_tour = new Pemesanan_paket_tour;
-		$pemesanan_paket_tour->id_user = $request->input('id_user');
+		$pemesanan_paket_tour->id_user = auth()->user()->id;
 		$pemesanan_paket_tour->nama_pelanggan_paket = $request->input('nama_pelanggan_paket');
 		$pemesanan_paket_tour->alamat = $request->input('alamat');
 		$pemesanan_paket_tour->no_telp = $request->input('no_telp');
@@ -49,7 +49,7 @@ class Customer_PaketTourController extends Controller
 
 
 
-		$data = [
+		/* $data = [
 			'nama' => $request->nama_pelanggan_paket,
 			'alamat' => $request->alamat,
 			'tanggal' => $request->tgl,
@@ -69,7 +69,7 @@ class Customer_PaketTourController extends Controller
 			);
 		}
 
-		echo "oke";
+		echo "oke"; */
 		return redirect('/profile');
 	}
 }

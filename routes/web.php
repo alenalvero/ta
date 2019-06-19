@@ -88,4 +88,6 @@ Route::post('/pelanggan/proses_login', 'PelangganController@proses_login')->name
 
 Route::get('/pelanggan/logout', 'PelangganController@logout');
 
-Route::group(['middleware' => ['auth', 'role:user']], function () { });
+Route::group(['middleware' => ['auth', 'role:user']], function () {
+	Route::get('/pelanggan/upload_struk/{id}', 'CustomerController@upload_struk');
+});

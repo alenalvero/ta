@@ -78,13 +78,18 @@ table td, th {
 								</tr>
 								@foreach ($profile as $item)
 								<tr>
-									<td height="30"></td>
-									<td></td>
-									<td></td>
-									<td></td>
+									<td height="30">{{$item->id}}</td>
+									<td>{{$item->tgl}}</td>
+									<td>{{$item->konfirmasi_pembayaran != null ? $item->konfirmasi_pembayaran->status == 1 ? 'Sudah dibayar' : 'Menunggu verfikasi' : 'Belum dibayar'}} <a href="/pelanggan/upload_struk/{{$item->id}}" title="upload bukti pembayaran"><i class="icon-upload2"></i></a></td>
+									<td>
+										@if(!is_null($item->id_bis))
+										{{$item->harga_total()}}
+										@endif
+									</td>
 								</tr>
 								@endforeach
 							</table>
+							{{$profile->links()}}
 					</div>
 					<div class="about animate-box">
 						<p>*Click your ORDER-ID to see detail status</p>	
