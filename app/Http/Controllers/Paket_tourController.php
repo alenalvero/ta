@@ -7,13 +7,13 @@ use Illuminate\Http\Request;
 
 class Paket_tourController extends Controller
 {
-    
+
 
 	public function index()
 	{
-		$paket_tour = Paket_tour::all();
-		$paket_tour = Paket_tour::latest()->paginate(2);
-		
+		$per_page = 20;
+		$paket_tour = Paket_tour::latest()->paginate($per_page);
+
 		return view('paket_tour.index', compact('paket_tour'));
 
 		// $view = view('paket_tour.index');
@@ -38,19 +38,17 @@ class Paket_tourController extends Controller
 
 
 
-	public function store (Request $request)
+	public function store(Request $request)
 	{
 		$paket_tour = "N";
-		if($request->hasFile('foto'));	
-		{ 
+		if ($request->hasFile('foto')); {
 			$destination = "images";
 			$foto = $request->file('foto');
 			$foto->move($destination, $foto->getClientOriginalName());
 			$paket_tour = "Y";
 		}
 
-		if($paket_tour="Y")
-		{
+		if ($paket_tour = "Y") {
 			$paket_tour = new Paket_tour;
 			$paket_tour->nama_tour = $request->input('nama_tour');
 			$paket_tour->harga = $request->input('harga');
@@ -58,18 +56,16 @@ class Paket_tourController extends Controller
 			$paket_tour->keterangan = $request->input('keterangan');
 			$paket_tour->save();
 		}
-		return redirect ('operator/paket_tour');
+		return redirect('operator/paket_tour');
 	}
 
-	public function edit( $id)
+	public function edit($id)
 	{
 		$view = view('edit');
-		$view->paket_tour= Paket_tour::findOrFail($id);
+		$view->paket_tour = Paket_tour::findOrFail($id);
 		return $view;
-
-		
 	}
-	
+
 	public function update(Request $request, $id)
 	{
 		$paket_tour = Paket_tour::findOrFail($id);
@@ -78,33 +74,31 @@ class Paket_tourController extends Controller
 		$paket_tour->keterangan = $request->input('keterangan');
 		$paket_tour->save();
 
-		return redirect ('operator/paket_tour');
+		return redirect('operator/paket_tour');
 	}
 
 	public function destroy($id)
 	{
 
 		\DB::table('paket_tours')->where('id', '=', $id)->delete();
-		\Session::flash('message','Data Berhasi Di Hapus');
+		\Session::flash('message', 'Data Berhasi Di Hapus');
 		return \Redirect::to('operator/paket_tour');
-		
 	}
 
 	public function sendMail()
 	{
 		$data = [
-                'fullname' => 'alen',
-                
-            ];
-            \Mail::send('email', $data,
-                function ($message) {
-                    $message->to('alen@gmail.com')->subject('Coba email');
-                }
-            );
+			'fullname' => 'alen',
 
-            echo "oke";
+		];
+		\Mail::send(
+			'email',
+			$data,
+			function ($message) {
+				$message->to('alen@gmail.com')->subject('Coba email');
+			}
+		);
+
+		echo "oke";
 	}
-
 }
-
-
