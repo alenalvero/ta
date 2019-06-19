@@ -17,7 +17,8 @@ class UserController extends Controller
     public function index()
     {
         $view = view('User.index');
-        $view->user = User::all();
+        // ambil semua data kecuali yang bertipe user
+        $view->user = User::where('type', '!=', 'user')->get();
         return $view;
     }
 
