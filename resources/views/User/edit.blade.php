@@ -57,21 +57,15 @@
                   <div class="col-sm-offset-2 col-sm-10">
                     <div class="checkbox" style="background-color: #f1f1f1; padding: 10px 0">
                       <label> <b>Type user</b><br/>
-                        <input type="radio" name="type" value="operator" checked> Operator
+                        <input type="radio" name="type" value="operator" @if($user->type == 'operator') checked @endif> Operator
                       </label>
                       <br/>
                       <label>
-                        <input type="radio" name="type" value="admin"> Administrator
+                        <input type="radio" name="type" value="admin" @if($user->type == 'admin') checked @endif> Administrator
                       </label>
                     </div>
                   </div>
                 </div>
-                    
-              
-                       
-
-                            
- 
                 </tfoot>
               
             </div>
