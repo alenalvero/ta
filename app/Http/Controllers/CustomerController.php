@@ -104,6 +104,6 @@ class CustomerController extends Controller
 			'id' => $id
 		];
 
-		return view('customer.upload_struk');
+		return view('customer.upload_struk', $data);
 	}
 }
