@@ -50,7 +50,13 @@
                   </td>
                   <td></td>
                   
-                  <td></td>
+                  <td>
+                  @if($item->sudah_dibayar())
+                  Sudah dibayar
+                  @else 
+                  Belum dibayar
+                  @endif
+                  </td>
                   <td>
                   @if(!is_null($item->id_bis))
                   {{$item->harga_total()}}

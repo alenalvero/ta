@@ -48,4 +48,14 @@ class Pemesanan extends Model
 
 		return $harga_total;
 	}
+
+	public function sudah_dibayar()
+	{
+		$terkonfirmasi = KonfirmasiPemesanan::where('id_pemesanan', $this->id)->first();
+		if(!is_null($terkonfirmasi)) {
+			return true;
+		}
+
+		return false;
+	}
 }
