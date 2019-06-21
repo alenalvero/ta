@@ -12,6 +12,7 @@ use App\Pemesanan;
 use App\DetailPemesanan;
 use App\User;
 use Illuminate\Http\Request;
+use App\KonfirmasiPemesanan;
 
 class CustomerController extends Controller
 {
@@ -101,9 +102,23 @@ class CustomerController extends Controller
 	public function upload_struk($id)
 	{
 		$data = [
-			'id' => $id
+			'id' => $id,
+			'tdk_terbayar' => is_null(KonfirmasiPemesanan::where('id_pemesanan', $id)->first())
 		];
 
 		return view('customer.upload_struk', $data);
+	}
+
+	public function proses_upload_struk(Request $r)
+	{
+		$path = $r->file('foto')->store('struk', ['disk' => 'public']);
+
+		$konfirmasi_pemesanan = new KonfirmasiPemesanan;
+		$konfirmasi_pemesanan->id_pemesanan = $r->input('id_pemesanan');
+		$konfirmasi_pemesanan->foto = $path;
+		$konfirmasi_pemesanan->status = 2;
+		$konfirmasi_pemesanan->save();
+
+		return redirect()->refresh();
 	}
 }

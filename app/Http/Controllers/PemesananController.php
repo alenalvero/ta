@@ -59,13 +59,10 @@ class PemesananController extends Controller
 	public function update(Request $request, $id)
 	{
 		$pemesanan = Pemesanan::findOrFail($id);
-		$pemesanan->id_pelanggan = $request->input('id_pelanggan');
-		$pemesanan->id_karyawan = $request->input('id_karyawan');
-		$pemesanan->tgl_pesan = $request->input('tgl_pesan');
-		$pemesanan->status = $request->input('status');
+		$pemesanan->id_bis = $request->input('id_bis');
 		$pemesanan->save();
 
-		return $karyawan;
+		return redirect('/operator/pemesanan');
 	}
 
 	public function destroy($id)

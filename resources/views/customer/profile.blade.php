@@ -80,7 +80,15 @@ table td, th {
 								<tr>
 									<td height="30">{{$item->id}}</td>
 									<td>{{$item->tgl}}</td>
-									<td>{!! $item->konfirmasi_pembayaran != null ? $item->konfirmasi_pembayaran->status == 1 ? 'Sudah dibayar' : 'Menunggu verfikasi' : '<a href="/pelanggan/upload_struk/'.$item->id.'" title="upload bukti pembayaran">Belum dibayar</a>' !!}</td>
+									<td>
+										@if($item->konfirmasi_pemesanan != null && $item->konfirmasi_pemesanan->status != 1)
+											Pending
+										@elseif ($item->konfirmasi_pemesanan->status == 1 && $item->id_bis != null)
+											Terkonfirmasi
+										@else
+											<a href="/pelanggan/upload_struk/{{$item->id}}" title="upload bukti pembayaran">Belum dibayar</a>
+										@endif
+									</td>
 									<td>
 										@if(!is_null($item->id_bis))
 										{{$item->harga_total()}}

@@ -155,6 +155,16 @@ return [
             'text' => 'Pembayaran',
             'url'  => 'operator/konfirmasi_pembayaran',
             'icon' => 'money',
+            'submenu' => [
+                [
+                    'text' => 'Individu',
+                    'url'  => 'operator/konfirmasi_pembayaran_individu',
+                ],
+                [
+                    'text' => 'Paket',
+                    'url'  => 'operator/konfirmasi_pembayaran',
+                ],
+            ]
         ],
 
         [

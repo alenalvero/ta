@@ -14,6 +14,11 @@ class Pemesanan extends Model
 		return $this->hasMany('App\DetailPemesanan', 'id_pemesanan', 'id');
 	}
 
+	public function konfirmasi_pemesanan()
+	{
+		return $this->hasOne('App\KonfirmasiPemesanan', 'id_pemesanan', 'id');
+	}
+
 	public function bis()
 	{
 		return $this->hasOne('App\Bis', 'id', 'id_bis');
@@ -52,7 +57,7 @@ class Pemesanan extends Model
 	public function sudah_dibayar()
 	{
 		$terkonfirmasi = KonfirmasiPemesanan::where('id_pemesanan', $this->id)->first();
-		if(!is_null($terkonfirmasi)) {
+		if (!is_null($terkonfirmasi)) {
 			return true;
 		}
 
