@@ -43,7 +43,7 @@
                 </tr>
                 </thead>
                 <tbody>
-          @foreach($pemesanan as $item)
+                @foreach($pemesanan as $item)
                 <tr>
                   <td></td>
                   <td>
@@ -62,18 +62,16 @@
                   {{$item->harga_total()}}
                   @endif
                   </td>
-                
-            <td> 
-              <div class="btn-group">
-            <button class="btn btn-danger btn-flat btn-xs" type="button"><i class="fa fa-align-left"></i></button>
-            <a href='{{url('operator/pemesanan/'.$item->id.'/edit') }}'><button class="btn btn-info btn-flat btn-xs" type="button"><i class="fa fa-align-right"></i></button></a>             
-            <button class="btn btn-warning btn-flat btn-xs" type="button"><i class="fa fa-align-center"></i></button>
-            </div>
-            </td>
-                
+                  <td> 
+                    <div class="btn-group">
+                      <button class="btn btn-danger btn-flat btn-xs" type="button"><i class="fa fa-align-left"></i></button>
+                      <a href='{{url('operator/pemesanan/'.$item->id.'/edit') }}'><button class="btn btn-info btn-flat btn-xs" type="button"><i class="fa fa-align-right"></i></button></a>             
+                      <button class="btn btn-warning btn-flat btn-xs" type="button"><i class="fa fa-align-center"></i></button>
+                    </div>
+                  </td>
                 </tr>
-            @endforeach 
-                </tfoot>
+                @endforeach 
+                </tbody>
               </table>
             </div>
             <!-- /.box-body -->
