@@ -83,7 +83,7 @@ table td, th {
 									<td>
 										@if($item->konfirmasi_pemesanan != null && $item->konfirmasi_pemesanan->status != 1)
 											Pending
-										@elseif ($item->konfirmasi_pemesanan->status == 1 && $item->id_bis != null)
+										@elseif ($item->konfirmasi_pemesanan != null && $item->konfirmasi_pemesanan->status == 1 && $item->id_bis != null)
 											Terkonfirmasi
 										@else
 											<a href="/pelanggan/upload_struk/{{$item->id}}" title="upload bukti pembayaran">Belum dibayar</a>

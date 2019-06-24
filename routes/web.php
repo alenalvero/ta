@@ -58,7 +58,7 @@ Route::post('customer_PaketTour/create', 'CustomerController@create')->name('cus
 Route::resource('/', 'CustomerController');
 Route::resource('/customer_PaketTour', 'Customer_PaketTourController');
 Route::resource('/about', 'AboutController');
-Route::resource('/profile', 'ProfileController');
+
 Route::get('profile/detail_order/{id}/show', 'Pemesanan_paket_tourController@show');
 Route::post('profile/konfirmasi_pembayaran', 'Konfirmasi_pembayaranController@update');
 Route::get('profile/konfirmasi_pembayaran/{id}/konfirmasi', 'Konfirmasi_pembayaranController@konfirmasi');
@@ -93,4 +93,5 @@ Route::get('/pelanggan/logout', 'PelangganController@logout');
 Route::group(['middleware' => ['auth', 'role:user']], function () {
 	Route::get('/pelanggan/upload_struk/{id}', 'CustomerController@upload_struk');
 	Route::post('/pelanggan/upload_struk/{id}', 'CustomerController@proses_upload_struk');
+	Route::resource('/profile', 'ProfileController');
 });
