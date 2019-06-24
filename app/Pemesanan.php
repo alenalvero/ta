@@ -28,10 +28,16 @@ class Pemesanan extends Model
 	{
 		$harga_total = 0;
 
+		// hitung kota
+		$kota = Kota::find($this->id_kota);
+		$harga_total = $harga_total + $kota->harga;
+
+		// hitung wisata
 		foreach ($this->detail_pemesanan as $pemesanan) {
 			$harga_total = $harga_total + $pemesanan->wisata->harga;
 		}
 
+		//hitung bis
 		$jumlah_bis = 1;
 		if ($this->jumlah_orang > 30 && $this->jumlah_orang <= 60) {
 			$harga_total = $harga_total + $this->bis->harga_large;
