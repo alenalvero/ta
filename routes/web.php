@@ -89,6 +89,7 @@ Route::get('/pelanggan/login', 'PelangganController@login');
 Route::post('/pelanggan/proses_login', 'PelangganController@proses_login')->name('proses_login_pelanggan');
 
 Route::get('/pelanggan/logout', 'PelangganController@logout');
+Route::post('/tes-email', 'UserController@sendMail');
 
 Route::group(['middleware' => ['auth', 'role:user']], function () {
 	Route::get('/pelanggan/upload_struk/{id}', 'CustomerController@upload_struk');

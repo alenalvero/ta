@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -78,20 +79,21 @@ class UserController extends Controller
         return \Redirect::to('/admin/user');
     }
 
-    public function sendMail()
+    public function sendMail(Request $r)
     {
+        $to = $r->email;
+        $reciver = $r->nama;
         $data = [
-            'fullname' => 'alen',
-
+            'nama' => $to,
+            'email' => $reciver
         ];
-        \Mail::send(
-            'email',
-            $data,
-            function ($message) {
-                $message->to('alen@gmail.com')->subject('Coba email');
-            }
-        );
 
-        echo "oke";
+        Mail::send('tes-mail', $data, function ($message) use ($to, $reciver) {
+            $message->to($to, $reciver)
+                ->subject('Laravel Test Mail');
+            $message->from('fanani707@gmail.com', 'Testing');
+        });
+
+        return 'sip';
     }
 }
