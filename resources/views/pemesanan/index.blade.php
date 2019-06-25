@@ -36,7 +36,7 @@
                   <th>Trayek</th>
                 
                   <th>Tanggal Pesan</th>
-                 
+                  <th>Bis</th>
                   <th>Status</th>                
                   <th>Pembayaran</th>
                   <th>Aksi</th>  
@@ -49,7 +49,13 @@
                   <td>
                   </td>
                   <td></td>
-                  
+                  <td>
+                    @if($item->bis == null)
+                    <a href='{{url('operator/pemesanan/'.$item->id.'/edit') }}'>Belum punya bis</a>
+                    @else
+                    {{$item->bis->nama_po}}
+                    @endif
+                  </td>
                   <td>
                   @if($item->sudah_dibayar())
                   Sudah dibayar

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Mail;
+use App\Helpers\KirimEmail;
 
 class UserController extends Controller
 {
@@ -81,7 +82,17 @@ class UserController extends Controller
 
     public function sendMail(Request $r)
     {
+        $email = new KirimEmail;
+
         $to = $r->email;
+        $reciver = $r->nama;
+        $data = [
+            'nama' => $to,
+            'email' => $reciver
+        ];
+
+        $email->kirim_ke($r->email, $r->nama, null, 'tes-mail', $data);
+        /* $to = $r->email;
         $reciver = $r->nama;
         $data = [
             'nama' => $to,
@@ -92,7 +103,7 @@ class UserController extends Controller
             $message->to($to, $reciver)
                 ->subject('Laravel Test Mail');
             $message->from('fanani707@gmail.com', 'Testing');
-        });
+        }); */
 
         return 'sip';
     }

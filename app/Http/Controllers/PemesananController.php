@@ -7,6 +7,8 @@ use App\Bis;
 use Illuminate\Http\Request;
 use App\Kota;
 use App\Tempat_wisata;
+use App\Helpers\KirimEmail;
+use App\DetailPemesanan;
 
 class PemesananController extends Controller
 {
@@ -61,6 +63,20 @@ class PemesananController extends Controller
 		$pemesanan = Pemesanan::findOrFail($id);
 		$pemesanan->id_bis = $request->input('id_bis');
 		$pemesanan->save();
+
+		$bis = Bis::find($pemesanan->id_bis);
+		$email = $pemesanan->user->email;
+		$nama = $pemesanan->user->name;
+		$data = [
+			'email' => $email,
+			'nama' => $nama,
+			'nama_po' => $bis->nama_po,
+			'harga' => $pemesanan->harga_total(),
+			'kota' => Kota::find($pemesanan->id_kota)->nama_kota,
+			'tujuan' => $pemesanan->detail_pemesanan
+		];
+
+		KirimEmail::kirim_ke($email, $nama, 'Pemesanan terkonfirmasi', 'email.pesanan_terkonfirmasi', $data);
 
 		return redirect('/operator/pemesanan');
 	}

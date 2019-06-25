@@ -24,6 +24,11 @@ class Pemesanan extends Model
 		return $this->hasOne('App\Bis', 'id', 'id_bis');
 	}
 
+	public function user()
+	{
+		return $this->hasOne('App\User', 'id', 'id_user');
+	}
+
 	public function harga_total()
 	{
 		$harga_total = 0;
