@@ -93,7 +93,7 @@ table td, th {
 									</td>
 									<td>
 										@if(!is_null($item->id_bis))
-										{{$item->harga_total()}}
+										Rp. {{number_format($item->harga_total(), 2, ',', '.')}}
 										@endif
 									</td>
 								</tr>

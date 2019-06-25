@@ -3,7 +3,6 @@
 @section('content')
     <div class="container">
       <div class="row">
-        @if ($tdk_terbayar)
         <div class="col-sm-4">
           <div class="aside animate-box">
             <h3><b>Form Konfirmasi Pembayaran</b><hr></h3>
@@ -13,9 +12,21 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label for="Foto">Foto</label>
+                    <label for="nama_pelanggan">Nama Pelanggan</label>
+                    <input type="text" name="nama_pelanggan" id="nama_pelanggan" placeholder="Nama pelanggan / pemesan" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="alamat_penjemputan">Alamat Penjemputan</label>
+                    <textarea name="alamat_penjemputan" id="alamat_penjemputan" placeholder="Alamat penjemputan" class="form-control" required></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="no_telp">No Telepon/HP</label>
+                    <input type="text" name="no_telp" id="no_telp" placeholder="+628XXXXXXXXXX" maxlength="13" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="Foto">Bukti struk transfer</label>
                     <div class="form-field">
-                      <input type="file" name="foto" >
+                      <input type="file" name="foto" required>
                     </div>
                   </div>
                 </div>
@@ -26,21 +37,47 @@
             </form>
           </div>
         </div>
-        @endif
         <div class="col-sm-8">
           <article class="animate-box">
-            <div class="blog-img" ></div>
-            <div class="desc">
-              <div class="meta">
-                <p>
-                  <span>August 24, 2017 </span>
-                  <span>admin </span>
-                  <span><a href="#">2 Comments</a></span>
-                </p>
-              </div>
-              <h2><a href="#">A Definitive Guide to the Best Dining</a></h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, qui quod ipsum harum id, minima nesciunt! Saepe soluta, vitae quas expedita voluptatem voluptates placeat numquam provident quis, atque nisi iure?</p>
-            </div>
+            <h2>Detail Pemesanan</h2>
+            <hr>
+            <p>
+              <b>Nama Pemesan:</b><br/>
+              {{$pemesanan->nama_pelanggan}}
+            </p>
+            <p>
+              <b>Alamat Penjemputan:</b><br/>
+              {{$pemesanan->alamat}}
+            </p>
+            <p>
+              <b>No Telp:</b><br/>
+              {{$pemesanan->no_telp}}
+            </p>
+            <p>
+              <b>Jumlah Penumpang:</b><br/>
+              {{$pemesanan->jumlah_orang}}
+            </p>
+            <p>
+              <b>Kota Tujuan:</b><br/>
+              {{$pemesanan->kota->nama_kota}}
+            </p>
+            <p>
+              <b>Tujuan Wisata:</b><br/>
+              <ul>
+                @foreach ($pemesanan->detail_pemesanan as $item)
+                <li>{{$item->wisata->nama}}</li>
+                @endforeach
+              </ul>
+            </p>
+            <p>
+            <p>
+              <b>PO Bis:</b><br/>
+              {{$pemesanan->bis->nama_po}}
+            </p>
+            <p>
+              <b>Harga yang dibayar:</b><br/>
+              Rp. {{number_format($pemesanan->harga_total(), 2, ',', '.')}}
+            </p>
           </article>
         </div>
       </div>

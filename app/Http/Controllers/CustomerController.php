@@ -103,7 +103,7 @@ class CustomerController extends Controller
 	{
 		$data = [
 			'id' => $id,
-			'tdk_terbayar' => is_null(KonfirmasiPemesanan::where('id_pemesanan', $id)->first())
+			'pemesanan' => Pemesanan::find($id)
 		];
 
 		return view('customer.upload_struk', $data);
@@ -113,11 +113,21 @@ class CustomerController extends Controller
 	{
 		$path = $r->file('foto')->store('struk', ['disk' => 'public']);
 
-		$konfirmasi_pemesanan = new KonfirmasiPemesanan;
+		$konfirmasi_pemesanan = KonfirmasiPemesanan::where('id_pemesanan', $r->input('id_pemesanan'))->first();
+		if (is_null($konfirmasi_pemesanan)) {
+			$konfirmasi_pemesanan = new KonfirmasiPemesanan;
+		}
+
 		$konfirmasi_pemesanan->id_pemesanan = $r->input('id_pemesanan');
 		$konfirmasi_pemesanan->foto = $path;
 		$konfirmasi_pemesanan->status = 2;
 		$konfirmasi_pemesanan->save();
+
+		$pemesanan = Pemesanan::find($r->id_pemesanan);
+		$pemesanan->nama_pelanggan = $r->nama_pelanggan;
+		$pemesanan->alamat = $r->alamat_penjemputan;
+		$pemesanan->no_telp = $r->no_telp;
+		$pemesanan->save();
 
 		return redirect()->refresh();
 	}

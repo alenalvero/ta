@@ -6,6 +6,7 @@ use App\Konfirmasi_pembayaran;
 use App\Pemesanan_paket_tour;
 use Illuminate\Http\Request;
 use App\KonfirmasiPemesanan;
+use App\Helpers\KirimEmail;
 
 class Konfirmasi_pembayaranController extends Controller
 {
@@ -93,6 +94,14 @@ class Konfirmasi_pembayaranController extends Controller
 		$konfirmasi_pembayaran = KonfirmasiPemesanan::findOrFail($r->id);
 		$konfirmasi_pembayaran->status = 1;
 		$konfirmasi_pembayaran->save();
+
+		$data = [
+			'harga' => $konfirmasi_pembayaran->pemesanan->harga_total(),
+			'nama' => $konfirmasi_pembayaran->pemesanan->nama_pelanggan
+		];
+
+		KirimEmail::kirim_ke($konfirmasi_pembayaran->pemesanan->user->email, $konfirmasi_pembayaran->pemesanan->user->name, 'Pembayaran Terkonfirmasi', 'email.pembayaran_terkonfirmasi', $data);
+
 		return redirect('/operator/konfirmasi_pembayaran_individu');
 	}
 }

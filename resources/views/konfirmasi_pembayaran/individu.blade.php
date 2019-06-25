@@ -35,6 +35,8 @@
                 <thead>
                 <tr>
                   <th>Id Pemesanan</th>
+                  <th>Nama Pemesan</th>
+                  <th>Tanggal Pemesanan</th>
                   <th>Foto</th>
                   <th>Status</th>
                   <th>Aksi</th>  
@@ -44,6 +46,8 @@
                 @foreach($konfirmasi_pembayaran as $item)
                 <tr>
                   <td>{{$item->id_pemesanan_paket}}</td>
+                  <td>{{$item->pemesanan->nama_pelanggan}}</td>
+                  <td>{{$item->created_at->format('d/m/Y')}}</td>
                   <td><img src="{{Storage::url($item->foto)}}" height="50" width="50"></td>
                   <td>
                     @if($item->status == 2)

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pemesanan extends Model
 {
 	protected $table = 'pemesanans';
-	public $timestamps = false;
+	// public $timestamps = false;
 
 	public function detail_pemesanan()
 	{
@@ -17,6 +17,11 @@ class Pemesanan extends Model
 	public function konfirmasi_pemesanan()
 	{
 		return $this->hasOne('App\KonfirmasiPemesanan', 'id_pemesanan', 'id');
+	}
+
+	public function kota()
+	{
+		return $this->hasOne('App\Kota', 'id', 'id_kota');
 	}
 
 	public function bis()
