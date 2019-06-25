@@ -15,13 +15,14 @@ class VerifyRole
      */
     public function handle($request, Closure $next, $role)
     {
-
-        if (auth()->user()->type == $role){
-
+        $roles = explode('|', $role);
+        $allowed_role = array_search(auth()->user()->type, $roles);
+        if ($allowed_role !== false) {
             return $next($request);
+        } else {
+            dd($role);
         }
+
         return redirect(url('check-user'));
-       
-        
     }
 }

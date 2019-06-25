@@ -7,13 +7,13 @@ use Illuminate\Http\Request;
 
 class BisController extends Controller
 {
-    
+
 
 	public function index()
 	{
-		$biss = Bis::all();
-		$biss = Bis::latest()->paginate(5);
-		
+		$per_page = 20;
+		$biss = Bis::latest()->paginate($per_page);
+
 		return view('bis.index', compact('biss'));
 	}
 
@@ -33,7 +33,7 @@ class BisController extends Controller
 
 
 
-	public function store (Request $request)
+	public function store(Request $request)
 	{
 		$bis = new Bis;
 		$bis->harga_small = $request->input('harga_small');
@@ -44,15 +44,13 @@ class BisController extends Controller
 		return redirect('operator/bis');
 	}
 
-	public function edit( $id)
+	public function edit($id)
 	{
 		$view = view('bis.edit');
-		$view->bis= Bis::findOrFail($id);
+		$view->bis = Bis::findOrFail($id);
 		return $view;
-
-		
 	}
-	
+
 	public function update(Request $request, $id)
 	{
 		$bis = Bis::findOrFail($id);
@@ -68,26 +66,24 @@ class BisController extends Controller
 	{
 
 		\DB::table('biss')->where('id', '=', $id)->delete();
-		\Session::flash('message','Data Berhasi Di Hapus');
+		\Session::flash('message', 'Data Berhasi Di Hapus');
 		return \Redirect::to('operator/bis');
-		
 	}
 
 	public function sendMail()
 	{
 		$data = [
-                'fullname' => 'alen',
-                
-            ];
-            \Mail::send('email', $data,
-                function ($message) {
-                    $message->to('alen@gmail.com')->subject('Coba email');
-                }
-            );
+			'fullname' => 'alen',
 
-            echo "oke";
+		];
+		\Mail::send(
+			'email',
+			$data,
+			function ($message) {
+				$message->to('alen@gmail.com')->subject('Coba email');
+			}
+		);
+
+		echo "oke";
 	}
-
 }
-
-

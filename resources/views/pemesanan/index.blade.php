@@ -36,38 +36,48 @@
                   <th>Trayek</th>
                 
                   <th>Tanggal Pesan</th>
-                 
+                  <th>Bis</th>
                   <th>Status</th>                
                   <th>Pembayaran</th>
                   <th>Aksi</th>  
                 </tr>
                 </thead>
                 <tbody>
-          @foreach($pemesanan as $item)
+                @foreach($pemesanan as $item)
                 <tr>
                   <td></td>
                   <td>
                   </td>
                   <td></td>
-                  
-                  <td></td>
+                  <td>
+                    @if($item->bis == null)
+                    <a href='{{url('operator/pemesanan/'.$item->id.'/edit') }}'>Belum punya bis</a>
+                    @else
+                    {{$item->bis->nama_po}}
+                    @endif
+                  </td>
+                  <td>
+                  @if($item->sudah_dibayar())
+                  Sudah dibayar
+                  @else 
+                  Belum dibayar
+                  @endif
+                  </td>
                   <td>
                   @if(!is_null($item->id_bis))
                   {{$item->harga_total()}}
                   @endif
                   </td>
-                
-            <td> 
-              <div class="btn-group">
-            <button class="btn btn-danger btn-flat btn-xs" type="button"><i class="fa fa-align-left"></i></button>
-            <a href='{{url('operator/pemesanan/'.$item->id.'/edit') }}'><button class="btn btn-info btn-flat btn-xs" type="button"><i class="fa fa-align-right"></i></button></a>             
-            <button class="btn btn-warning btn-flat btn-xs" type="button"><i class="fa fa-align-center"></i></button>
-            </div>
-            </td>
-                
+                  <td> 
+                    <div class="btn-group">
+                      <button class="btn btn-danger btn-flat btn-xs" type="button"><i class="fa fa-align-left"></i></button>
+                      <a href='{{url('operator/pemesanan/'.$item->id.'/edit') }}'><button class="btn btn-info btn-flat btn-xs" type="button"><i class="fa fa-align-right"></i></button></a>             
+                      <button class="btn btn-warning btn-flat btn-xs" type="button"><i class="fa fa-align-center"></i></button>
+                    </div>
+                  </td>
                 </tr>
-            @endforeach 
-                </tfoot>
+                @endforeach 
+                </tbody>
               </table>
             </div>
             <!-- /.box-body -->

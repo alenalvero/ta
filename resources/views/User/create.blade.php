@@ -53,25 +53,19 @@
               </div>
               <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
-                    <div class="checkbox">
+                    <div class="checkbox" style="background-color: #f1f1f1; padding: 10px 0">
+                      <label> <b>Type user</b><br/>
+                        <input type="radio" name="type" value="operator" checked> Operator
+                      </label>
+                      <br/>
                       <label>
-                        <input type="checkbox" name="type" value="on"> Klik untuk tipe Administrator
-                        <br>
-                        <input type="checkbox" name="type" value="off"> Klik untuk tipe Operator
+                        <input type="radio" name="type" value="admin"> Administrator
                       </label>
                     </div>
                   </div>
                 </div>
-                    
-              
-                       
-
-                            
- 
-                </tfoot>
-              
+                </tfoot>              
             </div>
-          
             <!-- /.box-body -->
               <div class="box-footer">
                 <button class="btn btn-info btn-flat pull-right" type="submit">Submit </button>

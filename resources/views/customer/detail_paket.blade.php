@@ -49,7 +49,6 @@ border-width: 5px;
 							
 								
 								<h2>{{$paket_tour->nama_tour}}</h2>
-								<p>{!! $paket_tour->keterangan !!}</p>
 							</div>
 						</article>
 						
@@ -65,6 +64,7 @@ border-width: 5px;
 									<span class="rate-star"><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span>
 							
 									<h3>{{$paket_tour->nama_tour}}</h3>
+									<p>{!! $paket_tour->keterangan !!}</p>
 							
 							<p><a href='{{url('customer_PaketTour/form_input_paket/'.$paket_tour->id.'/pesan') }}' class="btn btn-primary">Book now!</a></p>
 					

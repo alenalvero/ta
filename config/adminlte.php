@@ -108,15 +108,15 @@ return [
     */
 
     'menu' => [
-        
-        
+
+
         'MENU',
-                
-        
+
+
         [
             'text' => 'Pemesanan',
             'icon' => 'tasks',
-            'submenu' =>[
+            'submenu' => [
                 [
                     'text' => 'Pemesanan Individu',
                     'icon' => 'tasks',
@@ -155,16 +155,27 @@ return [
             'text' => 'Pembayaran',
             'url'  => 'operator/konfirmasi_pembayaran',
             'icon' => 'money',
+            'submenu' => [
+                [
+                    'text' => 'Individu',
+                    'url'  => 'operator/konfirmasi_pembayaran_individu',
+                ],
+                [
+                    'text' => 'Paket',
+                    'url'  => 'operator/konfirmasi_pembayaran',
+                ],
+            ]
         ],
-        
+
         [
             'text' => 'User',
             'url'  => 'admin/user',
             'icon' => 'user-plus',
+            'role' => 'admin'
         ],
-        
-        
-            ],
+
+
+    ],
 
     /*
     |--------------------------------------------------------------------------
