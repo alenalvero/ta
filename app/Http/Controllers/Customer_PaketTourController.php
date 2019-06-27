@@ -45,6 +45,7 @@ class Customer_PaketTourController extends Controller
 		$pemesanan_paket_tour->id_paket = $request->input('id_paket');
 		$pemesanan_paket_tour->alamat = $request->input('alamat');
 		$pemesanan_paket_tour->tgl = $request->input('tgl');
+		$pemesanan_paket_tour->tgl2 = $request->input('tgl2');
 		$pemesanan_paket_tour->save();
 
 

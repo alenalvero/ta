@@ -79,7 +79,7 @@
 					{{-- <form method="get" class="colorlib-form" action="{{route('pemesanan.langkah_lanjut')}}"> --}}
 						{{ csrf_field() }}
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<div class="form-group">
 								<label for="date">Tanggal Berangkat</label>
 								<div class="form-field">
@@ -88,7 +88,16 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="date2">Tanggal Kembali</label>
+								<div class="form-field">
+									<i class="icon icon-calendar2"></i>
+									<input name="tgl2" type="text" id="date2" class="form-control date" placeholder="Tanggal kembali" required>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
 							<div class="form-group">
 								<label for="jumlah">Jumlah Orang</label>
 								<div class="form-field">
@@ -98,7 +107,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<div class="form-group">
 								<label for="id_kota">Tujuan</label>
 								<div class="form-field">
