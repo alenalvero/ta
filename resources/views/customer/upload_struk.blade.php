@@ -70,8 +70,11 @@
               </ul>
             </p>
             <p>
+              <b>Tanggal berangkat - Tanggal pulang:</b><br/>
+              {{$pemesanan->tgl}} - {{$pemesanan->tgl2}} ({{$pemesanan->jumlah_hari}} hari)
+            </p>
             <p>
-              <b>PO Bis:</b><br/>
+              <b>Kendaraan:</b><br/>
               {{$pemesanan->bis->nama_po}}
             </p>
             <p>

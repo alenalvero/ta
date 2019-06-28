@@ -28,7 +28,7 @@ Route::group(
 
 		Route::resource('operator/bis', 'BisController');
 		Route::resource('operator/konfirmasi_pembayaran', 'Konfirmasi_pembayaranController');
-		Route::post('operator/verifikasi', 'Konfirmasi_pembayaranController@verifikasi');
+		Route::post('operator/ ', 'Konfirmasi_pembayaranController@verifikasi');
 		Route::get('operator/konfirmasi_pembayaran_individu', 'Konfirmasi_pembayaranController@individu');
 		Route::post('operator/verifikasi_individu', 'Konfirmasi_pembayaranController@verifikasi_individu');
 		Route::resource('operator/trayek', 'TrayekController');

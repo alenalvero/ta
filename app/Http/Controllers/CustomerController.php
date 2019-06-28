@@ -13,6 +13,7 @@ use App\DetailPemesanan;
 use App\User;
 use Illuminate\Http\Request;
 use App\KonfirmasiPemesanan;
+use Carbon\Carbon;
 
 class CustomerController extends Controller
 {
@@ -101,9 +102,10 @@ class CustomerController extends Controller
 
 	public function upload_struk($id)
 	{
+		$pemesanan = Pemesanan::find($id);
 		$data = [
 			'id' => $id,
-			'pemesanan' => Pemesanan::find($id)
+			'pemesanan' => $pemesanan
 		];
 
 		return view('customer.upload_struk', $data);

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Pemesanan extends Model
 {
@@ -78,5 +79,13 @@ class Pemesanan extends Model
 		}
 
 		return false;
+	}
+
+	public function getJumlahHariAttribute()
+	{
+		$tgl1 = Carbon::parse($this->tgl);
+		$tgl2 = Carbon::parse($this->tgl2);
+
+		return $tgl1->diff($tgl2)->days;
 	}
 }

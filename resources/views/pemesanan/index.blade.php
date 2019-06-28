@@ -51,7 +51,7 @@
                   <td></td>
                   <td>
                     @if($item->bis == null)
-                    <a href='{{url('operator/pemesanan/'.$item->id.'/edit') }}'>Belum punya bis</a>
+                    <a href='{{url('operator/pemesanan/'.$item->id.'/edit') }}'>Belum punya kendaraan</a>
                     @else
                     {{$item->bis->nama_po}}
                     @endif
