@@ -133,4 +133,14 @@ class CustomerController extends Controller
 
 		return redirect()->refresh();
 	}
+
+	public function cetak_struk($id)
+	{
+		$pemesanan = Pemesanan::findOrFail($id);
+
+		$data = [
+			'pemesanan' => $pemesanan
+		];
+		return view('customer.struk', $data);
+	}
 }

@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
       <div class="row">
+        @if(!$pemesanan->sudah_dibayar)
         <div class="col-sm-4">
           <div class="aside animate-box">
             <h3><b>Form Konfirmasi Pembayaran</b><hr></h3>
@@ -37,9 +38,10 @@
             </form>
           </div>
         </div>
+        @endif
         <div class="col-sm-8">
           <article class="animate-box">
-            <h2>Detail Pemesanan</h2>
+            <h2>Detail Pemesanan <span class="badge badge-success">{{$pemesanan->status_pembayaran}}</span></h2>
             <hr>
             <p>
               <b>Nama Pemesan:</b><br/>
@@ -78,8 +80,14 @@
               {{$pemesanan->bis->nama_po}}
             </p>
             <p>
-              <b>Harga yang dibayar:</b><br/>
-              Rp. {{number_format($pemesanan->harga_total(), 2, ',', '.')}}
+              <b>Harga tota yang dibayarkan:</b><br/>
+              Rp. {{number_format($pemesanan->harga_total(), 2, ',', '.')}} (untuk {{$pemesanan->jumlah_hari}} hari)
+            </p>
+            <p>
+              <a @if($pemesanan->sudah_dibayar) href="/struk/{{$id}}" @endif class="btn btn-primary @if(!$pemesanan->sudah_dibayar) disabled @endif">Cetak bukti pembayaran</a><br/>
+              @if(!$pemesanan->sudah_dibayar)
+              <span>*Tombol cetak akan aktif ketika pembayaran sudah dikonfirmasi operator kami</span>
+              @endif
             </p>
           </article>
         </div>

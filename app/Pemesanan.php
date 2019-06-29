@@ -68,12 +68,28 @@ class Pemesanan extends Model
 			}
 		}
 
-		return $harga_total;
+		return $harga_total * $this->jumlah_hari;
 	}
 
 	public function sudah_dibayar()
 	{
-		$terkonfirmasi = KonfirmasiPemesanan::where('id_pemesanan', $this->id)->first();
+		$terkonfirmasi = KonfirmasiPemesanan::where([
+			'id_pemesanan' => $this->id,
+			'status' => 1
+		])->first();
+		if (!is_null($terkonfirmasi)) {
+			return true;
+		}
+
+		return false;
+	}
+
+	public function getSudahDibayarAttribute()
+	{
+		$terkonfirmasi = KonfirmasiPemesanan::where([
+			'id_pemesanan' => $this->id,
+			'status' => 1
+		])->first();
 		if (!is_null($terkonfirmasi)) {
 			return true;
 		}
@@ -86,6 +102,18 @@ class Pemesanan extends Model
 		$tgl1 = Carbon::parse($this->tgl);
 		$tgl2 = Carbon::parse($this->tgl2);
 
+
 		return $tgl1->diff($tgl2)->days;
+	}
+
+	public function getStatusPembayaranAttribute()
+	{
+		if ($this->konfirmasi_pemesanan->status == 2) {
+			return "Belum dikonfirmasi";
+		} else if ($this->konfirmasi_pemesanan == 1) {
+			return "Terkonfirmasi";
+		} else {
+			return "Belum dibayarkan";
+		}
 	}
 }

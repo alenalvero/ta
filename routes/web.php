@@ -95,4 +95,5 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
 	Route::get('/pelanggan/upload_struk/{id}', 'CustomerController@upload_struk');
 	Route::post('/pelanggan/upload_struk/{id}', 'CustomerController@proses_upload_struk');
 	Route::resource('/profile', 'ProfileController');
+	Route::get('/struk/{id}', 'CustomerController@cetak_struk');
 });
