@@ -50,10 +50,15 @@
                   </td>
                   <td></td>
                   <td>
-                    @if($item->bis == null)
-                    <a href='{{url('operator/pemesanan/'.$item->id.'/edit') }}'>Belum punya kendaraan</a>
+                    @if($item->bis == null and $item->id_mobil == null)
+                    <a href='{{url('operator/pemesanan/'.$item->id.'/edit') }}'>
+                      Belum punya kendaraan</a>
                     @else
-                    {{$item->bis->nama_po}}
+                      @if ($item->bis != null)
+                      {{$item->bis->nama_po}}
+                      @else
+                      {{$item->mobil->nama_mobil}}
+                      @endif
                     @endif
                   </td>
                   <td>
@@ -64,7 +69,7 @@
                   @endif
                   </td>
                   <td>
-                  @if(!is_null($item->id_bis))
+                  @if(!is_null($item->id_bis) or !is_null($item->mobil))
                   {{$item->harga_total()}}
                   @endif
                   </td>

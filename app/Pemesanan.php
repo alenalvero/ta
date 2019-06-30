@@ -35,6 +35,16 @@ class Pemesanan extends Model
 		return $this->hasOne('App\User', 'id', 'id_user');
 	}
 
+	public function mobil()
+	{
+		return $this->hasOne('App\Mobil', 'id', 'id_mobil');
+	}
+
+	public function hotel()
+	{
+		return $this->hasOne('App\Hotel', 'id', 'id_hotel');
+	}
+
 	public function harga_total()
 	{
 		$harga_total = 0;
@@ -71,9 +81,14 @@ class Pemesanan extends Model
 	{
 		$harga_total = 0;
 		$jumlah_bis = 1;
-		if ($this->jumlah_orang > 30 && $this->jumlah_orang <= 60) {
+		/* if ($this->bis == null and $this->mobil == null) {
+			return 0;
+		} */
+		if ($this->jumlah_orang <= 10) {
+			$harga_total = $harga_total + $this->mobil->harga_mobil;
+		} else if ($this->jumlah_orang > 30 && $this->jumlah_orang <= 60) {
 			$harga_total = $harga_total + $this->bis->harga_large;
-		} else if ($this->jumlah_orang <= 30) {
+		} else if ($this->jumlah_orang <= 30 && $this->jumlah_orang > 10) {
 			$harga_total = $harga_total + $this->bis->harga_small;
 		} else {
 			$sisa = $this->jumlah_orang % 60;
@@ -129,10 +144,12 @@ class Pemesanan extends Model
 
 	public function getStatusPembayaranAttribute()
 	{
-		if ($this->konfirmasi_pemesanan->status == 2) {
-			return "Belum dikonfirmasi";
-		} else if ($this->konfirmasi_pemesanan->status == 1) {
-			return "Terkonfirmasi";
+		if ($this->konfirmasi_pemesanan != null) {
+			if ($this->konfirmasi_pemesanan->status == 2) {
+				return "Belum dikonfirmasi";
+			} else if ($this->konfirmasi_pemesanan->status == 1) {
+				return "Terkonfirmasi";
+			}
 		} else {
 			return "Belum dibayarkan";
 		}

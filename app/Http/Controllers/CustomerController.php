@@ -39,6 +39,7 @@ class CustomerController extends Controller
 		$pemesanan = new Pemesanan;
 		$pemesanan->id_user = auth()->user()->id;
 		$pemesanan->tgl = $request->input('tgl');
+		$pemesanan->tgl2 = $request->input('tgl2');
 		$pemesanan->jumlah_orang = $request->input('jumlah_orang');
 		$pemesanan->id_kota = $request->input('id_kota');
 		$pemesanan->save();

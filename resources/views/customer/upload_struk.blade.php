@@ -77,7 +77,11 @@
             </p>
             <p>
               <b>Kendaraan:</b><br/>
+              @if($pemesanan->bis != null)
               {{$pemesanan->bis->nama_po}}
+              @else
+              {{$pemesanan->mobil->nama_mobil}}
+              @endif
             </p>
             <p>
               <b>Harga tota yang dibayarkan:</b><br/>

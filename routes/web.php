@@ -48,6 +48,7 @@ Route::group(
 
 		Route::get('operator/pemesanan/{id}edit', 'PemesananController@edit');
 		Route::get('operator/pemesanan/{id}edit', 'PemesananController@update');
+		Route::get('operator/pemesanan/{id}/pilih-mobil', 'PemesananController@pilih_mobil');
 	}
 );
 Route::get('/get_wisata/{id}', 'TrayekController@get_wisata');

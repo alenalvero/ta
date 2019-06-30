@@ -9,6 +9,7 @@ use App\Kota;
 use App\Tempat_wisata;
 use App\Helpers\KirimEmail;
 use App\DetailPemesanan;
+use App\Mobil;
 
 class PemesananController extends Controller
 {
@@ -54,23 +55,40 @@ class PemesananController extends Controller
 		$view = view('pemesanan.edit');
 		$view->pemesanan = Pemesanan::findOrFail($id);
 
-		$view->bis = Bis::all();
+		if ($view->pemesanan->jumlah_orang > 10) {
+			$view->bis = Bis::all();
+		} else {
+			$view->mobil = Mobil::all();
+		}
 		return $view;
 	}
 
 	public function update(Request $request, $id)
 	{
 		$pemesanan = Pemesanan::findOrFail($id);
-		$pemesanan->id_bis = $request->input('id_bis');
+		$is_bis = false;
+		if ($request->id_bis != null) {
+			$pemesanan->id_bis = $request->input('id_bis');
+			$is_bis = true;
+		} else {
+			$pemesanan->id_mobil = $request->input('id_mobil');
+		}
 		$pemesanan->save();
 
-		$bis = Bis::find($pemesanan->id_bis);
+		if ($is_bis) {
+			$bis = Bis::find($pemesanan->id_bis);
+			$kendaraan = $bis->nama_po;
+		} else {
+			$mobil = Mobil::find($pemesanan->id_mobil);
+			$kendaraan = $mobil->nama_mobil;
+		}
+
 		$email = $pemesanan->user->email;
 		$nama = $pemesanan->user->name;
 		$data = [
 			'email' => $email,
 			'nama' => $nama,
-			'nama_po' => $bis->nama_po,
+			'nama_po' => $kendaraan,
 			'harga' => $pemesanan->harga_total(),
 			'kota' => Kota::find($pemesanan->id_kota)->nama_kota,
 			'tujuan' => $pemesanan->detail_pemesanan
