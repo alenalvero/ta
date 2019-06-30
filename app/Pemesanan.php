@@ -40,15 +40,36 @@ class Pemesanan extends Model
 		$harga_total = 0;
 
 		// hitung kota
-		$kota = Kota::find($this->id_kota);
-		$harga_total = $harga_total + $kota->harga;
+		$harga_total = $harga_total + $this->harga_kota();
 
 		// hitung wisata
-		foreach ($this->detail_pemesanan as $pemesanan) {
-			$harga_total = $harga_total + $pemesanan->wisata->harga;
-		}
+		$harga_total = $harga_total + $this->harga_total_wisata();
 
 		//hitung bis
+		$harga_total = $harga_total + $this->harga_total_kendaraan();
+
+		return $harga_total * $this->jumlah_hari;
+	}
+
+	public function harga_kota()
+	{
+		$kota = Kota::find($this->id_kota);
+		return $kota->harga;
+	}
+
+	public function harga_total_wisata()
+	{
+		$total = 0;
+		foreach ($this->detail_pemesanan as $pemesanan) {
+			$total = $total + $pemesanan->wisata->harga;
+		}
+
+		return $total;
+	}
+
+	public function harga_total_kendaraan()
+	{
+		$harga_total = 0;
 		$jumlah_bis = 1;
 		if ($this->jumlah_orang > 30 && $this->jumlah_orang <= 60) {
 			$harga_total = $harga_total + $this->bis->harga_large;
@@ -68,7 +89,7 @@ class Pemesanan extends Model
 			}
 		}
 
-		return $harga_total * $this->jumlah_hari;
+		return $harga_total;
 	}
 
 	public function sudah_dibayar()
@@ -110,7 +131,7 @@ class Pemesanan extends Model
 	{
 		if ($this->konfirmasi_pemesanan->status == 2) {
 			return "Belum dikonfirmasi";
-		} else if ($this->konfirmasi_pemesanan == 1) {
+		} else if ($this->konfirmasi_pemesanan->status == 1) {
 			return "Terkonfirmasi";
 		} else {
 			return "Belum dibayarkan";

@@ -139,6 +139,7 @@ class CustomerController extends Controller
 		$pemesanan = Pemesanan::findOrFail($id);
 
 		$data = [
+			'id' => $id,
 			'pemesanan' => $pemesanan
 		];
 		return view('customer.struk', $data);
