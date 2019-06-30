@@ -84,7 +84,7 @@
               Rp. {{number_format($pemesanan->harga_total(), 2, ',', '.')}} (untuk {{$pemesanan->jumlah_hari}} hari)
             </p>
             <p>
-              <a @if($pemesanan->sudah_dibayar) href="/struk/{{$id}}" @endif class="btn btn-primary @if(!$pemesanan->sudah_dibayar) disabled @endif">Cetak bukti pembayaran</a><br/>
+              <a @if($pemesanan->sudah_dibayar) href="/struk/{{$id}}" @endif class="btn btn-primary @if(!$pemesanan->sudah_dibayar) disabled @endif" target="_blank">Cetak bukti pembayaran</a><br/>
               @if(!$pemesanan->sudah_dibayar)
               <span>*Tombol cetak akan aktif ketika pembayaran sudah dikonfirmasi operator kami</span>
               @endif
