@@ -48,13 +48,13 @@
         <b>Jumlah Penumpang:</b><br/>
         {{$pemesanan->jumlah_orang}}
       </p>
-      <table border="1" width="100%">
+      <table border="1" width="100%" cellpadding="5" cellspacing="0">
         <tr>
           <th colspan="2" class="group">Kota Tujuan</th>
         </tr>
         <tr>
           <td>{{$pemesanan->kota->nama_kota}}</td>
-          <td class="number-td">{{$pemesanan->kota->harga}}</td>
+          <td class="number-td">Rp. {{number_format($pemesanan->kota->harga, 2, ',', '.')}}</td>
         </tr>
         <tr>
           <th colspan="2" class="group">Tujuan Wisata</th>
@@ -62,7 +62,7 @@
         @foreach ($pemesanan->detail_pemesanan as $item)
         <tr>
           <td>{{$item->wisata->nama}}</td>
-          <td class="number-td">{{$item->wisata->harga}}</td>
+          <td class="number-td">Rp. {{number_format($item->wisata->harga, 2, ',', '.')}}</td>
         </tr>
         @endforeach
         <tr>
@@ -70,7 +70,11 @@
           <td class="number-td">Rp. {{number_format($pemesanan->harga_total_kendaraan(), 2, ',', '.')}}</td>
         </tr>
         <tr>
-          <th class="group">Total yang di bayarkan</th>
+          <th class="group">Biaya per hari</th>
+          <td class="number-td">Rp. {{number_format($pemesanan->harga_total()/$pemesanan->jumlah_hari, 2, ',', '.')}}</td>
+        </tr>
+        <tr>
+          <th class="group">Total semua</th>
           <td class="number-td">Rp. {{number_format($pemesanan->harga_total(), 2, ',', '.')}}</td>
         </tr>
       </table>

@@ -14,6 +14,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\KonfirmasiPemesanan;
 use Carbon\Carbon;
+use PDF;
 
 class CustomerController extends Controller
 {
@@ -136,12 +137,22 @@ class CustomerController extends Controller
 
 	public function cetak_struk($id)
 	{
+		$pembayaran = KonfirmasiPemesanan::where([
+			'id_pemesanan' => $id,
+			'status' => 1
+		])->get();
+		if ($pembayaran == null) {
+			return abort(404);
+		}
+
 		$pemesanan = Pemesanan::findOrFail($id);
 
 		$data = [
 			'id' => $id,
 			'pemesanan' => $pemesanan
 		];
-		return view('customer.struk', $data);
+
+		$pdf = PDF::loadView('customer.struk', $data);
+		return $pdf->stream('struk.pdf');
 	}
 }
