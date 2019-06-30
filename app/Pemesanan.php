@@ -49,6 +49,9 @@ class Pemesanan extends Model
 	{
 		$harga_total = 0;
 
+		//hitung harga
+		$harga_total = $harga_total + $this->hotel->harga;
+
 		// hitung kota
 		$harga_total = $harga_total + $this->harga_kota();
 

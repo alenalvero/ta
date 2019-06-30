@@ -76,6 +76,10 @@
               {{$pemesanan->tgl}} - {{$pemesanan->tgl2}} ({{$pemesanan->jumlah_hari}} hari)
             </p>
             <p>
+              <b>Hotel:</b><br/>
+              Hotel Berbintang {{$pemesanan->hotel->bintang_hotel}}
+            </p>
+            <p>
               <b>Kendaraan:</b><br/>
               @if($pemesanan->bis != null)
               {{$pemesanan->bis->nama_po}}
