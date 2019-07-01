@@ -35,14 +35,25 @@
             {{method_field('PUT')}}
             <div class="box-body">
               <div class="form-group">
+                @if($pemesanan->jumlah_orang > 10)
                 <label class="col-sm-2 control-label" for="nama" >Nama Bis</label>
-                  <div class="col-sm-10">
-                    <select id="id_bis" class="form-control" name="id_bis">
-                      @foreach($bis as $b)
-                      <option value="{{$b->id}}">{{$b->nama_po}}</option>
-                      @endforeach
-                    </select>
-                  </div>
+                <div class="col-sm-10">
+                  <select id="id_bis" class="form-control" name="id_bis">
+                    @foreach($bis as $b)
+                    <option value="{{$b->id}}">{{$b->nama_po}}</option>
+                    @endforeach
+                  </select>
+                </div>
+                @else 
+                <label class="col-sm-2 control-label" for="nama" >Nama Mobil</label>
+                <div class="col-sm-10">
+                  <select id="id_bis" class="form-control" name="id_mobil">
+                    @foreach($mobil as $m)
+                    <option value="{{$m->id}}">{{$m->nama_mobil}}</option>
+                    @endforeach
+                  </select>
+                </div>
+                @endif
               </div>
             </div>
           

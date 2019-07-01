@@ -102,6 +102,6 @@ class Konfirmasi_pembayaranController extends Controller
 
 		KirimEmail::kirim_ke($konfirmasi_pembayaran->pemesanan->user->email, $konfirmasi_pembayaran->pemesanan->user->name, 'Pembayaran Terkonfirmasi', 'email.pembayaran_terkonfirmasi', $data);
 
-		return redirect('/operator/konfirmasi_pembayaran_individu');
+		return redirect()->back();
 	}
 }

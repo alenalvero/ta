@@ -63,13 +63,17 @@ class PelangganController extends Controller
             'type' => 'user'
         ];
 
-        Auth::attempt($credential);
-        return redirect('/');
+        $logedin = Auth::attempt($credential);
+        if ($logedin) {
+            return redirect('/');
+        } else {
+            return redirect()->back()->withInput()->with('error', 'Login tidak sesuai dengan database kami.');
+        }
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect('/');
+        return redirect('/pelanggan/login');
     }
 }

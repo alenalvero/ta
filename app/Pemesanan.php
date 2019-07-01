@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Pemesanan extends Model
 {
@@ -34,24 +35,63 @@ class Pemesanan extends Model
 		return $this->hasOne('App\User', 'id', 'id_user');
 	}
 
+	public function mobil()
+	{
+		return $this->hasOne('App\Mobil', 'id', 'id_mobil');
+	}
+
+	public function hotel()
+	{
+		return $this->hasOne('App\Hotel', 'id', 'id_hotel');
+	}
+
 	public function harga_total()
 	{
 		$harga_total = 0;
 
+		//hitung harga
+		$harga_total = $harga_total + $this->hotel->harga;
+
 		// hitung kota
-		$kota = Kota::find($this->id_kota);
-		$harga_total = $harga_total + $kota->harga;
+		$harga_total = $harga_total + $this->harga_kota();
 
 		// hitung wisata
-		foreach ($this->detail_pemesanan as $pemesanan) {
-			$harga_total = $harga_total + $pemesanan->wisata->harga;
-		}
+		$harga_total = $harga_total + $this->harga_total_wisata();
 
 		//hitung bis
+		$harga_total = $harga_total + $this->harga_total_kendaraan();
+
+		return $harga_total * $this->jumlah_hari;
+	}
+
+	public function harga_kota()
+	{
+		$kota = Kota::find($this->id_kota);
+		return $kota->harga;
+	}
+
+	public function harga_total_wisata()
+	{
+		$total = 0;
+		foreach ($this->detail_pemesanan as $pemesanan) {
+			$total = $total + $pemesanan->wisata->harga;
+		}
+
+		return $total;
+	}
+
+	public function harga_total_kendaraan()
+	{
+		$harga_total = 0;
 		$jumlah_bis = 1;
-		if ($this->jumlah_orang > 30 && $this->jumlah_orang <= 60) {
+		/* if ($this->bis == null and $this->mobil == null) {
+			return 0;
+		} */
+		if ($this->jumlah_orang <= 10) {
+			$harga_total = $harga_total + $this->mobil->harga_mobil;
+		} else if ($this->jumlah_orang > 30 && $this->jumlah_orang <= 60) {
 			$harga_total = $harga_total + $this->bis->harga_large;
-		} else if ($this->jumlah_orang <= 30) {
+		} else if ($this->jumlah_orang <= 30 && $this->jumlah_orang > 10) {
 			$harga_total = $harga_total + $this->bis->harga_small;
 		} else {
 			$sisa = $this->jumlah_orang % 60;
@@ -72,11 +112,49 @@ class Pemesanan extends Model
 
 	public function sudah_dibayar()
 	{
-		$terkonfirmasi = KonfirmasiPemesanan::where('id_pemesanan', $this->id)->first();
+		$terkonfirmasi = KonfirmasiPemesanan::where([
+			'id_pemesanan' => $this->id,
+			'status' => 1
+		])->first();
 		if (!is_null($terkonfirmasi)) {
 			return true;
 		}
 
 		return false;
+	}
+
+	public function getSudahDibayarAttribute()
+	{
+		$terkonfirmasi = KonfirmasiPemesanan::where([
+			'id_pemesanan' => $this->id,
+			'status' => 1
+		])->first();
+		if (!is_null($terkonfirmasi)) {
+			return true;
+		}
+
+		return false;
+	}
+
+	public function getJumlahHariAttribute()
+	{
+		$tgl1 = Carbon::parse($this->tgl);
+		$tgl2 = Carbon::parse($this->tgl2);
+
+
+		return $tgl1->diff($tgl2)->days;
+	}
+
+	public function getStatusPembayaranAttribute()
+	{
+		if ($this->konfirmasi_pemesanan != null) {
+			if ($this->konfirmasi_pemesanan->status == 2) {
+				return "Belum dikonfirmasi";
+			} else if ($this->konfirmasi_pemesanan->status == 1) {
+				return "Terkonfirmasi";
+			}
+		} else {
+			return "Belum dibayarkan";
+		}
 	}
 }

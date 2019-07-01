@@ -28,7 +28,7 @@ Route::group(
 
 		Route::resource('operator/bis', 'BisController');
 		Route::resource('operator/konfirmasi_pembayaran', 'Konfirmasi_pembayaranController');
-		Route::post('operator/verifikasi', 'Konfirmasi_pembayaranController@verifikasi');
+		Route::post('operator/ ', 'Konfirmasi_pembayaranController@verifikasi');
 		Route::get('operator/konfirmasi_pembayaran_individu', 'Konfirmasi_pembayaranController@individu');
 		Route::post('operator/verifikasi_individu', 'Konfirmasi_pembayaranController@verifikasi_individu');
 		Route::resource('operator/trayek', 'TrayekController');
@@ -48,6 +48,7 @@ Route::group(
 
 		Route::get('operator/pemesanan/{id}edit', 'PemesananController@edit');
 		Route::get('operator/pemesanan/{id}edit', 'PemesananController@update');
+		Route::get('operator/pemesanan/{id}/pilih-mobil', 'PemesananController@pilih_mobil');
 	}
 );
 Route::get('/get_wisata/{id}', 'TrayekController@get_wisata');
@@ -95,4 +96,5 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
 	Route::get('/pelanggan/upload_struk/{id}', 'CustomerController@upload_struk');
 	Route::post('/pelanggan/upload_struk/{id}', 'CustomerController@proses_upload_struk');
 	Route::resource('/profile', 'ProfileController');
+	Route::get('/struk/{id}', 'CustomerController@cetak_struk');
 });

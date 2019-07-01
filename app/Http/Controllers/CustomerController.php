@@ -13,6 +13,9 @@ use App\DetailPemesanan;
 use App\User;
 use Illuminate\Http\Request;
 use App\KonfirmasiPemesanan;
+use Carbon\Carbon;
+use PDF;
+use App\Hotel;
 
 class CustomerController extends Controller
 {
@@ -21,8 +24,9 @@ class CustomerController extends Controller
 		$customer = Customer::with('kota')->get();
 		$customer = Customer::with('tempat_wisata')->get();
 		$kotas = Kota::all();
+		$hotels = Hotel::all();
 
-		return view('customer.index', compact('customer', 'kotas'));
+		return view('customer.index', compact('customer', 'kotas', 'hotels'));
 
 
 		$view = view('customer.index');
@@ -37,8 +41,10 @@ class CustomerController extends Controller
 		$pemesanan = new Pemesanan;
 		$pemesanan->id_user = auth()->user()->id;
 		$pemesanan->tgl = $request->input('tgl');
+		$pemesanan->tgl2 = $request->input('tgl2');
 		$pemesanan->jumlah_orang = $request->input('jumlah_orang');
 		$pemesanan->id_kota = $request->input('id_kota');
+		$pemesanan->id_hotel = $request->input('id_hotel');
 		$pemesanan->save();
 
 		foreach ($data['id_tempat_wisata'] as $detail_wisata) {
@@ -101,9 +107,10 @@ class CustomerController extends Controller
 
 	public function upload_struk($id)
 	{
+		$pemesanan = Pemesanan::find($id);
 		$data = [
 			'id' => $id,
-			'pemesanan' => Pemesanan::find($id)
+			'pemesanan' => $pemesanan
 		];
 
 		return view('customer.upload_struk', $data);
@@ -130,5 +137,26 @@ class CustomerController extends Controller
 		$pemesanan->save();
 
 		return redirect()->refresh();
+	}
+
+	public function cetak_struk($id)
+	{
+		$pembayaran = KonfirmasiPemesanan::where([
+			'id_pemesanan' => $id,
+			'status' => 1
+		])->get();
+		if ($pembayaran == null) {
+			return abort(404);
+		}
+
+		$pemesanan = Pemesanan::findOrFail($id);
+
+		$data = [
+			'id' => $id,
+			'pemesanan' => $pemesanan
+		];
+
+		$pdf = PDF::loadView('customer.struk', $data);
+		return $pdf->stream('struk.pdf');
 	}
 }

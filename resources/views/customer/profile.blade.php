@@ -81,14 +81,14 @@ table td, th {
 									<td height="30">{{$item->id}}</td>
 									<td>{{$item->tgl}}</td>
 									<td>
-										@if($item->id_bis == null)
+										@if($item->id_bis == null and $item->id_mobil == null)
 										Pending
-										@elseif($item->id_bis != null && $item->konfirmasi_pemesanan == null)
+										@elseif(($item->id_bis != null or $item->id_mobil != null) && $item->konfirmasi_pemesanan == null)
 										<a href="/pelanggan/upload_struk/{{$item->id}}" title="upload bukti pembayaran">Belum dibayar</a>
 										@elseif($item->konfirmasi_pemesanan != null && $item->konfirmasi_pemesanan->status == 2)
-										Menunggu konfirmasi
+										<a href="/pelanggan/upload_struk/{{$item->id}}" title="Menunggu konfirmasi administraor">Menunggu konfirmasi</a>
 										@elseif($item->konfirmasi_pemesanan != null && $item->konfirmasi_pemesanan->status == 1)
-										Terkonfirmasi
+										<a href="/pelanggan/upload_struk/{{$item->id}}" title="Terkonfirmasi">Terkonfirmasi</a>
 										@endif
 									</td>
 									<td>

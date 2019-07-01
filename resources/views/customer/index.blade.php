@@ -1,5 +1,21 @@
 @extends('customer.master')
-
+@section('css')
+<style>
+	.card-radio {
+		background-color: white;
+		color: #333333 !important;
+		padding: 25px 20px;
+		border-radius: 3px;
+		text-align: center;
+	}
+	.line {
+		height: 2px;
+		width: 100%;
+		display: block;
+		background: white;
+	}
+</style>
+@stop
 @section('content')
 
 <aside id="colorlib-hero">
@@ -79,7 +95,7 @@
 					{{-- <form method="get" class="colorlib-form" action="{{route('pemesanan.langkah_lanjut')}}"> --}}
 						{{ csrf_field() }}
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<div class="form-group">
 								<label for="date">Tanggal Berangkat</label>
 								<div class="form-field">
@@ -88,7 +104,16 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="date2">Tanggal Kembali</label>
+								<div class="form-field">
+									<i class="icon icon-calendar2"></i>
+									<input name="tgl2" type="text" id="date2" class="form-control date" placeholder="Tanggal kembali" required>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
 							<div class="form-group">
 								<label for="jumlah">Jumlah Orang</label>
 								<div class="form-field">
@@ -98,7 +123,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<div class="form-group">
 								<label for="id_kota">Tujuan</label>
 								<div class="form-field">
@@ -121,6 +146,19 @@
 							<div class="row" id="daftar-pilihan-wisata">
 								{{-- list wisata --}}
 							</div>
+							<div class="line"></div>
+						</div>
+						<div class="col-md-12" style="margin-bottom: 10px">
+							<h4 style="color: white; margin-top: 10px">Pilihan hotel</h4>
+							@for ($i = 0; $i < count($hotels); $i++)
+							<div class="col-md-2 @if($i == 0) col-md-offset-1 @endif">
+								<label class="card-radio">
+									<input type="radio" name="id_hotel" value="{{$hotels[$i]->id}}"> <br/>
+									Bintang {{$hotels[$i]->bintang_hotel}}<br/>
+									Rp. {{number_format($hotels[$i]->harga, 2, ',', '.')}}
+								</label>
+							</div>
+							@endfor
 						</div>
 						<div class="col">
 							<input type="submit" id="submit" value="Lanjutkan proses pemesanan" class="btn btn-primary btn-block">

@@ -3,13 +3,9 @@
 @section('content')
 <div class="container" >
   <div style="max-width: 500px; margin: 50px auto; border-radius: 5px; box-shadow: 20px 20px 60px rgba(0,0,0,.2); padding: 20px 30px">
-    @if ($errors->any())
+    @if (session('error'))
       <div class="alert alert-danger">
-        <ul>
-          @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-          @endforeach
-        </ul>
+        <p>{{session('error')}}</p>
       </div>
     @endif
     <form action="{{route('proses_login_pelanggan')}}" method="post">

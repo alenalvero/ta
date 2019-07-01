@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
       <div class="row">
+        @if(!$pemesanan->sudah_dibayar)
         <div class="col-sm-4">
           <div class="aside animate-box">
             <h3><b>Form Konfirmasi Pembayaran</b><hr></h3>
@@ -37,9 +38,10 @@
             </form>
           </div>
         </div>
+        @endif
         <div class="col-sm-8">
           <article class="animate-box">
-            <h2>Detail Pemesanan</h2>
+            <h2>Detail Pemesanan <span class="badge badge-success">{{$pemesanan->status_pembayaran}}</span></h2>
             <hr>
             <p>
               <b>Nama Pemesan:</b><br/>
@@ -70,13 +72,30 @@
               </ul>
             </p>
             <p>
-            <p>
-              <b>PO Bis:</b><br/>
-              {{$pemesanan->bis->nama_po}}
+              <b>Tanggal berangkat - Tanggal pulang:</b><br/>
+              {{$pemesanan->tgl}} - {{$pemesanan->tgl2}} ({{$pemesanan->jumlah_hari}} hari)
             </p>
             <p>
-              <b>Harga yang dibayar:</b><br/>
-              Rp. {{number_format($pemesanan->harga_total(), 2, ',', '.')}}
+              <b>Hotel:</b><br/>
+              Hotel Berbintang {{$pemesanan->hotel->bintang_hotel}}
+            </p>
+            <p>
+              <b>Kendaraan:</b><br/>
+              @if($pemesanan->bis != null)
+              {{$pemesanan->bis->nama_po}}
+              @else
+              {{$pemesanan->mobil->nama_mobil}}
+              @endif
+            </p>
+            <p>
+              <b>Harga tota yang dibayarkan:</b><br/>
+              Rp. {{number_format($pemesanan->harga_total(), 2, ',', '.')}} (untuk {{$pemesanan->jumlah_hari}} hari)
+            </p>
+            <p>
+              <a @if($pemesanan->sudah_dibayar) href="/struk/{{$id}}" @endif class="btn btn-primary @if(!$pemesanan->sudah_dibayar) disabled @endif" target="_blank">Cetak bukti pembayaran</a><br/>
+              @if(!$pemesanan->sudah_dibayar)
+              <span>*Tombol cetak akan aktif ketika pembayaran sudah dikonfirmasi operator kami</span>
+              @endif
             </p>
           </article>
         </div>
