@@ -49,8 +49,8 @@ class Pemesanan extends Model
 	{
 		$harga_total = 0;
 
-		//hitung harga
-		$harga_total = $harga_total + $this->hotel->harga;
+		//hitung harga hotel
+		$harga_total = $harga_total + $this->harga_hotel();
 
 		// hitung kota
 		$harga_total = $harga_total + $this->harga_kota();
@@ -58,16 +58,23 @@ class Pemesanan extends Model
 		// hitung wisata
 		$harga_total = $harga_total + $this->harga_total_wisata();
 
-		//hitung bis
+		//hitung kendaraan
 		$harga_total = $harga_total + $this->harga_total_kendaraan();
 
-		return $harga_total * $this->jumlah_hari;
+		return $harga_total;
 	}
 
 	public function harga_kota()
 	{
 		$kota = Kota::find($this->id_kota);
 		return $kota->harga;
+	}
+
+	public function harga_hotel()
+	{
+		$harga = $this->hotel->harga;
+		$jumlah_pesan_kamar = ceil($this->jumlah_orang / 2);
+		return $harga * $jumlah_pesan_kamar * $this->jumlah_hari;
 	}
 
 	public function harga_total_wisata()
@@ -77,7 +84,7 @@ class Pemesanan extends Model
 			$total = $total + $pemesanan->wisata->harga;
 		}
 
-		return $total;
+		return $total * $this->jumlah_orang;
 	}
 
 	public function harga_total_kendaraan()
@@ -107,7 +114,7 @@ class Pemesanan extends Model
 			}
 		}
 
-		return $harga_total;
+		return $harga_total * $this->jumlah_hari;
 	}
 
 	public function sudah_dibayar()

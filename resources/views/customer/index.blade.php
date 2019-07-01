@@ -152,10 +152,12 @@
 							<h4 style="color: white; margin-top: 10px">Pilihan hotel</h4>
 							@for ($i = 0; $i < count($hotels); $i++)
 							<div class="col-md-2 @if($i == 0) col-md-offset-1 @endif">
-								<label class="card-radio">
+								<label style="text-align: center">
 									<input type="radio" name="id_hotel" value="{{$hotels[$i]->id}}"> <br/>
 									Bintang {{$hotels[$i]->bintang_hotel}}<br/>
-									Rp. {{number_format($hotels[$i]->harga, 2, ',', '.')}}
+									@for ($n = 0; $n < $hotels[$i]->bintang_hotel; $n++)
+										<i class="icon-star-full full"></i>
+									@endfor
 								</label>
 							</div>
 							@endfor
