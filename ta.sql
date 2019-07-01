@@ -12,7 +12,6 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping structure for table ta-alen.biss
-DROP TABLE IF EXISTS `biss`;
 CREATE TABLE IF NOT EXISTS `biss` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nama_po` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -33,7 +32,6 @@ INSERT INTO `biss` (`id`, `nama_po`, `harga_small`, `harga_large`, `created_at`,
 /*!40000 ALTER TABLE `biss` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.detail_pemesanans
-DROP TABLE IF EXISTS `detail_pemesanans`;
 CREATE TABLE IF NOT EXISTS `detail_pemesanans` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_pemesanan` int(10) unsigned NOT NULL,
@@ -62,7 +60,6 @@ INSERT INTO `detail_pemesanans` (`id`, `id_pemesanan`, `id_wisata`, `created_at`
 /*!40000 ALTER TABLE `detail_pemesanans` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.hotel
-DROP TABLE IF EXISTS `hotel`;
 CREATE TABLE IF NOT EXISTS `hotel` (
   `id` int(99) unsigned NOT NULL AUTO_INCREMENT,
   `bintang_hotel` int(99) NOT NULL,
@@ -70,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `hotel` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
--- Dumping data for table ta-alen.hotel: ~4 rows (approximately)
+-- Dumping data for table ta-alen.hotel: ~5 rows (approximately)
 DELETE FROM `hotel`;
 /*!40000 ALTER TABLE `hotel` DISABLE KEYS */;
 INSERT INTO `hotel` (`id`, `bintang_hotel`, `harga`) VALUES
@@ -82,7 +79,6 @@ INSERT INTO `hotel` (`id`, `bintang_hotel`, `harga`) VALUES
 /*!40000 ALTER TABLE `hotel` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.karyawans
-DROP TABLE IF EXISTS `karyawans`;
 CREATE TABLE IF NOT EXISTS `karyawans` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -93,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `karyawans` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table ta-alen.karyawans: ~0 rows (approximately)
+-- Dumping data for table ta-alen.karyawans: ~1 rows (approximately)
 DELETE FROM `karyawans`;
 /*!40000 ALTER TABLE `karyawans` DISABLE KEYS */;
 INSERT INTO `karyawans` (`id`, `nama`, `alamat`, `telp`, `created_at`, `updated_at`) VALUES
@@ -101,7 +97,6 @@ INSERT INTO `karyawans` (`id`, `nama`, `alamat`, `telp`, `created_at`, `updated_
 /*!40000 ALTER TABLE `karyawans` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.konfirmasi_pembayarans
-DROP TABLE IF EXISTS `konfirmasi_pembayarans`;
 CREATE TABLE IF NOT EXISTS `konfirmasi_pembayarans` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_pemesanan_paket` int(10) unsigned NOT NULL,
@@ -123,7 +118,6 @@ INSERT INTO `konfirmasi_pembayarans` (`id`, `id_pemesanan_paket`, `foto`, `statu
 /*!40000 ALTER TABLE `konfirmasi_pembayarans` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.konfirmasi_pemesanans
-DROP TABLE IF EXISTS `konfirmasi_pemesanans`;
 CREATE TABLE IF NOT EXISTS `konfirmasi_pemesanans` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_pemesanan` int(10) unsigned NOT NULL,
@@ -135,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `konfirmasi_pemesanans` (
   KEY `konfirmasi_pemesanan_index` (`id_pemesanan`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table ta-alen.konfirmasi_pemesanans: ~2 rows (approximately)
+-- Dumping data for table ta-alen.konfirmasi_pemesanans: ~3 rows (approximately)
 DELETE FROM `konfirmasi_pemesanans`;
 /*!40000 ALTER TABLE `konfirmasi_pemesanans` DISABLE KEYS */;
 INSERT INTO `konfirmasi_pemesanans` (`id`, `id_pemesanan`, `foto`, `status`, `created_at`, `updated_at`) VALUES
@@ -145,7 +139,6 @@ INSERT INTO `konfirmasi_pemesanans` (`id`, `id_pemesanan`, `foto`, `status`, `cr
 /*!40000 ALTER TABLE `konfirmasi_pemesanans` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.kotas
-DROP TABLE IF EXISTS `kotas`;
 CREATE TABLE IF NOT EXISTS `kotas` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nama_kota` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -169,7 +162,6 @@ INSERT INTO `kotas` (`id`, `nama_kota`, `provinsi`, `harga`, `created_at`, `upda
 /*!40000 ALTER TABLE `kotas` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.migrations
-DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -217,7 +209,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.mobil
-DROP TABLE IF EXISTS `mobil`;
 CREATE TABLE IF NOT EXISTS `mobil` (
   `id` int(99) unsigned NOT NULL AUTO_INCREMENT,
   `harga_mobil` int(99) NOT NULL,
@@ -225,7 +216,7 @@ CREATE TABLE IF NOT EXISTS `mobil` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumping data for table ta-alen.mobil: ~0 rows (approximately)
+-- Dumping data for table ta-alen.mobil: ~1 rows (approximately)
 DELETE FROM `mobil`;
 /*!40000 ALTER TABLE `mobil` DISABLE KEYS */;
 INSERT INTO `mobil` (`id`, `harga_mobil`, `nama_mobil`) VALUES
@@ -233,7 +224,6 @@ INSERT INTO `mobil` (`id`, `harga_mobil`, `nama_mobil`) VALUES
 /*!40000 ALTER TABLE `mobil` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.model_has_permissions
-DROP TABLE IF EXISTS `model_has_permissions`;
 CREATE TABLE IF NOT EXISTS `model_has_permissions` (
   `permission_id` int(10) unsigned NOT NULL,
   `model_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -249,7 +239,6 @@ DELETE FROM `model_has_permissions`;
 /*!40000 ALTER TABLE `model_has_permissions` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.model_has_roles
-DROP TABLE IF EXISTS `model_has_roles`;
 CREATE TABLE IF NOT EXISTS `model_has_roles` (
   `role_id` int(10) unsigned NOT NULL,
   `model_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -265,7 +254,6 @@ DELETE FROM `model_has_roles`;
 /*!40000 ALTER TABLE `model_has_roles` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.notifications
-DROP TABLE IF EXISTS `notifications`;
 CREATE TABLE IF NOT EXISTS `notifications` (
   `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
   `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -285,7 +273,6 @@ DELETE FROM `notifications`;
 /*!40000 ALTER TABLE `notifications` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.paket_tours
-DROP TABLE IF EXISTS `paket_tours`;
 CREATE TABLE IF NOT EXISTS `paket_tours` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nama_tour` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -308,7 +295,6 @@ INSERT INTO `paket_tours` (`id`, `nama_tour`, `harga`, `foto`, `keterangan`, `cr
 /*!40000 ALTER TABLE `paket_tours` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.password_resets
-DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -321,7 +307,6 @@ DELETE FROM `password_resets`;
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.pemesanans
-DROP TABLE IF EXISTS `pemesanans`;
 CREATE TABLE IF NOT EXISTS `pemesanans` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_user` int(10) unsigned DEFAULT NULL,
@@ -339,7 +324,6 @@ CREATE TABLE IF NOT EXISTS `pemesanans` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id_hotel_2` (`id_hotel`),
   KEY `pemesanan_user_index` (`id_user`),
   KEY `pemesanan_bis_index` (`id_bis`),
   KEY `id_mobil` (`id_mobil`),
@@ -352,15 +336,14 @@ CREATE TABLE IF NOT EXISTS `pemesanans` (
 DELETE FROM `pemesanans`;
 /*!40000 ALTER TABLE `pemesanans` DISABLE KEYS */;
 INSERT INTO `pemesanans` (`id`, `id_user`, `nama_pelanggan`, `alamat`, `no_telp`, `jumlah_orang`, `id_kota`, `id_bis`, `id_mobil`, `tgl`, `tgl2`, `id_hotel`, `jumlah_total`, `created_at`, `updated_at`) VALUES
-	(2, 10, NULL, NULL, NULL, 50, 1, 3, 1, NULL, NULL, NULL, NULL, NULL, NULL),
-	(6, 11, 'bayu', 'sumoroto', '432432432', 56, 1, 3, 1, '6/26/2019', '7/7/2019', NULL, NULL, '2019-06-25 14:38:06', '2019-06-25 16:52:59'),
-	(7, 12, 'alen alvero', 'ponorog', '4354365654', 40, 1, 3, 1, '6/26/2019', NULL, NULL, NULL, '2019-06-26 04:06:53', '2019-06-26 10:22:48'),
-	(13, 11, 'tes user', 'ddd', '12312321', 5, 1, NULL, 1, '7/1/2019', '7/8/2019', NULL, NULL, '2019-06-30 17:18:20', '2019-06-30 17:20:43'),
+	(2, 10, NULL, NULL, NULL, 50, 1, 3, 1, NULL, NULL, 3, NULL, NULL, NULL),
+	(6, 11, 'bayu', 'sumoroto', '432432432', 56, 1, 3, 1, '6/26/2019', '7/7/2019', 3, NULL, '2019-06-25 14:38:06', '2019-06-25 16:52:59'),
+	(7, 12, 'alen alvero', 'ponorog', '4354365654', 40, 1, 3, 1, '6/26/2019', NULL, 3, NULL, '2019-06-26 04:06:53', '2019-06-26 10:22:48'),
+	(13, 11, 'tes user', 'ddd', '12312321', 5, 1, NULL, 1, '7/1/2019', '7/8/2019', 3, NULL, '2019-06-30 17:18:20', '2019-06-30 17:20:43'),
 	(14, 11, 'tes user', 'aaaa', '123123', 2, 1, NULL, 1, '7/1/2019', '7/9/2019', 3, NULL, '2019-06-30 18:10:36', '2019-06-30 18:42:17');
 /*!40000 ALTER TABLE `pemesanans` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.pemesanan_paket_tours
-DROP TABLE IF EXISTS `pemesanan_paket_tours`;
 CREATE TABLE IF NOT EXISTS `pemesanan_paket_tours` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_user` int(10) unsigned NOT NULL,
@@ -389,7 +372,6 @@ INSERT INTO `pemesanan_paket_tours` (`id`, `id_user`, `nama_pelanggan_paket`, `a
 /*!40000 ALTER TABLE `pemesanan_paket_tours` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.permissions
-DROP TABLE IF EXISTS `permissions`;
 CREATE TABLE IF NOT EXISTS `permissions` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -405,7 +387,6 @@ DELETE FROM `permissions`;
 /*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.roles
-DROP TABLE IF EXISTS `roles`;
 CREATE TABLE IF NOT EXISTS `roles` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -421,7 +402,6 @@ DELETE FROM `roles`;
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.role_has_permissions
-DROP TABLE IF EXISTS `role_has_permissions`;
 CREATE TABLE IF NOT EXISTS `role_has_permissions` (
   `permission_id` int(10) unsigned NOT NULL,
   `role_id` int(10) unsigned NOT NULL,
@@ -437,7 +417,6 @@ DELETE FROM `role_has_permissions`;
 /*!40000 ALTER TABLE `role_has_permissions` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.tempat_wisatas
-DROP TABLE IF EXISTS `tempat_wisatas`;
 CREATE TABLE IF NOT EXISTS `tempat_wisatas` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -461,7 +440,6 @@ INSERT INTO `tempat_wisatas` (`id`, `nama`, `id_kota`, `harga`, `created_at`, `u
 /*!40000 ALTER TABLE `tempat_wisatas` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.trayeks
-DROP TABLE IF EXISTS `trayeks`;
 CREATE TABLE IF NOT EXISTS `trayeks` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `asal` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -486,7 +464,6 @@ INSERT INTO `trayeks` (`id`, `asal`, `id_kota`, `id_tempat_wisata`, `created_at`
 /*!40000 ALTER TABLE `trayeks` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.users
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,

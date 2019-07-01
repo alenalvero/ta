@@ -74,12 +74,8 @@
           <td class="number-td">Rp. {{number_format($pemesanan->harga_total_kendaraan(), 2, ',', '.')}}</td>
         </tr>
         <tr>
-          <th class="group">Hotel</th>
+          <th class="group">Hotel per kamar</th>
           <td class="number-td">Rp. {{number_format($pemesanan->hotel->harga, 2, ',', '.')}}</td>
-        </tr>
-        <tr>
-          <th class="group">Biaya per hari</th>
-          <td class="number-td">Rp. {{number_format($pemesanan->harga_total()/$pemesanan->jumlah_hari, 2, ',', '.')}} x {{$pemesanan->jumlah_hari}} hari</td>
         </tr>
         <tr>
           <th class="group">Total semua</th>
