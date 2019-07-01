@@ -11,6 +11,18 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+-- Dumping structure for table ta-alen.biss
+DROP TABLE IF EXISTS `biss`;
+CREATE TABLE IF NOT EXISTS `biss` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nama_po` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `harga_small` int(11) NOT NULL,
+  `harga_large` int(99) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table ta-alen.biss: ~3 rows (approximately)
 DELETE FROM `biss`;
 /*!40000 ALTER TABLE `biss` DISABLE KEYS */;
@@ -19,6 +31,21 @@ INSERT INTO `biss` (`id`, `nama_po`, `harga_small`, `harga_large`, `created_at`,
 	(4, 'aneka', 80000, 30000, NULL, NULL),
 	(7, 'sumber rejeki', 10000, 20000, NULL, NULL);
 /*!40000 ALTER TABLE `biss` ENABLE KEYS */;
+
+-- Dumping structure for table ta-alen.detail_pemesanans
+DROP TABLE IF EXISTS `detail_pemesanans`;
+CREATE TABLE IF NOT EXISTS `detail_pemesanans` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_pemesanan` int(10) unsigned NOT NULL,
+  `id_wisata` int(10) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `detail_pemesanan_id_pemesanan_index` (`id_pemesanan`),
+  KEY `detail_pemesanan_id_wisata_index` (`id_wisata`),
+  CONSTRAINT `detail_pemesanan_id_pemesanan_foreign` FOREIGN KEY (`id_pemesanan`) REFERENCES `pemesanans` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `detail_pemesanan_id_wisata_foreign` FOREIGN KEY (`id_wisata`) REFERENCES `tempat_wisatas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table ta-alen.detail_pemesanans: ~8 rows (approximately)
 DELETE FROM `detail_pemesanans`;
@@ -34,6 +61,15 @@ INSERT INTO `detail_pemesanans` (`id`, `id_pemesanan`, `id_wisata`, `created_at`
 	(26, 14, 9, '2019-06-30 18:10:36', '2019-06-30 18:10:36');
 /*!40000 ALTER TABLE `detail_pemesanans` ENABLE KEYS */;
 
+-- Dumping structure for table ta-alen.hotel
+DROP TABLE IF EXISTS `hotel`;
+CREATE TABLE IF NOT EXISTS `hotel` (
+  `id` int(99) unsigned NOT NULL AUTO_INCREMENT,
+  `bintang_hotel` int(99) NOT NULL,
+  `harga` int(99) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
 -- Dumping data for table ta-alen.hotel: ~4 rows (approximately)
 DELETE FROM `hotel`;
 /*!40000 ALTER TABLE `hotel` DISABLE KEYS */;
@@ -45,12 +81,38 @@ INSERT INTO `hotel` (`id`, `bintang_hotel`, `harga`) VALUES
 	(5, 5, 5000000);
 /*!40000 ALTER TABLE `hotel` ENABLE KEYS */;
 
+-- Dumping structure for table ta-alen.karyawans
+DROP TABLE IF EXISTS `karyawans`;
+CREATE TABLE IF NOT EXISTS `karyawans` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alamat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `telp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table ta-alen.karyawans: ~0 rows (approximately)
 DELETE FROM `karyawans`;
 /*!40000 ALTER TABLE `karyawans` DISABLE KEYS */;
 INSERT INTO `karyawans` (`id`, `nama`, `alamat`, `telp`, `created_at`, `updated_at`) VALUES
 	(6, 'alemn', 'dsadsa42432', '534534', NULL, NULL);
 /*!40000 ALTER TABLE `karyawans` ENABLE KEYS */;
+
+-- Dumping structure for table ta-alen.konfirmasi_pembayarans
+DROP TABLE IF EXISTS `konfirmasi_pembayarans`;
+CREATE TABLE IF NOT EXISTS `konfirmasi_pembayarans` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_pemesanan_paket` int(10) unsigned NOT NULL,
+  `foto` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `konfirmasiPaket_index` (`id_pemesanan_paket`),
+  CONSTRAINT `konfirmasiPaket_foreign` FOREIGN KEY (`id_pemesanan_paket`) REFERENCES `pemesanan_paket_tours` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table ta-alen.konfirmasi_pembayarans: ~2 rows (approximately)
 DELETE FROM `konfirmasi_pembayarans`;
@@ -60,6 +122,19 @@ INSERT INTO `konfirmasi_pembayarans` (`id`, `id_pemesanan_paket`, `foto`, `statu
 	(4, 2, 'Lighthouse.jpg', '2', NULL, NULL);
 /*!40000 ALTER TABLE `konfirmasi_pembayarans` ENABLE KEYS */;
 
+-- Dumping structure for table ta-alen.konfirmasi_pemesanans
+DROP TABLE IF EXISTS `konfirmasi_pemesanans`;
+CREATE TABLE IF NOT EXISTS `konfirmasi_pemesanans` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_pemesanan` int(10) unsigned NOT NULL,
+  `foto` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `konfirmasi_pemesanan_index` (`id_pemesanan`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table ta-alen.konfirmasi_pemesanans: ~2 rows (approximately)
 DELETE FROM `konfirmasi_pemesanans`;
 /*!40000 ALTER TABLE `konfirmasi_pemesanans` DISABLE KEYS */;
@@ -68,6 +143,18 @@ INSERT INTO `konfirmasi_pemesanans` (`id`, `id_pemesanan`, `foto`, `status`, `cr
 	(2, 7, 'struk/AXCLvQqHWOug8pORinEaILM0Ch138oCLzRJRIjwf.png', '1', '2019-06-26 04:08:43', '2019-06-26 04:09:14'),
 	(4, 14, 'struk/sfcYIVZIUdYLkBbxZ7YLn3JrJqGH6sfc1ysVxRI2.jpeg', '1', '2019-06-30 18:42:17', '2019-06-30 18:42:34');
 /*!40000 ALTER TABLE `konfirmasi_pemesanans` ENABLE KEYS */;
+
+-- Dumping structure for table ta-alen.kotas
+DROP TABLE IF EXISTS `kotas`;
+CREATE TABLE IF NOT EXISTS `kotas` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nama_kota` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `provinsi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `harga` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table ta-alen.kotas: ~6 rows (approximately)
 DELETE FROM `kotas`;
@@ -80,6 +167,15 @@ INSERT INTO `kotas` (`id`, `nama_kota`, `provinsi`, `harga`, `created_at`, `upda
 	(5, 'bandung', 'jawa barat', 10000, NULL, NULL),
 	(6, 'bali', 'bali', 10000, NULL, NULL);
 /*!40000 ALTER TABLE `kotas` ENABLE KEYS */;
+
+-- Dumping structure for table ta-alen.migrations
+DROP TABLE IF EXISTS `migrations`;
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table ta-alen.migrations: ~33 rows (approximately)
 DELETE FROM `migrations`;
@@ -120,6 +216,15 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(52, '2019_01_02_064038_create_notifications_table', 31);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
+-- Dumping structure for table ta-alen.mobil
+DROP TABLE IF EXISTS `mobil`;
+CREATE TABLE IF NOT EXISTS `mobil` (
+  `id` int(99) unsigned NOT NULL AUTO_INCREMENT,
+  `harga_mobil` int(99) NOT NULL,
+  `nama_mobil` varchar(99) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
 -- Dumping data for table ta-alen.mobil: ~0 rows (approximately)
 DELETE FROM `mobil`;
 /*!40000 ALTER TABLE `mobil` DISABLE KEYS */;
@@ -127,20 +232,70 @@ INSERT INTO `mobil` (`id`, `harga_mobil`, `nama_mobil`) VALUES
 	(1, 10000, 'elf satu');
 /*!40000 ALTER TABLE `mobil` ENABLE KEYS */;
 
+-- Dumping structure for table ta-alen.model_has_permissions
+DROP TABLE IF EXISTS `model_has_permissions`;
+CREATE TABLE IF NOT EXISTS `model_has_permissions` (
+  `permission_id` int(10) unsigned NOT NULL,
+  `model_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (`permission_id`,`model_id`,`model_type`),
+  KEY `model_has_permissions_model_id_model_type_index` (`model_id`,`model_type`),
+  CONSTRAINT `model_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table ta-alen.model_has_permissions: ~0 rows (approximately)
 DELETE FROM `model_has_permissions`;
 /*!40000 ALTER TABLE `model_has_permissions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `model_has_permissions` ENABLE KEYS */;
+
+-- Dumping structure for table ta-alen.model_has_roles
+DROP TABLE IF EXISTS `model_has_roles`;
+CREATE TABLE IF NOT EXISTS `model_has_roles` (
+  `role_id` int(10) unsigned NOT NULL,
+  `model_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (`role_id`,`model_id`,`model_type`),
+  KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`),
+  CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table ta-alen.model_has_roles: ~0 rows (approximately)
 DELETE FROM `model_has_roles`;
 /*!40000 ALTER TABLE `model_has_roles` DISABLE KEYS */;
 /*!40000 ALTER TABLE `model_has_roles` ENABLE KEYS */;
 
+-- Dumping structure for table ta-alen.notifications
+DROP TABLE IF EXISTS `notifications`;
+CREATE TABLE IF NOT EXISTS `notifications` (
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notifiable_id` int(10) unsigned NOT NULL,
+  `notifiable_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `data` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `read_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `notifications_notifiable_id_notifiable_type_index` (`notifiable_id`,`notifiable_type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table ta-alen.notifications: ~0 rows (approximately)
 DELETE FROM `notifications`;
 /*!40000 ALTER TABLE `notifications` DISABLE KEYS */;
 /*!40000 ALTER TABLE `notifications` ENABLE KEYS */;
+
+-- Dumping structure for table ta-alen.paket_tours
+DROP TABLE IF EXISTS `paket_tours`;
+CREATE TABLE IF NOT EXISTS `paket_tours` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nama_tour` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `harga` int(11) NOT NULL,
+  `foto` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `keterangan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table ta-alen.paket_tours: ~4 rows (approximately)
 DELETE FROM `paket_tours`;
@@ -152,10 +307,46 @@ INSERT INTO `paket_tours` (`id`, `nama_tour`, `harga`, `foto`, `keterangan`, `cr
 	(9, 'paket 11', 900000, 'Penguins.jpg', '<p><strong>Tempat Wisata</strong> : - Goa Pindul \r\n                                    - pantai \r\n<br>\r\n<strong>Fasilitas</strong> : - Hotel (inap 3hari, makan 3x)\r\n<br>\r\n<strong>Person : 30 Orang</strong></p>', NULL, NULL);
 /*!40000 ALTER TABLE `paket_tours` ENABLE KEYS */;
 
+-- Dumping structure for table ta-alen.password_resets
+DROP TABLE IF EXISTS `password_resets`;
+CREATE TABLE IF NOT EXISTS `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table ta-alen.password_resets: ~0 rows (approximately)
 DELETE FROM `password_resets`;
 /*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
+
+-- Dumping structure for table ta-alen.pemesanans
+DROP TABLE IF EXISTS `pemesanans`;
+CREATE TABLE IF NOT EXISTS `pemesanans` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_user` int(10) unsigned DEFAULT NULL,
+  `nama_pelanggan` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `alamat` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `no_telp` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `jumlah_orang` int(11) DEFAULT NULL,
+  `id_kota` int(11) DEFAULT NULL,
+  `id_bis` int(10) unsigned DEFAULT NULL,
+  `id_mobil` int(99) unsigned DEFAULT NULL,
+  `tgl` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tgl2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id_hotel` int(99) unsigned DEFAULT NULL,
+  `jumlah_total` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_hotel_2` (`id_hotel`),
+  KEY `pemesanan_user_index` (`id_user`),
+  KEY `pemesanan_bis_index` (`id_bis`),
+  KEY `id_mobil` (`id_mobil`),
+  KEY `id_hotel` (`id_hotel`),
+  CONSTRAINT `pemesanan_bis_foreign` FOREIGN KEY (`id_bis`) REFERENCES `biss` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `pemesanan_user_foreign` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table ta-alen.pemesanans: ~5 rows (approximately)
 DELETE FROM `pemesanans`;
@@ -168,6 +359,25 @@ INSERT INTO `pemesanans` (`id`, `id_user`, `nama_pelanggan`, `alamat`, `no_telp`
 	(14, 11, 'tes user', 'aaaa', '123123', 2, 1, NULL, 1, '7/1/2019', '7/9/2019', 3, NULL, '2019-06-30 18:10:36', '2019-06-30 18:42:17');
 /*!40000 ALTER TABLE `pemesanans` ENABLE KEYS */;
 
+-- Dumping structure for table ta-alen.pemesanan_paket_tours
+DROP TABLE IF EXISTS `pemesanan_paket_tours`;
+CREATE TABLE IF NOT EXISTS `pemesanan_paket_tours` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_user` int(10) unsigned NOT NULL,
+  `nama_pelanggan_paket` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alamat` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_telp` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_paket` int(10) unsigned DEFAULT NULL,
+  `tgl` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pemesananPaket_user_index` (`id_user`),
+  KEY `pemesananPaket_paket_index` (`id_paket`),
+  CONSTRAINT `pemesananPaket_paket_foreign` FOREIGN KEY (`id_paket`) REFERENCES `paket_tours` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `pemesananPaket_user_foreign` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table ta-alen.pemesanan_paket_tours: ~4 rows (approximately)
 DELETE FROM `pemesanan_paket_tours`;
 /*!40000 ALTER TABLE `pemesanan_paket_tours` DISABLE KEYS */;
@@ -178,20 +388,67 @@ INSERT INTO `pemesanan_paket_tours` (`id`, `id_user`, `nama_pelanggan_paket`, `a
 	(13, 10, 'alen', 'ponorogo', '1212', 1, '1/24/2019', '2019-01-02 14:18:20', '2019-01-02 14:18:20');
 /*!40000 ALTER TABLE `pemesanan_paket_tours` ENABLE KEYS */;
 
+-- Dumping structure for table ta-alen.permissions
+DROP TABLE IF EXISTS `permissions`;
+CREATE TABLE IF NOT EXISTS `permissions` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guard_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table ta-alen.permissions: ~0 rows (approximately)
 DELETE FROM `permissions`;
 /*!40000 ALTER TABLE `permissions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
+
+-- Dumping structure for table ta-alen.roles
+DROP TABLE IF EXISTS `roles`;
+CREATE TABLE IF NOT EXISTS `roles` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guard_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table ta-alen.roles: ~0 rows (approximately)
 DELETE FROM `roles`;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 
+-- Dumping structure for table ta-alen.role_has_permissions
+DROP TABLE IF EXISTS `role_has_permissions`;
+CREATE TABLE IF NOT EXISTS `role_has_permissions` (
+  `permission_id` int(10) unsigned NOT NULL,
+  `role_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`permission_id`,`role_id`),
+  KEY `role_has_permissions_role_id_foreign` (`role_id`),
+  CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table ta-alen.role_has_permissions: ~0 rows (approximately)
 DELETE FROM `role_has_permissions`;
 /*!40000 ALTER TABLE `role_has_permissions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `role_has_permissions` ENABLE KEYS */;
+
+-- Dumping structure for table ta-alen.tempat_wisatas
+DROP TABLE IF EXISTS `tempat_wisatas`;
+CREATE TABLE IF NOT EXISTS `tempat_wisatas` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_kota` int(10) unsigned DEFAULT NULL,
+  `harga` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `wisata_kota_index` (`id_kota`),
+  CONSTRAINT `wisata_kota_foreign` FOREIGN KEY (`id_kota`) REFERENCES `kotas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table ta-alen.tempat_wisatas: ~4 rows (approximately)
 DELETE FROM `tempat_wisatas`;
@@ -203,6 +460,22 @@ INSERT INTO `tempat_wisatas` (`id`, `nama`, `id_kota`, `harga`, `created_at`, `u
 	(9, 'rungkut', 1, 160000, NULL, NULL);
 /*!40000 ALTER TABLE `tempat_wisatas` ENABLE KEYS */;
 
+-- Dumping structure for table ta-alen.trayeks
+DROP TABLE IF EXISTS `trayeks`;
+CREATE TABLE IF NOT EXISTS `trayeks` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `asal` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_kota` int(10) unsigned DEFAULT NULL,
+  `id_tempat_wisata` int(10) unsigned DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `trayek_kota_index` (`id_kota`),
+  KEY `trayek_wisata_index` (`id_tempat_wisata`),
+  CONSTRAINT `trayek_kota_foreign` FOREIGN KEY (`id_kota`) REFERENCES `kotas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `trayek_wisata_foreign` FOREIGN KEY (`id_tempat_wisata`) REFERENCES `tempat_wisatas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Dumping data for table ta-alen.trayeks: ~3 rows (approximately)
 DELETE FROM `trayeks`;
 /*!40000 ALTER TABLE `trayeks` DISABLE KEYS */;
@@ -211,6 +484,20 @@ INSERT INTO `trayeks` (`id`, `asal`, `id_kota`, `id_tempat_wisata`, `created_at`
 	(2, 'Ponorogo', 5, 6, NULL, NULL),
 	(3, 'ponorogo', 5, 6, NULL, NULL);
 /*!40000 ALTER TABLE `trayeks` ENABLE KEYS */;
+
+-- Dumping structure for table ta-alen.users
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table ta-alen.users: ~8 rows (approximately)
 DELETE FROM `users`;
