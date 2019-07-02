@@ -78,6 +78,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 	Route::put('admin/user/edit/{id}', 'UserController@update');
 	Route::get('admin/user/edit/{id}', 'UserController@edit');
 	Route::resource('operator/hotel', 'HotelController');
+	Route::resource('operator/mobil', 'MobilController');
 });
 
 Auth::routes();
