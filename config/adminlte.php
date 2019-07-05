@@ -153,6 +153,15 @@ return [
             'icon' => 'picture-o',
         ],
         [
+            'text' => 'Hotel',
+            'url'  => 'operator/hotel',
+            'icon' => 'home',
+        ], [
+            'text' => 'Mobil',
+            'url'  => 'operator/mobil',
+            'icon' => 'car',
+        ],
+        [
             'text' => 'Pembayaran',
             'url'  => 'operator/konfirmasi_pembayaran',
             'icon' => 'money',
