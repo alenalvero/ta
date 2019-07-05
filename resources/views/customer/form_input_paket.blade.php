@@ -75,15 +75,7 @@ border-width: 5px;
 											</div>
 										</div>
 									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<label for="paket">Paket</label>
-											<div class="form-field">
-												<input type="hidden" name="id_paket" value="{{ $paket_tour->id}}"  class="form-control" >
-												<input type="text" value="{{ $paket_tour->nama_tour}}"  class="form-control" >
-											</div>
-										</div>
-									</div>
+									<input type="hidden" name="id_paket" value="{{ $paket_tour->id}}" class="form-control" >
 									<div class="col-md-12">
 										<div class="form-group">
 											<label for="alamat">Alamat</label>

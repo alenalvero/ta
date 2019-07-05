@@ -114,10 +114,12 @@ table td, th {
 								<tr>
 									<td height="30"><a href='{{url('profile/detail_order/'.$item->id.'/show') }}'>{{$item->id}}</a></td>
 									<td>{{date('d/m/Y',strtotime($item->created_at))}}</td>
-									<td>{!!
-									$item->konfirmasi_pembayaran != null ? $item->konfirmasi_pembayaran->status == 1 ? 'Sudah dibayar' : 'Menunggu verfikasi' : "<a href='".url('profile/konfirmasi_pembayaran/'.$item->id.'/konfirmasi')."'>"."Belum dibayar"."</a>"
-									!!}</td>
-									<td>dsdsadsa</td>
+									<td>
+										<a href='{{url("profile/konfirmasi_pembayaran/".$item->id."/konfirmasi")}}'>
+											{{$item->konfirmasi_pembayaran != null ? $item->konfirmasi_pembayaran->status == 1 ? 'Sudah dibayar' : 'Menunggu verfikasi' : "Belum dibayar"}}
+										</a>
+									</td>
+									<td>Rp. {{number_format($item->paket_tour->harga, 2, ',', '.')}}</td>
 								</tr>
 								@endforeach
 							</table>
