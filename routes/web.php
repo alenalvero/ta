@@ -26,6 +26,7 @@ Route::group(
 		// Route::resource('operator/pelanggan', 'PelangganController');
 		Route::resource('operator/pemesanan', 'PemesananController');
 
+		Route::resource('operator/kota', 'KotaController');
 		Route::resource('operator/bis', 'BisController');
 		Route::resource('operator/konfirmasi_pembayaran', 'Konfirmasi_pembayaranController');
 		Route::post('operator/ ', 'Konfirmasi_pembayaranController@verifikasi');
@@ -39,6 +40,8 @@ Route::group(
 		Route::put('operator/tempat_wisata/{id}/edit', 'Tempat_wisataController@update');
 		Route::get('operator/tempat_wisata/{id}/edit', 'Tempat_wisataController@edit');
 		Route::get('operator/tempat_wisata/destroy/{id}', 'Tempat_wisataController@destroy');
+		Route::get('operator/kota/destroy/{id}', 'KotaController@destroy');
+		Route::put('operator/kota/edit/{id}', 'KotaController@update');
 		Route::get('operator/bis/destroy/{id}', 'BisController@destroy');
 		Route::put('operator/bis/edit/{id}', 'BisController@update');
 

@@ -136,14 +136,15 @@ return [
             'url'  => 'operator/paket_tour',
             'icon' => 'taxi',
         ],
+        
         [
             'text' => 'Bis',
             'url'  => 'operator/bis',
             'icon' => 'taxi',
         ],
         [
-            'text' => 'Trayek',
-            'url'  => 'operator/trayek',
+            'text' => 'Kota',
+            'url'  => 'operator/Kota',
             'icon' => 'map',
         ],
         [
