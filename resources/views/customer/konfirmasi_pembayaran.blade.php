@@ -37,68 +37,73 @@ border-width: 5px;
 				</div>
 		</aside>
 
-			<div id="colorlib-blog">
+		<div id="colorlib-blog">
 			<div class="container">
-			<form action="{{url('profile/konfirmasi_pembayaran')}}" method="post">
-				<div class="row">
-					<div class="col-md-7 col-md-push-5">
-						<article class="animate-box">
-							<h2>{{$pemesanan_paket_tour->paket_tour->nama_tour}}</h2>
-							<img src="{{url('images/'.$pemesanan_paket_tour->paket_tour->foto)}}"/>
-							<p>
-								<b>Deskripsi</b><br/>
-								{!!$pemesanan_paket_tour->paket_tour->keterangan!!}
-							</p>
-							<p>
-								<b>Nama Pelanggan</b><br/>
-								{{$pemesanan_paket_tour->nama_pelanggan_paket}}
-							</p>
+				<form action="{{url('profile/konfirmasi_pembayaran')}}" method="post">
+					<div class="row">
+						<div class="col-md-7 col-md-push-5">
+							<article class="animate-box">
+								<div class="col-md-12">
+									<h2>{{$pemesanan_paket_tour->paket_tour->nama_tour}}</h2>
+									<img src="{{url('images/'.$pemesanan_paket_tour->paket_tour->foto)}}"/>
+									<p>
+										<b>Deskripsi</b><br/>
+										{!!$pemesanan_paket_tour->paket_tour->keterangan!!}
+									</p>
+								</div>
+								<div class="col-md-6">
+									<p>
+										<b>Nama Pelanggan</b><br/>
+										{{$pemesanan_paket_tour->nama_pelanggan_paket}}
+									</p>
+									<p>
+										<b>No. Telfon</b><br/>
+										{{$pemesanan_paket_tour->no_telp}}
+									</p>
+									<p>
+										<b>Alamat</b><br/>
+										{{$pemesanan_paket_tour->alamat}}
+									</p>
+								</div>
+								<div class="col-md-6">
+									<p>
+										<b>Harga </b><br/>
+										{{$pemesanan_paket_tour->paket_tour->harga}}
+									</p>
+									<p>
+										<b>Tanggal Berangkat</b><br/>
+										{{$pemesanan_paket_tour->tgl}}
+									</p>
+								</div>
+							</article>
+						</div>
 
-							<p>
-								<b>No. Telfon</b><br/>
-								{{$pemesanan_paket_tour->no_telp}}
-							</p>
-							<p>
-								<b>Alamat</b><br/>
-								{{$pemesanan_paket_tour->alamat}}
-							</p>
-							<p>
-								<b>Harga </b><br/>
-								{{$pemesanan_paket_tour->paket_tour->harga}}
-							</p>
-							<p>
-								<b>Tanggal Berangkat</b><br/>
-								{{$pemesanan_paket_tour->tgl}}
-							</p>
-						</article>
-					</div>
-
-					<div class="col-md-4 col-md-pull-7">
-						<div class="aside animate-box">
-							<h3><b>Form Konfirmasi Pembayaran Paket</b><hr></h3>
-						<form method="post" action="{{url('profile/konfirmasi_pembayaran')}}" class="colorlib-form">
-									{{csrf_field()}}
-									<div class="row">
-									<div class="col-md-12">
-										<input type="hidden" name="id_pemesanan_paket" value="{{$pemesanan_paket_tour->id}}" id="date" class="form-control">
-										</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<label for="Foto">Foto</label>
-											<div class="form-field">
-												<input type="file" name="foto" >
+						<div class="col-md-4 col-md-pull-7">
+							<div class="aside animate-box">
+								<h3><b>Form Konfirmasi Pembayaran Paket</b><hr></h3>
+							<form method="post" action="{{url('profile/konfirmasi_pembayaran')}}" class="colorlib-form">
+										{{csrf_field()}}
+										<div class="row">
+										<div class="col-md-12">
+											<input type="hidden" name="id_pemesanan_paket" value="{{$pemesanan_paket_tour->id}}" id="date" class="form-control">
+											</div>
+										<div class="col-md-12">
+											<div class="form-group">
+												<label for="Foto">Foto</label>
+												<div class="form-field">
+													<input type="file" name="foto" >
+												</div>
 											</div>
 										</div>
+										<div class="col-md-12">
+											<input type="submit" name="submit" id="submit" value="Simpan" class="btn btn-primary btn-block">
+										</div>
 									</div>
-									<div class="col-md-12">
-										<input type="submit" name="submit" id="submit" value="Simpan" class="btn btn-primary btn-block">
-									</div>
-								</div>
-							</form>
+								</form>
+							</div>
 						</div>
 					</div>
-				</div>
-			</form>
+				</form>
 			</div>
 		</div>
 		</div>

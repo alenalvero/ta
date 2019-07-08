@@ -40,64 +40,74 @@
         </div>
         @endif
         <div class="col-sm-8">
-          <article class="animate-box">
+          <div class="col-sm-12">
             <h2>Detail Pemesanan <span class="badge badge-success">{{$pemesanan->status_pembayaran}}</span></h2>
             <hr>
-            <p>
-              <b>Nama Pemesan:</b><br/>
-              {{$pemesanan->nama_pelanggan}}
-            </p>
-            <p>
-              <b>Alamat Penjemputan:</b><br/>
-              {{$pemesanan->alamat}}
-            </p>
-            <p>
-              <b>No Telp:</b><br/>
-              {{$pemesanan->no_telp}}
-            </p>
-            <p>
-              <b>Jumlah Penumpang:</b><br/>
-              {{$pemesanan->jumlah_orang}}
-            </p>
-            <p>
-              <b>Kota Tujuan:</b><br/>
-              {{$pemesanan->kota->nama_kota}}
-            </p>
-            <p>
-              <b>Tujuan Wisata:</b><br/>
-              <ul>
-                @foreach ($pemesanan->detail_pemesanan as $item)
-                <li>{{$item->wisata->nama}}</li>
-                @endforeach
-              </ul>
-            </p>
-            <p>
-              <b>Tanggal berangkat - Tanggal pulang:</b><br/>
-              {{$pemesanan->tgl}} - {{$pemesanan->tgl2}} ({{$pemesanan->jumlah_hari}} hari)
-            </p>
-            <p>
-              <b>Hotel:</b><br/>
-              Hotel Berbintang {{$pemesanan->hotel->bintang_hotel}}
-            </p>
-            <p>
-              <b>Kendaraan:</b><br/>
-              @if($pemesanan->bis != null)
-              {{$pemesanan->bis->nama_po}}
-              @else
-              {{$pemesanan->mobil->nama_mobil}}
-              @endif
-            </p>
-            <p>
-              <b>Harga tota yang dibayarkan:</b><br/>
-              Rp. {{number_format($pemesanan->harga_total(), 2, ',', '.')}} (untuk {{$pemesanan->jumlah_hari}} hari)
-            </p>
+          </div>
+          <div class="col-sm-6">
+            <article class="animate-box">
+              <p>
+                <b>Nama Pemesan:</b><br/>
+                {{$pemesanan->nama_pelanggan}}
+              </p>
+              <p>
+                <b>Alamat Penjemputan:</b><br/>
+                {{$pemesanan->alamat}}
+              </p>
+              <p>
+                <b>No Telp:</b><br/>
+                {{$pemesanan->no_telp}}
+              </p>
+              <p>
+                <b>Jumlah Penumpang:</b><br/>
+                {{$pemesanan->jumlah_orang}}
+              </p>
+            </article>
+          </div>
+          <div class="col-sm-6">
+            <article class="animate-box">
+              <p>
+                <b>Kota Tujuan:</b><br/>
+                {{$pemesanan->kota->nama_kota}}
+              </p>
+              <p>
+                <b>Tujuan Wisata:</b><br/>
+                <ul>
+                  @foreach ($pemesanan->detail_pemesanan as $item)
+                  <li>{{$item->wisata->nama}}</li>
+                  @endforeach
+                </ul>
+              </p>
+              <p>
+                <b>Tanggal berangkat - Tanggal pulang:</b><br/>
+                {{$pemesanan->tgl}} - {{$pemesanan->tgl2}} ({{$pemesanan->jumlah_hari}} hari)
+              </p>
+              <p>
+                <b>Hotel:</b><br/>
+                Hotel Berbintang {{$pemesanan->hotel->bintang_hotel}}
+              </p>
+              <p>
+                <b>Kendaraan:</b><br/>
+                @if($pemesanan->bis != null)
+                {{$pemesanan->bis->nama_po}}
+                @else
+                {{$pemesanan->mobil->nama_mobil}}
+                @endif
+              </p>
+              <p>
+                <b>Harga total yang dibayarkan:</b><br/>
+                Rp. {{number_format($pemesanan->harga_total(), 2, ',', '.')}} (untuk {{$pemesanan->jumlah_hari}} hari)
+              </p>
+            </article>
+          </div>
+          <div class="col-sm-12">
             <p>
               <a @if($pemesanan->sudah_dibayar) href="/struk/{{$id}}" @endif class="btn btn-primary @if(!$pemesanan->sudah_dibayar) disabled @endif" target="_blank">Cetak bukti pembayaran</a><br/>
               @if(!$pemesanan->sudah_dibayar)
               <span>*Tombol cetak akan aktif ketika pembayaran sudah dikonfirmasi operator kami</span>
               @endif
             </p>
-          </article>
+          </div>
         </div>
       </div>
     </div>
