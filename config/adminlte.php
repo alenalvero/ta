@@ -116,6 +116,7 @@ return [
         [
             'text' => 'Pemesanan',
             'icon' => 'tasks',
+            'role' => 'operator',
             'submenu' => [
                 [
                     'text' => 'Pemesanan Individu',
@@ -135,35 +136,48 @@ return [
             'text' => 'Paket Tour',
             'url'  => 'operator/paket_tour',
             'icon' => 'taxi',
+            'role' => 'operator'
         ],
         [
             'text' => 'Bis',
             'url'  => 'operator/bis',
             'icon' => 'taxi',
+            'role' => 'operator'
         ],
         [
             'text' => 'Trayek',
             'url'  => 'operator/trayek',
             'icon' => 'map',
+            'role' => 'operator'
         ],
         [
             'text' => 'Tempat Wisata',
             'url'  => 'operator/tempat_wisata',
             'icon' => 'picture-o',
+            'role' => 'operator'
         ],
         [
             'text' => 'Hotel',
             'url'  => 'operator/hotel',
             'icon' => 'home',
+            'role' => 'operator'
         ], [
             'text' => 'Mobil',
             'url'  => 'operator/mobil',
             'icon' => 'car',
+            'role' => 'operator'
+        ],
+        [
+            'text' => 'Promo Paket',
+            'url'  => 'operator/promo',
+            'icon' => 'bullseye',
+            'role' => 'operator',
         ],
         [
             'text' => 'Pembayaran',
             'url'  => 'operator/konfirmasi_pembayaran',
             'icon' => 'money',
+            'role' => 'operator',
             'submenu' => [
                 [
                     'text' => 'Individu',
@@ -173,7 +187,7 @@ return [
                     'text' => 'Paket',
                     'url'  => 'operator/konfirmasi_pembayaran',
                 ],
-            ]
+            ],
         ],
 
         [
@@ -220,6 +234,6 @@ return [
     'plugins' => [
         'datatables' => true,
         'select2'    => true,
-        'chartjs'    => true,
+        'chartjs'    => true
     ],
 ];
