@@ -39,8 +39,8 @@
           <tr>
             <td>{{$promo->kode}}</td>
             <td>{{$promo->nama_promo}}</td>
-            <td>{{$promo->start}}</td>
-            <td>{{$promo->expired}}</td>
+            <td>{{$promo->start->format('d M Y')}}</td>
+            <td>{{$promo->expired->format('d M Y')}}</td>
             <td>
               @if($promo->is_active)
               <span class="label label-success">Sedang Aktif</span>
