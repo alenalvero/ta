@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Promo;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
+use App\Paket_tour;
 
 class PromoController extends Controller
 {
@@ -81,7 +82,11 @@ class PromoController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = [
+            'promo' => Promo::findOrFail($id),
+            'pakets' => Paket_tour::all()
+        ];
+        return view('promo.show', $data);
     }
 
     /**

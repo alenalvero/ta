@@ -58,6 +58,7 @@
                 {{ csrf_field() }}
                 <div class="btn-group">
                   <a href="{{route('promo.edit', $promo->id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+                  <a href="{{route('promo.show', $promo->id)}}" class="btn btn-default"><i class="fa fa-eye"></i></a>
                   <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                 </div>
               </form>
