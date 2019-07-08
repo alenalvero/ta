@@ -30,6 +30,7 @@
             <th>Nama Promo</th>
             <th>Tanggal Mulai</th>
             <th>Tanggal Expired</th>
+            <th>Diskon (Maks)</th>
             <th>Status</th>
             <th>Aksi</th>
           </tr>
@@ -41,6 +42,7 @@
             <td>{{$promo->nama_promo}}</td>
             <td>{{$promo->start->format('d M Y')}}</td>
             <td>{{$promo->expired->format('d M Y')}}</td>
+            <td>{{$promo->diskon_persen}}% (Rp. {{number_format($promo->maksimal_diskon, 2, ',', '.')}})</td>
             <td>
               @if($promo->is_active)
               <span class="label label-success">Sedang Aktif</span>
