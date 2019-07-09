@@ -23,7 +23,11 @@
   <hr>
   <div class="col-sm-8">
     <article class="animate-box">
-      <h2>Detail Pemesanan <span class="badge badge-success">{{$pemesanan->status_pembayaran}}</span></h2>
+      <div class="about animate-box fadeInUp animated-fast">
+        <b>
+          <h2>Detail Pemesanan <span class="badge badge-success">{{$pemesanan->status_pembayaran}}</span></h2>
+        </b>
+      </div>
       <p>
         <b>Nama Pemesan:</b><br/>
         {{$pemesanan->nama_pelanggan}}

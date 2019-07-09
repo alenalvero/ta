@@ -41,8 +41,12 @@
         @endif
         <div class="col-sm-8">
           <div class="col-sm-12">
-            <h2>Detail Pemesanan <span class="badge badge-success">{{$pemesanan->status_pembayaran}}</span></h2>
-            <hr>
+            <div class="about animate-box fadeInUp animated-fast">
+              <b>
+                <font size=>Detail Pemesanan <span class="badge badge-success">{{$pemesanan->status_pembayaran}}</span></font>
+              </b>
+              <hr>
+            </div>
           </div>
           <div class="col-sm-6">
             <article class="animate-box">
