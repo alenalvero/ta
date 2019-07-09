@@ -22,8 +22,11 @@
   </table>
   <hr>
   <div class="col-sm-8">
-    <article class="animate-box">
+    <article class="about animate-box">
+      
+
       <h2>Detail Pemesanan <span class="badge badge-success">{{$pemesanan->status_pembayaran}}</span></h2>
+      
       <p>
         <b>Nama Pemesan:</b><br/>
         {{$pemesanan->nama_pelanggan}}

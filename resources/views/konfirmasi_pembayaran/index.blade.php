@@ -22,11 +22,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <table>
-            <td>
-              <a href='{{url('home/create') }}'><button class="btn bg-maroon btn-flat margin"  type="button">Create</button></a>
-            </td>
-            </table>
+             
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -34,7 +30,7 @@
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>Id Pemesanan</th>
+                 
                   <th>Foto</th>
                   <th>Status</th>
                                 
@@ -44,9 +40,13 @@
                 <tbody>
 @foreach($konfirmasi_pembayaran as $item)
                 <tr>
-                  <td>{{$item->id_pemesanan_paket}}</td>
+                  
                   <td><img src="{{asset('images/'.$item->foto)}}" height="50" width="50"></td>
-                  <td>{{$item->status}}
+                  <td>@if($item->status == 2)
+                    Belum dikonfirmasi
+                    @elseif($item->status == 1)
+                    Dikonfirmasi
+                    @endif
                   </td>
                  
                 

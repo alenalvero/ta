@@ -15,7 +15,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/check-user', 'WelcomeController@checkUser');
 });
 Route::group(
-	['middleware' => ['auth', 'role:operator|admin']],
+	['middleware' => ['auth', 'role:operator']],
 	function () {
 		Route::get('/operator', function () {
 			dd(auth()->user()->type);
@@ -48,6 +48,9 @@ Route::group(
 		Route::put('operator/trayek/edit/{id}', 'TrayekController@update');
 		Route::get('operator/trayek/edit/{id}', 'TrayekController@edit');
 		Route::get('operator/trayek/destroy/{id}', 'TrayekController@destroy');
+	
+	Route::resource('operator/hotel', 'HotelController');
+	Route::resource('operator/mobil', 'MobilController');
 
 		Route::get('operator/pemesanan/{id}edit', 'PemesananController@edit');
 		Route::get('operator/pemesanan/{id}edit', 'PemesananController@update');
@@ -80,8 +83,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 	Route::get('admin/user/destroy/{id}', 'UserController@destroy');
 	Route::put('admin/user/edit/{id}', 'UserController@update');
 	Route::get('admin/user/edit/{id}', 'UserController@edit');
-	Route::resource('operator/hotel', 'HotelController');
-	Route::resource('operator/mobil', 'MobilController');
+	
 });
 
 Auth::routes();

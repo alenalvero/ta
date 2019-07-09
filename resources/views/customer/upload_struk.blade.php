@@ -40,8 +40,12 @@
         </div>
         @endif
         <div class="col-sm-8">
-          <article class="animate-box">
-            <h2>Detail Pemesanan <span class="badge badge-success">{{$pemesanan->status_pembayaran}}</span></h2>
+          
+            <div class="about animate-box">
+            <br>
+            <b><font size="5">DETAIL PEMESANAN</font><span class="badge badge-success">{{$pemesanan->status_pembayaran}}</span></b>
+          </div>
+          
             <hr>
             <p>
               <b>Nama Pemesan:</b><br/>

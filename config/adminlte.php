@@ -116,16 +116,19 @@ return [
         [
             'text' => 'Pemesanan',
             'icon' => 'tasks',
+            'role' => 'operator',
             'submenu' => [
                 [
                     'text' => 'Pemesanan Individu',
                     'icon' => 'tasks',
                     'url'  => 'operator/pemesanan',
+                    'role' => 'operator'
                 ],
                 [
                     'text' => 'Pemesanan Paket',
                     'icon' => 'navicon',
                     'url'  => 'operator/pemesanan_paket_tour',
+                    'role' => 'operator'
                 ],
 
             ],
@@ -135,48 +138,57 @@ return [
             'text' => 'Paket Tour',
             'url'  => 'operator/paket_tour',
             'icon' => 'taxi',
+            'role' => 'operator'
         ],
         
         [
             'text' => 'Bis',
             'url'  => 'operator/bis',
             'icon' => 'taxi',
+            'role' => 'operator'
         ],
         [
             'text' => 'Kota',
-            'url'  => 'operator/Kota',
+            'url'  => 'operator/kota',
             'icon' => 'map',
+            'role' => 'operator'
         ],
         [
             'text' => 'Tempat Wisata',
             'url'  => 'operator/tempat_wisata',
             'icon' => 'picture-o',
+            'role' => 'operator'
         ],
         [
             'text' => 'Hotel',
             'url'  => 'operator/hotel',
             'icon' => 'home',
-        ], [
+            'role' => 'operator'
+        ], 
+        [
             'text' => 'Mobil',
             'url'  => 'operator/mobil',
             'icon' => 'car',
+            'role' => 'operator'
         ],
         [
             'text' => 'Pembayaran',
             'url'  => 'operator/konfirmasi_pembayaran',
             'icon' => 'money',
+            'role' => 'operator',
             'submenu' => [
                 [
                     'text' => 'Individu',
                     'url'  => 'operator/konfirmasi_pembayaran_individu',
+                    'role' => 'operator'
                 ],
                 [
                     'text' => 'Paket',
                     'url'  => 'operator/konfirmasi_pembayaran',
+                    'role' => 'operator'
                 ],
             ]
         ],
-
         [
             'text' => 'User',
             'url'  => 'admin/user',
