@@ -68,12 +68,22 @@ class Paket_tourController extends Controller
 
 	public function update(Request $request, $id)
 	{
+		$paket_tour = "N";
+		if ($request->hasFile('foto')); {
+			$destination = "images";
+			$foto = $request->file('foto');
+			$foto->move($destination, $foto->getClientOriginalName());
+			$paket_tour = "Y";
+		}
+
+		if ($paket_tour = "Y") {
 		$paket_tour = Paket_tour::findOrFail($id);
 		$paket_tour->nama_tour = $request->input('nama_tour');
+		$paket_tour->foto = $foto->getClientOriginalName();
 		$paket_tour->harga = $request->input('harga');
 		$paket_tour->keterangan = $request->input('keterangan');
 		$paket_tour->save();
-
+		}
 		return redirect('operator/paket_tour');
 	}
 

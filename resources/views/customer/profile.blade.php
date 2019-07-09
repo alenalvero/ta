@@ -78,7 +78,7 @@ table td, th {
 								</tr>
 								@foreach ($profile as $item)
 								<tr>
-									<td height="30">{{$item->id}}</td>
+									<td height="30" >{{$item->id}}</td>
 									<td>{{$item->tgl}}</td>
 									<td>
 										@if($item->id_bis == null and $item->id_mobil == null)

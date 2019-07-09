@@ -28,7 +28,7 @@ border-width: 5px;
 				   			<div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
 				   				<div class="slider-text-inner slider-text-inner2 text-center">
 				   					
-				   					<h1>Form Reservasi</h1>
+				   					<h1>Form Detail Paket</h1>
 				   				</div>
 				   			</div>
 				   		</div>
@@ -65,9 +65,9 @@ border-width: 5px;
 							
 									<h3>{{$paket_tour->nama_tour}}</h3>
 									<p>{!! $paket_tour->keterangan !!}</p>
-							
+							 @if(Auth::check())
 							<p><a href='{{url('customer_PaketTour/form_input_paket/'.$paket_tour->id.'/pesan') }}' class="btn btn-primary">Book now!</a></p>
-					
+							@endif
 						</div>
 						</article>	
 						

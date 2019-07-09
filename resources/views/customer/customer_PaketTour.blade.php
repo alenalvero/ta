@@ -43,8 +43,9 @@
 							</p>
 							
 							<p><a href='{{url('customer_PaketTour/detail_paket/'.$item->id.'/detail') }}' class="btn btn-primary btn-warning">Detail</a></p>
+							@if(Auth::check())
 							<p><a href='{{url('customer_PaketTour/form_input_paket/'.$item->id.'/pesan') }}' class="btn btn-primary">Book now!</a></p>
-					
+							@endif
 						</div>
 					
 					

@@ -122,11 +122,13 @@ return [
                     'text' => 'Pemesanan Individu',
                     'icon' => 'tasks',
                     'url'  => 'operator/pemesanan',
+                    'role' => 'operator'
                 ],
                 [
                     'text' => 'Pemesanan Paket',
                     'icon' => 'navicon',
                     'url'  => 'operator/pemesanan_paket_tour',
+                    'role' => 'operator'
                 ],
 
             ],
@@ -138,6 +140,7 @@ return [
             'icon' => 'taxi',
             'role' => 'operator'
         ],
+        
         [
             'text' => 'Bis',
             'url'  => 'operator/bis',
@@ -145,8 +148,8 @@ return [
             'role' => 'operator'
         ],
         [
-            'text' => 'Trayek',
-            'url'  => 'operator/trayek',
+            'text' => 'Kota',
+            'url'  => 'operator/kota',
             'icon' => 'map',
             'role' => 'operator'
         ],
@@ -161,11 +164,13 @@ return [
             'url'  => 'operator/hotel',
             'icon' => 'home',
             'role' => 'operator'
-        ], [
+        ], 
+        [
             'text' => 'Mobil',
             'url'  => 'operator/mobil',
             'icon' => 'car',
             'role' => 'operator'
+
         ],
         [
             'text' => 'Promo Paket',
@@ -182,14 +187,15 @@ return [
                 [
                     'text' => 'Individu',
                     'url'  => 'operator/konfirmasi_pembayaran_individu',
+                    'role' => 'operator'
                 ],
                 [
                     'text' => 'Paket',
                     'url'  => 'operator/konfirmasi_pembayaran',
+                    'role' => 'operator'
                 ],
             ],
         ],
-
         [
             'text' => 'User',
             'url'  => 'admin/user',
