@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `hotel` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
--- Dumping data for table ta-alen.hotel: ~5 rows (approximately)
+-- Dumping data for table ta-alen.hotel: ~4 rows (approximately)
 DELETE FROM `hotel`;
 /*!40000 ALTER TABLE `hotel` DISABLE KEYS */;
 INSERT INTO `hotel` (`id`, `bintang_hotel`, `harga`) VALUES
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `karyawans` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table ta-alen.karyawans: ~1 rows (approximately)
+-- Dumping data for table ta-alen.karyawans: ~0 rows (approximately)
 DELETE FROM `karyawans`;
 /*!40000 ALTER TABLE `karyawans` DISABLE KEYS */;
 INSERT INTO `karyawans` (`id`, `nama`, `alamat`, `telp`, `created_at`, `updated_at`) VALUES
@@ -107,14 +107,15 @@ CREATE TABLE IF NOT EXISTS `konfirmasi_pembayarans` (
   PRIMARY KEY (`id`),
   KEY `konfirmasiPaket_index` (`id_pemesanan_paket`),
   CONSTRAINT `konfirmasiPaket_foreign` FOREIGN KEY (`id_pemesanan_paket`) REFERENCES `pemesanan_paket_tours` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table ta-alen.konfirmasi_pembayarans: ~2 rows (approximately)
 DELETE FROM `konfirmasi_pembayarans`;
 /*!40000 ALTER TABLE `konfirmasi_pembayarans` DISABLE KEYS */;
 INSERT INTO `konfirmasi_pembayarans` (`id`, `id_pemesanan_paket`, `foto`, `status`, `created_at`, `updated_at`) VALUES
 	(3, 1, 'Tulips.jpg', '2', NULL, NULL),
-	(4, 2, 'Lighthouse.jpg', '2', NULL, NULL);
+	(4, 2, 'Lighthouse.jpg', '2', NULL, NULL),
+	(5, 14, '021f21e395e384b8482b1c8969d0b623--doodle-sketch-sketch-drawing.jpg', '2', NULL, NULL);
 /*!40000 ALTER TABLE `konfirmasi_pembayarans` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.konfirmasi_pemesanans
@@ -127,15 +128,16 @@ CREATE TABLE IF NOT EXISTS `konfirmasi_pemesanans` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `konfirmasi_pemesanan_index` (`id_pemesanan`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table ta-alen.konfirmasi_pemesanans: ~3 rows (approximately)
+-- Dumping data for table ta-alen.konfirmasi_pemesanans: ~2 rows (approximately)
 DELETE FROM `konfirmasi_pemesanans`;
 /*!40000 ALTER TABLE `konfirmasi_pemesanans` DISABLE KEYS */;
 INSERT INTO `konfirmasi_pemesanans` (`id`, `id_pemesanan`, `foto`, `status`, `created_at`, `updated_at`) VALUES
 	(1, 6, 'struk/LD1QTOlCdTgV2SkSTtlk0wmnfoAzZYJiFFUqT5G0.png', '1', '2019-06-25 16:52:59', '2019-06-25 16:54:12'),
 	(2, 7, 'struk/AXCLvQqHWOug8pORinEaILM0Ch138oCLzRJRIjwf.png', '1', '2019-06-26 04:08:43', '2019-06-26 04:09:14'),
-	(4, 14, 'struk/sfcYIVZIUdYLkBbxZ7YLn3JrJqGH6sfc1ysVxRI2.jpeg', '1', '2019-06-30 18:42:17', '2019-06-30 18:42:34');
+	(4, 14, 'struk/sfcYIVZIUdYLkBbxZ7YLn3JrJqGH6sfc1ysVxRI2.jpeg', '1', '2019-06-30 18:42:17', '2019-06-30 18:42:34'),
+	(5, 13, 'struk/YMF3yh32WOiHU9w7woxozVW57HYMJsTQUUDgSAHT.jpeg', '2', '2019-07-04 16:56:34', '2019-07-04 16:56:34');
 /*!40000 ALTER TABLE `konfirmasi_pemesanans` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.kotas
@@ -216,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `mobil` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumping data for table ta-alen.mobil: ~1 rows (approximately)
+-- Dumping data for table ta-alen.mobil: ~0 rows (approximately)
 DELETE FROM `mobil`;
 /*!40000 ALTER TABLE `mobil` DISABLE KEYS */;
 INSERT INTO `mobil` (`id`, `harga_mobil`, `nama_mobil`) VALUES
@@ -339,7 +341,7 @@ INSERT INTO `pemesanans` (`id`, `id_user`, `nama_pelanggan`, `alamat`, `no_telp`
 	(2, 10, NULL, NULL, NULL, 50, 1, 3, 1, NULL, NULL, 3, NULL, NULL, NULL),
 	(6, 11, 'bayu', 'sumoroto', '432432432', 56, 1, 3, 1, '6/26/2019', '7/7/2019', 3, NULL, '2019-06-25 14:38:06', '2019-06-25 16:52:59'),
 	(7, 12, 'alen alvero', 'ponorog', '4354365654', 40, 1, 3, 1, '6/26/2019', NULL, 3, NULL, '2019-06-26 04:06:53', '2019-06-26 10:22:48'),
-	(13, 11, 'tes user', 'ddd', '12312321', 5, 1, NULL, 1, '7/1/2019', '7/8/2019', 3, NULL, '2019-06-30 17:18:20', '2019-06-30 17:20:43'),
+	(13, 11, 'tes user', 'dddd', '+628331231334', 5, 1, NULL, 1, '7/1/2019', '7/8/2019', 3, NULL, '2019-06-30 17:18:20', '2019-07-04 16:56:34'),
 	(14, 11, 'tes user', 'aaaa', '123123', 2, 1, NULL, 1, '7/1/2019', '7/9/2019', 3, NULL, '2019-06-30 18:10:36', '2019-06-30 18:42:17');
 /*!40000 ALTER TABLE `pemesanans` ENABLE KEYS */;
 
@@ -359,7 +361,7 @@ CREATE TABLE IF NOT EXISTS `pemesanan_paket_tours` (
   KEY `pemesananPaket_paket_index` (`id_paket`),
   CONSTRAINT `pemesananPaket_paket_foreign` FOREIGN KEY (`id_paket`) REFERENCES `paket_tours` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `pemesananPaket_user_foreign` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table ta-alen.pemesanan_paket_tours: ~4 rows (approximately)
 DELETE FROM `pemesanan_paket_tours`;
@@ -368,7 +370,8 @@ INSERT INTO `pemesanan_paket_tours` (`id`, `id_user`, `nama_pelanggan_paket`, `a
 	(1, 10, 'Allen Alvero', 'jalan s.parman 50 ponorogo', '081252017566', 1, '12/12/2009', NULL, NULL),
 	(2, 10, 'dadasdas', 'dsads', '424', 1, '4', NULL, NULL),
 	(7, 10, 'dsadsa', 'dsads', '21321', 1, '12/25/2018', NULL, NULL),
-	(13, 10, 'alen', 'ponorogo', '1212', 1, '1/24/2019', '2019-01-02 14:18:20', '2019-01-02 14:18:20');
+	(13, 10, 'alen', 'ponorogo', '1212', 1, '1/24/2019', '2019-01-02 14:18:20', '2019-01-02 14:18:20'),
+	(14, 11, 'bayu', 'carat', '082323244232', 1, '7/18/2019', '2019-07-04 15:41:05', '2019-07-04 15:41:05');
 /*!40000 ALTER TABLE `pemesanan_paket_tours` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.permissions
@@ -385,6 +388,53 @@ CREATE TABLE IF NOT EXISTS `permissions` (
 DELETE FROM `permissions`;
 /*!40000 ALTER TABLE `permissions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
+
+-- Dumping structure for table ta-alen.promos
+CREATE TABLE IF NOT EXISTS `promos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_promo` varchar(50) DEFAULT NULL,
+  `kode` varchar(50) DEFAULT NULL,
+  `start` date DEFAULT NULL,
+  `expired` date DEFAULT NULL,
+  `diskon_persen` int(11) DEFAULT NULL,
+  `maksimal_diskon` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `Index 2` (`kode`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table ta-alen.promos: ~2 rows (approximately)
+DELETE FROM `promos`;
+/*!40000 ALTER TABLE `promos` DISABLE KEYS */;
+INSERT INTO `promos` (`id`, `nama_promo`, `kode`, `start`, `expired`, `diskon_persen`, `maksimal_diskon`) VALUES
+	(1, 'Promo baru', 'WarokHa\'e', '2019-07-08', '2019-07-09', 10, 100000),
+	(2, 'Diskon Akhir Bulan', 'AkhirBulan2019', '2019-07-10', '2019-07-31', 10, 50000);
+/*!40000 ALTER TABLE `promos` ENABLE KEYS */;
+
+-- Dumping structure for table ta-alen.promo_paket
+CREATE TABLE IF NOT EXISTS `promo_paket` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_promo` int(11) NOT NULL DEFAULT '0',
+  `id_paket` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table ta-alen.promo_paket: ~0 rows (approximately)
+DELETE FROM `promo_paket`;
+/*!40000 ALTER TABLE `promo_paket` DISABLE KEYS */;
+/*!40000 ALTER TABLE `promo_paket` ENABLE KEYS */;
+
+-- Dumping structure for table ta-alen.promo_user
+CREATE TABLE IF NOT EXISTS `promo_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) DEFAULT '0',
+  `id_promo` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table ta-alen.promo_user: ~0 rows (approximately)
+DELETE FROM `promo_user`;
+/*!40000 ALTER TABLE `promo_user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `promo_user` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.roles
 CREATE TABLE IF NOT EXISTS `roles` (
@@ -481,12 +531,12 @@ DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `type`, `remember_token`, `created_at`, `updated_at`) VALUES
 	(4, 'dsadadssa', 'sadsdsa', '$2y$10$OcH/MWlnOeM.JLfIsjzXH.PqID17aBD/mKzN7Gv5q0j6DUTTMkply', 'admin', NULL, '2018-12-05 16:11:52', '2018-12-05 16:11:52'),
-	(5, 'admin', 'admin@yahoo.com', '$2y$10$hjVNnY28/AvHmzrPE2nj7.uSG6EOH.soIx5GsF2qpacSLfunN4d8W', 'admin', 'mKqKnt2LoE2iT9NHYYyyuI1LR3MuVbg7FBtGclzwRSpiEs0D84fSW5x84AeJ', '2018-12-14 18:53:07', '2018-12-14 18:53:07'),
+	(5, 'admin', 'admin@yahoo.com', '$2y$10$hjVNnY28/AvHmzrPE2nj7.uSG6EOH.soIx5GsF2qpacSLfunN4d8W', 'admin', 'aoScegkt6g4ZIAlgi66mRI1214Dnk5DJC58rlkDyQGSluMAyqJUfTkcFxnnI', '2018-12-14 18:53:07', '2018-12-14 18:53:07'),
 	(6, 'dsaadasd', 'sadsad', '$2y$10$AOo5i.rNq4SQtMaij8u0Ke6Lv5tj3ZAeCLglkw.cZQidzWNB1cBd2', 'user', NULL, '2018-12-17 03:05:55', '2018-12-17 03:05:55'),
 	(7, 'dsada', 'sdadasd', '$2y$10$D0DD9t3mB6FY/hlKSFer3ew0w3Zh/2w/7sRwNSSt8hraZNZpNV.uK', 'admin', NULL, '2018-12-17 03:07:26', '2018-12-17 03:07:26'),
 	(9, 'cxzczczxCXZC', 'CXZCZXC', '$2y$10$qvhLY.OJhbcxx.TFWNadSu.oHXTREy6SdXIocB87ZnGroDmdVEP3C', 'admin', NULL, '2018-12-17 03:09:26', '2018-12-17 03:09:26'),
-	(10, 'operator', 'operator@yahoo.com', '$2y$10$2hAy.hPZbVCh/VitVVsT..qQNKhGtgcRJM741dixalqQFG1iXPROC', 'operator', '7G9iiIGEFKXbIcC28qfzQf2sOtBO6eRZAk8cjLp953g4kvk9akdz2RrQAokh', '2018-12-21 15:45:57', '2018-12-21 15:45:57'),
-	(11, 'bayu', 'fanani707@gmail.com', '$2y$10$LadlLO4IKLy7lkokpR6/q.6Izez1laeFPAx9/4nMhRHj6JANXgj9W', 'user', '', '2019-06-25 14:37:35', '2019-06-25 14:37:35'),
+	(10, 'operator', 'operator@yahoo.com', '$2y$10$2hAy.hPZbVCh/VitVVsT..qQNKhGtgcRJM741dixalqQFG1iXPROC', 'operator', 'Vt4sP6R6S2zVtAYGSA2NPZiKNHZiF9X9R1Lsb318FF753BczfAQGeaopMHAM', '2018-12-21 15:45:57', '2018-12-21 15:45:57'),
+	(11, 'bayu', 'fanani707@gmail.com', '$2y$10$LadlLO4IKLy7lkokpR6/q.6Izez1laeFPAx9/4nMhRHj6JANXgj9W', 'user', '87G4C7VfFYEan1Q27oTprNM1poMiXRearqRIzdDGOv0JZfeFxugRFIfXdnU3', '2019-06-25 14:37:35', '2019-06-25 14:37:35'),
 	(12, 'alen alvero', 'arrow1658229alen@gmail.com', '$2y$10$urVvBOkyckKwgTT.ypT3SOEgmmx/LLJ40ibyz7vwY1b6P6xeOmOIe', 'user', 'wTSqGDO15057QLZb0dPYnHJMc85Rfr9KzFwR051yIwlhtWJt2KtMZd0qXt7l', '2019-06-26 04:06:17', '2019-06-26 04:06:17');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
