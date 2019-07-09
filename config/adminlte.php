@@ -170,6 +170,13 @@ return [
             'url'  => 'operator/mobil',
             'icon' => 'car',
             'role' => 'operator'
+
+        ],
+        [
+            'text' => 'Promo Paket',
+            'url'  => 'operator/promo',
+            'icon' => 'bullseye',
+            'role' => 'operator',
         ],
         [
             'text' => 'Pembayaran',
@@ -187,7 +194,7 @@ return [
                     'url'  => 'operator/konfirmasi_pembayaran',
                     'role' => 'operator'
                 ],
-            ]
+            ],
         ],
         [
             'text' => 'User',
@@ -233,6 +240,6 @@ return [
     'plugins' => [
         'datatables' => true,
         'select2'    => true,
-        'chartjs'    => true,
+        'chartjs'    => true
     ],
 ];

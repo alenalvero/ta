@@ -55,6 +55,9 @@ Route::group(
 		Route::get('operator/pemesanan/{id}edit', 'PemesananController@edit');
 		Route::get('operator/pemesanan/{id}edit', 'PemesananController@update');
 		Route::get('operator/pemesanan/{id}/pilih-mobil', 'PemesananController@pilih_mobil');
+		Route::resource('operator/hotel', 'HotelController');
+		Route::resource('operator/mobil', 'MobilController');
+		Route::resource('operator/promo', 'PromoController');
 	}
 );
 Route::get('/get_wisata/{id}', 'TrayekController@get_wisata');
@@ -83,7 +86,6 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 	Route::get('admin/user/destroy/{id}', 'UserController@destroy');
 	Route::put('admin/user/edit/{id}', 'UserController@update');
 	Route::get('admin/user/edit/{id}', 'UserController@edit');
-	
 });
 
 Auth::routes();
