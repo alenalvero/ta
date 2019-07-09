@@ -51,8 +51,10 @@ border-width: 5px;
 										<span><a href="#">2 Comments</a></span>
 									</p>
 								</div>
-								<h2><a href="#">A Definitive Guide to the Best Dining</a></h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, qui quod ipsum harum id, minima nesciunt! Saepe soluta, vitae quas expedita voluptatem voluptates placeat numquam provident quis, atque nisi iure?</p>
+								<span class="rate-star"><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span>
+							
+									<h3>{{$paket_tour->nama_tour}}</h3>
+									<p>{!! $paket_tour->keterangan !!}</p> 
 							</div>
 						</article>
 					</div>

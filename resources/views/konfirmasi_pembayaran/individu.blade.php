@@ -22,11 +22,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <table>
-            <td>
-              <a href='{{url('home/create') }}'><button class="btn bg-maroon btn-flat margin"  type="button">Create</button></a>
-            </td>
-            </table>
+           
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -34,7 +30,7 @@
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>Id Pemesanan</th>
+             
                   <th>Nama Pemesan</th>
                   <th>Tanggal Pemesanan</th>
                   <th>Foto</th>
@@ -45,7 +41,7 @@
                 <tbody>
                 @foreach($konfirmasi_pembayaran as $item)
                 <tr>
-                  <td>{{$item->id_pemesanan_paket}}</td>
+              
                   <td>{{$item->pemesanan->nama_pelanggan}}</td>
                   <td>{{$item->created_at->format('d/m/Y')}}</td>
                   <td><img src="{{Storage::url($item->foto)}}" height="50" width="50"></td>

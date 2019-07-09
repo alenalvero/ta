@@ -33,10 +33,10 @@
                 <thead>
                 <tr>
                   <th>Nama Pelanggan</th>
-                  <th>Trayek</th>
-                
-                  <th>Tanggal Pesan</th>
-                  <th>Bis</th>
+                 
+                  <th>Tanggal Berangkat</th>
+                  <th>Tanggal Kembali</th>
+                  <th>Kendaraan</th>
                   <th>Status</th>                
                   <th>Pembayaran</th>
                   <th>Aksi</th>  
@@ -45,10 +45,9 @@
                 <tbody>
                 @foreach($pemesanan as $item)
                 <tr>
-                  <td></td>
-                  <td>
-                  </td>
-                  <td></td>
+                  <td>{{$item->nama_pelanggan}}</td>
+                  <td>{{$item->tgl}}</td>
+                  <td>{{$item->tgl2}}</td>
                   <td>
                     @if($item->bis == null and $item->id_mobil == null)
                     <a href='{{url('operator/pemesanan/'.$item->id.'/edit') }}'>
