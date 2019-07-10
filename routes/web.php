@@ -48,9 +48,9 @@ Route::group(
 		Route::put('operator/trayek/edit/{id}', 'TrayekController@update');
 		Route::get('operator/trayek/edit/{id}', 'TrayekController@edit');
 		Route::get('operator/trayek/destroy/{id}', 'TrayekController@destroy');
-	
-	Route::resource('operator/hotel', 'HotelController');
-	Route::resource('operator/mobil', 'MobilController');
+
+		Route::resource('operator/hotel', 'HotelController');
+		Route::resource('operator/mobil', 'MobilController');
 
 		Route::get('operator/pemesanan/{id}edit', 'PemesananController@edit');
 		Route::get('operator/pemesanan/{id}edit', 'PemesananController@update');
@@ -58,6 +58,8 @@ Route::group(
 		Route::resource('operator/hotel', 'HotelController');
 		Route::resource('operator/mobil', 'MobilController');
 		Route::resource('operator/promo', 'PromoController');
+		Route::post('operator/promo/{id}', 'PromoController@simpan_promo_paket');
+		Route::get('operator/promo/{id}/hapus_promo_paket/{id_p_p}', 'PromoController@hapus_promo_paket')->name('promo_paket.destroy');
 	}
 );
 Route::get('/get_wisata/{id}', 'TrayekController@get_wisata');

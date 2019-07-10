@@ -7,6 +7,7 @@ use App\Promo;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use App\Paket_tour;
+use App\PromoPaket;
 
 class PromoController extends Controller
 {
@@ -82,11 +83,30 @@ class PromoController extends Controller
      */
     public function show($id)
     {
+        $promo = Promo::findOrFail($id);
+        $promo_paket = PromoPaket::where('id_promo', $id)->pluck('id_paket')->toArray();
+        $pakets = Paket_tour::whereNotIn('id', $promo_paket)->get();
         $data = [
-            'promo' => Promo::findOrFail($id),
-            'pakets' => Paket_tour::all()
+            'promo' => $promo,
+            'pakets' => $pakets
         ];
         return view('promo.show', $data);
+    }
+
+    public function simpan_promo_paket(Request $r, $id)
+    {
+        $promo_paket = new PromoPaket;
+        $promo_paket->id_promo = $id;
+        $promo_paket->id_paket = $r->id_paket;
+        $promo_paket->save();
+        return redirect()->route('promo.show', $id);
+    }
+
+    public function hapus_promo_paket($id, $id_p_p)
+    {
+        $promo_paket = PromoPaket::findOrFail($id_p_p);
+        $promo_paket->delete();
+        return redirect()->route('promo.show', $id);
     }
 
     /**

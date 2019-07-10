@@ -8,4 +8,9 @@ class PromoPaket extends Model
 {
     protected $table = 'promo_paket';
     public $timestamps = false;
+
+    public function paket()
+    {
+        return $this->hasOne('App\Paket_tour', 'id', 'id_paket');
+    }
 }

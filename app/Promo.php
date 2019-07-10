@@ -23,4 +23,9 @@ class Promo extends Model
 
         return false;
     }
+
+    public function get_paket()
+    {
+        return PromoPaket::where('id_promo', $this->id)->get();
+    }
 }
