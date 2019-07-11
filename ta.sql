@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `hotel` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
--- Dumping data for table ta-alen.hotel: ~4 rows (approximately)
+-- Dumping data for table ta-alen.hotel: ~5 rows (approximately)
 DELETE FROM `hotel`;
 /*!40000 ALTER TABLE `hotel` DISABLE KEYS */;
 INSERT INTO `hotel` (`id`, `bintang_hotel`, `harga`) VALUES
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `karyawans` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table ta-alen.karyawans: ~0 rows (approximately)
+-- Dumping data for table ta-alen.karyawans: ~1 rows (approximately)
 DELETE FROM `karyawans`;
 /*!40000 ALTER TABLE `karyawans` DISABLE KEYS */;
 INSERT INTO `karyawans` (`id`, `nama`, `alamat`, `telp`, `created_at`, `updated_at`) VALUES
@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `konfirmasi_pembayarans` (
   CONSTRAINT `konfirmasiPaket_foreign` FOREIGN KEY (`id_pemesanan_paket`) REFERENCES `pemesanan_paket_tours` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table ta-alen.konfirmasi_pembayarans: ~2 rows (approximately)
+-- Dumping data for table ta-alen.konfirmasi_pembayarans: ~3 rows (approximately)
 DELETE FROM `konfirmasi_pembayarans`;
 /*!40000 ALTER TABLE `konfirmasi_pembayarans` DISABLE KEYS */;
 INSERT INTO `konfirmasi_pembayarans` (`id`, `id_pemesanan_paket`, `foto`, `status`, `created_at`, `updated_at`) VALUES
@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `konfirmasi_pemesanans` (
   KEY `konfirmasi_pemesanan_index` (`id_pemesanan`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table ta-alen.konfirmasi_pemesanans: ~2 rows (approximately)
+-- Dumping data for table ta-alen.konfirmasi_pemesanans: ~4 rows (approximately)
 DELETE FROM `konfirmasi_pemesanans`;
 /*!40000 ALTER TABLE `konfirmasi_pemesanans` DISABLE KEYS */;
 INSERT INTO `konfirmasi_pemesanans` (`id`, `id_pemesanan`, `foto`, `status`, `created_at`, `updated_at`) VALUES
@@ -218,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `mobil` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumping data for table ta-alen.mobil: ~0 rows (approximately)
+-- Dumping data for table ta-alen.mobil: ~1 rows (approximately)
 DELETE FROM `mobil`;
 /*!40000 ALTER TABLE `mobil` DISABLE KEYS */;
 INSERT INTO `mobil` (`id`, `harga_mobil`, `nama_mobil`) VALUES
@@ -338,11 +338,11 @@ CREATE TABLE IF NOT EXISTS `pemesanans` (
 DELETE FROM `pemesanans`;
 /*!40000 ALTER TABLE `pemesanans` DISABLE KEYS */;
 INSERT INTO `pemesanans` (`id`, `id_user`, `nama_pelanggan`, `alamat`, `no_telp`, `jumlah_orang`, `id_kota`, `id_bis`, `id_mobil`, `tgl`, `tgl2`, `id_hotel`, `jumlah_total`, `created_at`, `updated_at`) VALUES
-	(2, 10, NULL, NULL, NULL, 50, 1, 3, 1, NULL, NULL, 3, NULL, NULL, NULL),
+	(2, 10, NULL, NULL, NULL, 50, 1, 3, 1, '6/26/2019', '6/27/2019', 3, NULL, NULL, NULL),
 	(6, 11, 'bayu', 'sumoroto', '432432432', 56, 1, 3, 1, '6/26/2019', '7/7/2019', 3, NULL, '2019-06-25 14:38:06', '2019-06-25 16:52:59'),
-	(7, 12, 'alen alvero', 'ponorog', '4354365654', 40, 1, 3, 1, '6/26/2019', NULL, 3, NULL, '2019-06-26 04:06:53', '2019-06-26 10:22:48'),
-	(13, 11, 'tes user', 'dddd', '+628331231334', 5, 1, NULL, 1, '7/1/2019', '7/8/2019', 3, NULL, '2019-06-30 17:18:20', '2019-07-04 16:56:34'),
-	(14, 11, 'tes user', 'aaaa', '123123', 2, 1, NULL, 1, '7/1/2019', '7/9/2019', 3, NULL, '2019-06-30 18:10:36', '2019-06-30 18:42:17');
+	(7, 12, 'alen alvero', 'ponorog', '4354365654', 40, 1, 3, 1, '6/26/2019', '6/26/2019', 3, NULL, '2019-06-26 04:06:53', '2019-06-26 10:22:48'),
+	(13, 11, 'tes user', 'dddd', '+628331231334', 5, 1, 4, 1, '7/1/2019', '7/8/2019', 3, NULL, '2019-06-30 17:18:20', '2019-07-04 16:56:34'),
+	(14, 11, 'tes user', 'aaaa', '123123', 2, 1, 3, 1, '7/1/2019', '7/9/2019', 3, NULL, '2019-06-30 18:10:36', '2019-06-30 18:42:17');
 /*!40000 ALTER TABLE `pemesanans` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.pemesanan_paket_tours
@@ -363,7 +363,7 @@ CREATE TABLE IF NOT EXISTS `pemesanan_paket_tours` (
   CONSTRAINT `pemesananPaket_user_foreign` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table ta-alen.pemesanan_paket_tours: ~4 rows (approximately)
+-- Dumping data for table ta-alen.pemesanan_paket_tours: ~5 rows (approximately)
 DELETE FROM `pemesanan_paket_tours`;
 /*!40000 ALTER TABLE `pemesanan_paket_tours` DISABLE KEYS */;
 INSERT INTO `pemesanan_paket_tours` (`id`, `id_user`, `nama_pelanggan_paket`, `alamat`, `no_telp`, `id_paket`, `tgl`, `created_at`, `updated_at`) VALUES
@@ -403,7 +403,7 @@ CREATE TABLE IF NOT EXISTS `promos` (
   UNIQUE KEY `Index 2` (`kode`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
--- Dumping data for table ta-alen.promos: ~2 rows (approximately)
+-- Dumping data for table ta-alen.promos: ~3 rows (approximately)
 DELETE FROM `promos`;
 /*!40000 ALTER TABLE `promos` DISABLE KEYS */;
 INSERT INTO `promos` (`id`, `nama_promo`, `kode`, `start`, `expired`, `diskon_persen`, `maksimal_diskon`, `foto`) VALUES
