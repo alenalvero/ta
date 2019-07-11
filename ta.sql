@@ -393,21 +393,23 @@ DELETE FROM `permissions`;
 CREATE TABLE IF NOT EXISTS `promos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_promo` varchar(50) DEFAULT NULL,
-  `kode` varchar(50) DEFAULT NULL,
+  `kode` varchar(50) NOT NULL,
   `start` date DEFAULT NULL,
   `expired` date DEFAULT NULL,
   `diskon_persen` int(11) DEFAULT NULL,
   `maksimal_diskon` int(11) DEFAULT NULL,
+  `foto` varchar(225) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Index 2` (`kode`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table ta-alen.promos: ~2 rows (approximately)
 DELETE FROM `promos`;
 /*!40000 ALTER TABLE `promos` DISABLE KEYS */;
-INSERT INTO `promos` (`id`, `nama_promo`, `kode`, `start`, `expired`, `diskon_persen`, `maksimal_diskon`) VALUES
-	(1, 'Promo baru', 'WarokHa\'e', '2019-07-08', '2019-07-09', 10, 100000),
-	(2, 'Diskon Akhir Bulan', 'AkhirBulan2019', '2019-07-10', '2019-07-31', 10, 50000);
+INSERT INTO `promos` (`id`, `nama_promo`, `kode`, `start`, `expired`, `diskon_persen`, `maksimal_diskon`, `foto`) VALUES
+	(1, 'Promo baru', 'WarokHa\'e', '2019-07-08', '2019-07-09', 10, 100000, 'promo/5E7jXhapnmeWY8oeP7nmLbgMJfe86gyzDwBTnFcN.jpeg'),
+	(2, 'Diskon Akhir Bulan', 'AkhirBulan2019', '2019-07-10', '2019-07-31', 10, 50000, 'promo/z4ztdLnPJbGOzPPPAiWibzObTexvFiq7g5L3mkR8.jpeg'),
+	(4, 'ddd', 'ddd1', '2019-07-09', '2019-07-24', 10, 100000, 'promo/mtIJmzy8huCh8wBpq0dnz0MBuPtMeX1SiWQgocwQ.jpeg');
 /*!40000 ALTER TABLE `promos` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.promo_paket
@@ -416,25 +418,15 @@ CREATE TABLE IF NOT EXISTS `promo_paket` (
   `id_promo` int(11) NOT NULL DEFAULT '0',
   `id_paket` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Dumping data for table ta-alen.promo_paket: ~0 rows (approximately)
+-- Dumping data for table ta-alen.promo_paket: ~2 rows (approximately)
 DELETE FROM `promo_paket`;
 /*!40000 ALTER TABLE `promo_paket` DISABLE KEYS */;
+INSERT INTO `promo_paket` (`id`, `id_promo`, `id_paket`) VALUES
+	(1, 1, 1),
+	(2, 1, 9);
 /*!40000 ALTER TABLE `promo_paket` ENABLE KEYS */;
-
--- Dumping structure for table ta-alen.promo_user
-CREATE TABLE IF NOT EXISTS `promo_user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_user` int(11) DEFAULT '0',
-  `id_promo` int(11) DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Dumping data for table ta-alen.promo_user: ~0 rows (approximately)
-DELETE FROM `promo_user`;
-/*!40000 ALTER TABLE `promo_user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `promo_user` ENABLE KEYS */;
 
 -- Dumping structure for table ta-alen.roles
 CREATE TABLE IF NOT EXISTS `roles` (
