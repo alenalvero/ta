@@ -6,6 +6,8 @@ use App\Paket_tour;
 use App\Pemesanan_paket_tour;
 use App\User;
 use Illuminate\Http\Request;
+use App\Promo;
+use Illuminate\Support\Carbon;
 
 class Customer_PaketTourController extends Controller
 {
@@ -16,10 +18,11 @@ class Customer_PaketTourController extends Controller
 		// $view->paket_tour = Paket_tour::all();
 		// return $view;
 
-		$customer_PaketTour = Paket_tour::all();
 		$customer_PaketTour = Paket_tour::latest()->paginate(6);
+		$sekarang = Carbon::now();
+		$promos = Promo::where('expired', '>', $sekarang)->get();
 
-		return view('customer.customer_PaketTour', compact('customer_PaketTour'));
+		return view('customer.customer_PaketTour', compact('customer_PaketTour', 'promos'));
 	}
 	public function detail($id)
 	{
