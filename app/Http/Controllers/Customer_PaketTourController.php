@@ -8,6 +8,8 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Promo;
 use Illuminate\Support\Carbon;
+use App\PromoPaket;
+use App\PromoPemesananPaket;
 
 class Customer_PaketTourController extends Controller
 {
@@ -40,6 +42,17 @@ class Customer_PaketTourController extends Controller
 
 	public function store(Request $request)
 	{
+		$sekarang = Carbon::now();
+		$cek_promo = PromoPaket::whereHas('promo', function ($q) use ($request, $sekarang) {
+			$q->where('kode', $request->kode_promo)
+				->where('start', '<=', $sekarang)
+				->where('expired', '>=', $sekarang);
+		})->where('id_paket', $request->id_paket)->first();
+
+		if (is_null($cek_promo)) {
+			return redirect()->back()->withInput()->with('promo_invalid', 'Promo tidak valid untuk paket ini / belum bisa digunakan, silakan cek tanggal berlaku kode.');
+		}
+
 		$pemesanan_paket_tour = new Pemesanan_paket_tour;
 		$pemesanan_paket_tour->id_user = auth()->user()->id;
 		$pemesanan_paket_tour->nama_pelanggan_paket = $request->input('nama_pelanggan_paket');
@@ -51,6 +64,10 @@ class Customer_PaketTourController extends Controller
 		// $pemesanan_paket_tour->tgl2 = $request->input('tgl2');
 		$pemesanan_paket_tour->save();
 
+		$promo_pemesanan_paket = new PromoPemesananPaket;
+		$promo_pemesanan_paket->id_promo = $cek_promo->id_promo;
+		$promo_pemesanan_paket->id_pemesanan_paket = $pemesanan_paket_tour->id;
+		$promo_pemesanan_paket->save();
 
 
 		/* $data = [

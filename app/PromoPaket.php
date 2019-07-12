@@ -13,4 +13,9 @@ class PromoPaket extends Model
     {
         return $this->hasOne('App\Paket_tour', 'id', 'id_paket');
     }
+
+    public function promo()
+    {
+        return $this->hasOne('App\Promo', 'id', 'id_promo');
+    }
 }
