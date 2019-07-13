@@ -74,6 +74,14 @@ border-width: 5px;
 										<b>Tanggal Berangkat</b><br/>
 										{{$pemesanan_paket_tour->tgl}}
 									</p>
+									<div class="alert alert-info" role="alert">
+										<p>
+											<b>Total</b><br/>
+											(harga) - (diskon) <br/>
+											Rp. {{number_format($pemesanan_paket_tour->paket_tour->harga, 2, ',', '.')}} - Rp. {{number_format($pemesanan_paket_tour->diskon, 2, ',', '.')}}<br/>
+											<b>Total bayar:</b> Rp. {{number_format($pemesanan_paket_tour->paket_tour->harga - $pemesanan_paket_tour->diskon, 2, ',', '.')}}
+										</p>
+									</div>
 								</div>
 							</article>
 						</div>

@@ -44,15 +44,6 @@ border-width: 5px;
 						<article class="animate-box">
 							<div class="blog-img" style="background: url('{{asset('images/'.$paket_tour->foto)}}'); background-size:cover"></div>
 							<div class="desc">
-								<div class="meta">
-									<p>
-										<span>August 24, 2017 </span>
-										<span>admin </span>
-										<span><a href="#">2 Comments</a></span>
-									</p>
-								</div>
-								<span class="rate-star"><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span>
-							
 									<h3>{{$paket_tour->nama_tour}}</h3>
 									<p>{!! $paket_tour->keterangan !!}</p> 
 							</div>
@@ -71,9 +62,20 @@ border-width: 5px;
 									</div>
 									<div class="col-md-12">
 										<div class="form-group">
+											<label for="kode_promo">Kode Promo</label>
+											<div class="form-field">
+												<input type="text" name="kode_promo" class="form-control" >
+												@if(session()->has('promo_invalid'))
+												<p style="color: red">{{session()->get('promo_invalid')}}</p>
+												@endif
+											</div>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
 											<label for="nama">Nama Lengkap</label>
 											<div class="form-field">
-												<input type="text" name="nama_pelanggan_paket" class="form-control" >
+												<input type="text" name="nama_pelanggan_paket" class="form-control" value="{{old('nama_pelanggan_paket')}}">
 											</div>
 										</div>
 									</div>
@@ -82,7 +84,7 @@ border-width: 5px;
 										<div class="form-group">
 											<label for="alamat">Alamat</label>
 											<div class="form-field">
-												<input type="text" name="alamat" class="form-control" >
+												<input type="text" name="alamat" class="form-control" value="{{old('alamat')}}">
 											</div>
 										</div>
 									</div>
@@ -90,7 +92,7 @@ border-width: 5px;
 										<div class="form-group">
 											<label for="no_telp">Nomer Telfon</label>
 											<div class="form-field">
-												<input type="text" name="no_telp" class="form-control" >
+												<input type="text" name="no_telp" class="form-control" value="{{old('no_telp')}}">
 											</div>
 										</div>
 									</div>
@@ -99,7 +101,7 @@ border-width: 5px;
 											<label for="tgl">Tanggal</label>
 											<div class="form-field">
 												<i class="icon icon-calendar2"></i>
-												<input type="text" name="tgl" id="tgl" class="form-control" placeholder="Tanggal">
+												<input type="text" name="tgl" id="tgl" class="form-control" placeholder="Tanggal" value="{{old('tgl')}}">
 											</div>
 										</div>
 									</div>

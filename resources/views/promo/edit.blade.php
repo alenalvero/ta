@@ -25,7 +25,7 @@
           </ul>
         </div>
       @endif
-      <form action="{{route('promo.update', $promo->id)}}" method="post">
+      <form action="{{route('promo.update', $promo->id)}}" method="post" enctype="multipart/form-data">
         {{method_field('PUT')}}
         {{ csrf_field() }}
         <div class="form-group">
@@ -35,6 +35,12 @@
         <div class="form-group">
           <label for="kode">Kode Promo</label>
           <input type="text" class="form-control" id="kode" name="kode" placeholder="Kode promo" value="{{$promo->kode}}">
+        </div>
+        <div class="form-group">
+          <label>Gambar promo</label><br/>
+          <img src="{{asset('storage/'.$promo->foto)}}" alt="" height="128"><br/><br/>
+          <label for="gambar_promo">Upload Gambar Baru</label>
+          <input type="file" class="form-control" id="gambar_promo" name="gambar_promo" value="{{old('gambar_promo')}}">
         </div>
         <div class="form-group">
           <label for="start">Tanggal Aktif</label>
