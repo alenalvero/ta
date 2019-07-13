@@ -3,28 +3,28 @@
 @section('content')
 <table border="1">
 		<aside id="colorlib-hero">
-			<div class="flexslider">
-				<ul class="slides">
-			   	<li style="background-image: url(images/img_bg_5.jpg);">
-			   		<div class="overlay"></div>
-			   		<div class="container-fluid">
-			   			<div class="row">
-				   			<div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
-				   				<div class="slider-text-inner slider-text-inner2 text-center">
-				   				
-				   					<h1>Paket Tour</h1>
-				   				</div>
-				   			</div>
-				   		</div>
-			   		</div>
-			   	</li>
-			  	</ul>
-		  	</div>
+		<div class="flexslider">
+			<ul class="slides">
+				@foreach ($promos as $item)
+				<li style="background-image: url('{{asset('storage/'.$item->foto)}}'); background-size:cover">
+					<div class="overlay"></div>
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
+								<div class="slider-text-inner text-center">
+									<h2>{{$item->start->format('d/m/Y')}} - {{$item->expired->format('d/m/Y')}}</h2>
+									<h1>{{$item->nama_promo}}</h1>
+									<h2>Kode: {{$item->kode}}</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				@endforeach
+			</ul>
+		</div>
 		</aside>
-		
-	
 		<div id="colorlib-rooms" class="colorlib-light-grey">
-			
 			<div class="container">
 				<div class="row">
 					@foreach($customer_PaketTour as $item)	

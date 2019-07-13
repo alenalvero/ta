@@ -25,7 +25,7 @@
           </ul>
         </div>
       @endif
-      <form action="{{route('promo.store')}}" method="post">
+      <form action="{{route('promo.store')}}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="form-group">
           <label for="nama_promo">Nama Promo</label>
@@ -34,6 +34,10 @@
         <div class="form-group">
           <label for="kode">Kode Promo</label>
           <input type="text" class="form-control" id="kode" name="kode" placeholder="Kode promo" required value="{{old('kode')}}">
+        </div>
+        <div class="form-group">
+          <label for="gambar_promo">Gambar Promo</label>
+          <input type="file" class="form-control" id="gambar_promo" name="gambar_promo" value="{{old('gambar_promo')}}">
         </div>
         <div class="form-group">
           <label for="start">Tanggal Aktif</label>
