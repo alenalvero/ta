@@ -13,7 +13,7 @@ class WelcomeController extends Controller
 			return redirect('/admin');
 		}
 		if (auth()->user()->type == 'operator') {
-			return redirect('/operator');
+			return redirect('/operator/pemesanan');
 		}
 		if (auth()->user()->type == 'user') {
 			return redirect('/');

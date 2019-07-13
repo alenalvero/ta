@@ -11,8 +11,8 @@
 			   			<div class="row">
 				   			<div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
 				   				<div class="slider-text-inner slider-text-inner2 text-center">
-				   					<h2>Choose our Best</h2>
-				   					<h1>Rooms &amp; Suites</h1>
+				   				
+				   					<h1>Paket Tour</h1>
 				   				</div>
 				   			</div>
 				   		</div>

@@ -17,10 +17,7 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(
 	['middleware' => ['auth', 'role:operator']],
 	function () {
-		Route::get('/operator', function () {
-			dd(auth()->user()->type);
-		});
-
+		
 		Route::resource('operator/paket_tour', 'Paket_tourController');
 		Route::get('operator/paket_tour/destroy/{id}', 'Paket_tourController@destroy');
 		// Route::resource('operator/pelanggan', 'PelangganController');

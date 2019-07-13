@@ -69,7 +69,7 @@ table td, th {
 					</div>
 					<div class="about animate-box">
 						<p>*Click your ORDER-ID to see detail status</p>	
-							<table border="1">
+							<table border="0">
 								<tr bgcolor='#EE6868'>
 									<th width="150" height="30" style="background-color: #eee;">&nbsp;&nbsp;ORDER</th>
 									<th width="200" style="background-color: #eee;">&nbsp;&nbsp;DATE</th>
@@ -92,7 +92,7 @@ table td, th {
 										@endif
 									</td>
 									<td>
-										@if(!is_null($item->id_bis))
+										@if(!is_null($item->id_bis) or !is_null($item->id_mobil))
 										Rp. {{number_format($item->harga_total(), 2, ',', '.')}}
 										@endif
 									</td>
