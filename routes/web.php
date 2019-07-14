@@ -17,7 +17,7 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(
 	['middleware' => ['auth', 'role:operator']],
 	function () {
-		
+
 		Route::resource('operator/paket_tour', 'Paket_tourController');
 		Route::get('operator/paket_tour/destroy/{id}', 'Paket_tourController@destroy');
 		// Route::resource('operator/pelanggan', 'PelangganController');
@@ -57,6 +57,9 @@ Route::group(
 		Route::resource('operator/promo', 'PromoController');
 		Route::post('operator/promo/{id}', 'PromoController@simpan_promo_paket');
 		Route::get('operator/promo/{id}/hapus_promo_paket/{id_p_p}', 'PromoController@hapus_promo_paket')->name('promo_paket.destroy');
+		Route::resource('operator/rekap', 'RekapController');
+		Route::get('operator/cetak_bulan', 'RekapController@cetak_bulan')->name('rekap.cetak_bulan');
+		Route::get('operator/cetak_tahun', 'RekapController@cetak_tahun')->name('rekap.cetak_tahun');
 	}
 );
 Route::get('/get_wisata/{id}', 'TrayekController@get_wisata');

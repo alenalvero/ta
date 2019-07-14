@@ -140,7 +140,7 @@ return [
             'icon' => 'taxi',
             'role' => 'operator'
         ],
-        
+
         [
             'text' => 'Bis',
             'url'  => 'operator/bis',
@@ -164,7 +164,7 @@ return [
             'url'  => 'operator/hotel',
             'icon' => 'home',
             'role' => 'operator'
-        ], 
+        ],
         [
             'text' => 'Mobil',
             'url'  => 'operator/mobil',
@@ -195,6 +195,12 @@ return [
                     'role' => 'operator'
                 ],
             ],
+        ],
+        [
+            'text' => 'Rekap',
+            'url'  => 'operator/rekap',
+            'icon' => 'file',
+            'role' => 'operator'
         ],
         [
             'text' => 'User',
