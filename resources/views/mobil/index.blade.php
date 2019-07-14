@@ -4,7 +4,7 @@
 
 @section('content_header')
   <h1>
-    Data Hotel
+    Data Mobil
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
