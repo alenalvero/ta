@@ -2,10 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Pemesanan;
+use PDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RekapController extends Controller
 {
+    private $bulans = [
+        'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -13,24 +30,28 @@ class RekapController extends Controller
      */
     public function index()
     {
+        $hasil = Pemesanan::select(DB::raw('YEAR(created_at) as thn'))->groupBy('thn')->get();
         $data = [
-            'bulan' => [
-                'Januari',
-                'Februari',
-                'Maret',
-                'April',
-                'Mei',
-                'Juni',
-                'Juli',
-                'Agustus',
-                'September',
-                'Oktober',
-                'November',
-                'Desember'
-            ]
+            'bulans' => $this->bulans,
+            'tahuns' => $hasil
         ];
 
         return view('rekap.index', $data);
+    }
+
+    public function cetak_bulan(Request $r)
+    {
+        $data = [
+            'bulan_angkah' => $r->bulan,
+            'bulan_terpilih' => $this->bulans[$r->bulan],
+            'tahun_terpilih' => $r->tahun,
+            'bulan' => $this->bulans[$r->bulan],
+            'root' => $r->root()
+        ];
+
+        // return view('rekap.per_bulan', $data);
+        $pdf = PDF::loadView('rekap.per_bulan', $data);
+        return $pdf->stream('Rekap Bulan ' . $data['bulan_terpilih']);
     }
 
     /**
