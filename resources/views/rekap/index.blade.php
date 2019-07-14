@@ -52,7 +52,7 @@
   <section class="box">
     <div class="box-body">
       <h3>Cetak Pertahun</h3>
-      <form action="{{route('rekap.cetak_tahun')}}" method="get" class="form-inline">
+      <form action="{{route('rekap.cetak_tahun')}}" method="get" class="form-inline" target="_target">
         <div class="form-group">
           <label for="tahun">Tahun</label><br/>
           <select name="tahun" id="tahun" class="form-control" required>

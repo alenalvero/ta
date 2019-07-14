@@ -59,7 +59,7 @@ Route::group(
 		Route::get('operator/promo/{id}/hapus_promo_paket/{id_p_p}', 'PromoController@hapus_promo_paket')->name('promo_paket.destroy');
 		Route::resource('operator/rekap', 'RekapController');
 		Route::get('operator/cetak_bulan', 'RekapController@cetak_bulan')->name('rekap.cetak_bulan');
-		Route::get('operator/rekap/cetak_tahun', 'RekapController@cetak_tahun')->name('rekap.cetak_tahun');
+		Route::get('operator/cetak_tahun', 'RekapController@cetak_tahun')->name('rekap.cetak_tahun');
 	}
 );
 Route::get('/get_wisata/{id}', 'TrayekController@get_wisata');

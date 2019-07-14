@@ -75,6 +75,34 @@ class RekapController extends Controller
         return $pdf->stream('Rekap Bulan ' . $data['bulan_terpilih']);
     }
 
+    public function cetak_tahun(Request $r)
+    {
+        setLocale(LC_TIME, 'id');
+        if ($r->jenis_pemesanan == 1) {
+            $rekap = Pemesanan::whereYear('created_at', $r->tahun)
+                ->whereHas('konfirmasi_pemesanan', function ($q) {
+                    $q->where('status', 1);
+                })
+                ->get();
+        } else {
+            $rekap = Pemesanan_paket_tour::whereYear('created_at', $r->tahun)
+                ->whereHas('konfirmasi_pembayaran', function ($q) {
+                    $q->where('status', 1);
+                })
+                ->get();
+        }
+
+        $data = [
+            'tahun_terpilih' => $r->tahun,
+            'data_rekap' => $rekap,
+            'total_rekap' => 0,
+            'is_paket' => $r->jenis_pemesanan == 1 ? false : true
+        ];
+
+        $pdf = PDF::loadView('rekap.per_tahun', $data);
+        return $pdf->stream('Rekap Tahun ' . $data['tahun_terpilih']);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
