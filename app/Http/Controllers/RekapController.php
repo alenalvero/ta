@@ -7,6 +7,7 @@ use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\Pemesanan_paket_tour;
 
 class RekapController extends Controller
 {
@@ -43,12 +44,21 @@ class RekapController extends Controller
     public function cetak_bulan(Request $r)
     {
         setLocale(LC_TIME, 'id');
-        $rekap = Pemesanan::whereMonth('created_at', $r->bulan + 1)
-            ->whereYear('created_at', $r->tahun)
-            ->whereHas('konfirmasi_pemesanan', function ($q) {
-                $q->where('status', 1);
-            })
-            ->get();
+        if ($r->jenis_pemesanan == 1) {
+            $rekap = Pemesanan::whereMonth('created_at', $r->bulan + 1)
+                ->whereYear('created_at', $r->tahun)
+                ->whereHas('konfirmasi_pemesanan', function ($q) {
+                    $q->where('status', 1);
+                })
+                ->get();
+        } else {
+            $rekap = Pemesanan_paket_tour::whereMonth('created_at', $r->bulan + 1)
+                ->whereYear('created_at', $r->tahun)
+                ->whereHas('konfirmasi_pembayaran', function ($q) {
+                    $q->where('status', 1);
+                })
+                ->get();
+        }
 
         $data = [
             'bulan_angkah' => $r->bulan,
@@ -56,7 +66,8 @@ class RekapController extends Controller
             'tahun_terpilih' => $r->tahun,
             'bulan' => $this->bulans[$r->bulan],
             'data_rekap' => $rekap,
-            'total_rekap' => 0
+            'total_rekap' => 0,
+            'is_paket' => $r->jenis_pemesanan == 1 ? false : true
         ];
 
         // return view('rekap.per_bulan', $data);

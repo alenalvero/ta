@@ -21,6 +21,7 @@
     </tr>
   </table>
   <br/>
+  @if(!$is_paket)
   <table border="1" cellspacing="0" cellpadding="3" width="100%">
     <thead>
       <tr>
@@ -52,5 +53,38 @@
       </tr>
     </tfoot>
   </table>
+  @else
+  <table border="1" cellspacing="0" cellpadding="3" width="100%">
+    <thead>
+      <tr>
+        <th align="center">No</th>
+        <th>Pelanggan</th>
+        <th>Waktu Pesan</th>
+        <th>Paket</th>
+        <th>Bayar</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($data_rekap as $item)
+      <tr>
+        <td align="center">{{$loop->iteration}}</td>
+        <td>{{$item->nama_pelanggan_paket}}</td>
+        <td align="right">{{$item->created_at->formatLocalized('%e %B %G')}}</td>
+        <td>{{$item->paket_tour->nama_tour}}</td>
+        <td align="right">Rp. {{number_format($item->paket_tour->harga - $item->diskon, 2, ',', '.')}}</td>
+        @php
+        $total_rekap = $total_rekap + $item->paket_tour->harga - $item->diskon;
+        @endphp
+      </tr>
+      @endforeach
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="4">Total</th>
+        <th align="right">Rp. {{number_format($total_rekap, 2, ',', '.')}}</th>
+      </tr>
+    </tfoot>
+  </table>
+  @endif
 </body>
 </html>

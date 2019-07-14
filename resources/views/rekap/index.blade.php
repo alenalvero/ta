@@ -16,7 +16,7 @@
   <section class="box">
     <div class="box-body">
       <h3>Cetak Perbulan</h3>
-      <form action="{{route('rekap.cetak_bulan')}}" method="get" class="form-inline">
+      <form action="{{route('rekap.cetak_bulan')}}" method="get" class="form-inline" target="_blank">
         <div class="form-group">
           <label for="bulan">Bulan</label><br/>
           <select name="bulan" id="bulan" class="form-control" required>
