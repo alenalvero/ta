@@ -15,6 +15,10 @@
 									<h2>{{$item->start->format('d/m/Y')}} - {{$item->expired->format('d/m/Y')}}</h2>
 									<h1>{{$item->nama_promo}}</h1>
 									<h2>Kode: {{$item->kode}}</h2>
+									<span style="color: white">Untuk paket berikut</span> <br/>
+									@foreach ($item->promo_paket_tour as $prm)
+									<a href="customer_PaketTour/form_input_paket/{{$prm->paket->id}}/pesan" class="label label-success">{{$prm->paket->nama_tour}}</a>
+									@endforeach
 								</div>
 							</div>
 						</div>
