@@ -28,4 +28,9 @@ class Promo extends Model
     {
         return PromoPaket::where('id_promo', $this->id)->get();
     }
+
+    public function promo_paket_tour()
+    {
+        return $this->hasMany('App\PromoPaket', 'id_promo', 'id');
+    }
 }

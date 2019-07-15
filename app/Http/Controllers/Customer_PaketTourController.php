@@ -23,6 +23,7 @@ class Customer_PaketTourController extends Controller
 		$customer_PaketTour = Paket_tour::latest()->paginate(6);
 		$sekarang = Carbon::now();
 		$promos = Promo::where('expired', '>', $sekarang)->get();
+		// dd($promos->first()->promo_paket_tour->first()->paket);
 
 		return view('customer.customer_PaketTour', compact('customer_PaketTour', 'promos'));
 	}
