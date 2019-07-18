@@ -117,8 +117,8 @@
 							<div class="form-group">
 								<label for="jumlah">Jumlah Orang</label>
 								<div class="form-field">
-									<i class=""></i>
-									<input name="jumlah_orang" type="text" id="jumlah" class="form-control jumlah"
+									<i class="icon icon-user"></i>
+									<input name="jumlah_orang" type="number" id="jumlah" class="form-control jumlah"
 										placeholder="Jumlah Orang" required>
 								</div>
 							</div>
@@ -153,7 +153,7 @@
 							@for ($i = 0; $i < count($hotels); $i++)
 							<div class="col-md-2 @if($i == 0) col-md-offset-1 @endif">
 								<label style="text-align: center">
-									<input type="radio" name="id_hotel" value="{{$hotels[$i]->id}}"> <br/>
+									<input type="radio" class="radio_bintang" name="id_hotel" required value="{{$hotels[$i]->id}}"> <br/>
 									Bintang {{$hotels[$i]->bintang_hotel}}<br/>
 									@for ($n = 0; $n < $hotels[$i]->bintang_hotel; $n++)
 										<i class="icon-star-full full"></i>
@@ -161,6 +161,10 @@
 								</label>
 							</div>
 							@endfor
+						</div>
+						<div class="col-md-4" style="margin-bottom: 20px">
+							<h4 style="color: white; margin-top: 10px">Jumlah pesan kamar</h4>
+							<input type="number" name="jumlah_kamar" id="jumlah_kamar" placeholder="Jumlah kamar yang dipesan" name="jumlah_kamar" class="form-control" required min="1" onchange="check_kamar()">
 						</div>
 						<div class="col">
 							<input type="submit" id="submit" value="Lanjutkan proses pemesanan" class="btn btn-primary btn-block">
@@ -375,7 +379,17 @@
 				}
 			});
 		});
-	})
+	});
+
+	function check_kamar() {
+		var jumlah_kamar = $('#jumlah_kamar');
+		var jumlah_org = $('#jumlah');
+
+		if(jumlah_kamar.val() > jumlah_org.val()) {
+			alert('Jumlah tidak boleh melebihi jumlah orang!');
+			jumlah_kamar.val(jumlah_kamar.val()-1);
+		}
+	}
 
 	function add_item_wisata(parent, data) {
 		var kolom = document.createElement('div');
