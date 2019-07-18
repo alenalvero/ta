@@ -78,7 +78,12 @@ table td, th {
 								</tr>
 								@foreach ($profile as $item)
 								<tr>
-									<td height="30" >{{$item->id}}</td>
+									<td height="30" >
+										{{$item->id}} 
+										@if($item->konfirmasi_pemesanan != null && $item->konfirmasi_pemesanan->status == 1 && \Carbon\Carbon::createFromFormat('m/d/Y', $item->tgl2) < \Carbon\Carbon::now())
+										<a href="/review/{{$item->id}}" title="tinggalkan review untuk kami"> <i class="icon icon-bubbles"></i></a>
+										@endif
+									</td>
 									<td>{{$item->tgl}}</td>
 									<td>
 										@if($item->id_bis == null and $item->id_mobil == null)
