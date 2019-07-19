@@ -45,6 +45,7 @@ class CustomerController extends Controller
 		$pemesanan->jumlah_orang = $request->input('jumlah_orang');
 		$pemesanan->id_kota = $request->input('id_kota');
 		$pemesanan->id_hotel = $request->input('id_hotel');
+		$pemesanan->jumlah_kamar = $request->input('jumlah_kamar');
 		$pemesanan->save();
 
 		foreach ($data['id_tempat_wisata'] as $detail_wisata) {

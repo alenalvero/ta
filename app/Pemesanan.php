@@ -64,6 +64,11 @@ class Pemesanan extends Model
 		return $harga_total;
 	}
 
+	public function review()
+	{
+		return $this->hasOne('App\Review', 'id_pemesanan', 'id');
+	}
+
 	public function harga_kota()
 	{
 		$kota = Kota::find($this->id_kota);
@@ -73,7 +78,8 @@ class Pemesanan extends Model
 	public function harga_hotel()
 	{
 		$harga = $this->hotel->harga;
-		$jumlah_pesan_kamar = ceil($this->jumlah_orang / 2);
+		// $jumlah_pesan_kamar = ceil($this->jumlah_orang / 2);
+		$jumlah_pesan_kamar = $this->jumlah_kamar;
 		return $harga * $jumlah_pesan_kamar * $this->jumlah_hari;
 	}
 
