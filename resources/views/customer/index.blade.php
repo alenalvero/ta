@@ -30,8 +30,7 @@
 							<div class="slider-text-inner text-center">
 								<h2>Welcome to the Warok Tour</h2>
 								<h1>Warok Tour And Travel</h1>
-								<p><a class="btn btn-primary btn-demo" href="#"></i> View Detail</a> <a
-										class="btn btn-primary btn-learn">Know More</a></p>
+								<p><a class="btn btn-primary btn-demo" href="/customer_PaketTour"></i> View Paket</a> 
 							</div>
 						</div>
 					</div>
@@ -44,44 +43,16 @@
 						<div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
 							<div class="slider-text-inner text-center">
 								<h2>Discover &amp; Enjoy</h2>
-								<h1>Everything you need in luxehotel</h1>
-								<p><a class="btn btn-primary btn-demo" href="#"></i> View Detail</a> <a
-										class="btn btn-primary btn-learn">Know More</a></p>
+								<h1>Everything you need in Warok Tour Dan Travel</h1>
+								<p> <a
+										class="btn btn-primary btn-learn" href="/about">Know More</a></p>
 							</div>
 						</div>
 					</div>
 				</div>
 			</li>
-			<li style="background-image: url(images/img_bg_3.jpg);">
-				<div class="overlay"></div>
-				<div class="container-fluids">
-					<div class="row">
-						<div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
-							<div class="slider-text-inner text-center">
-								<h2>You are invited</h2>
-								<h1>We know how to please you</h1>
-								<p><a class="btn btn-primary btn-demo" href="#"></i> View Detail</a> <a
-										class="btn btn-primary btn-learn">Know More</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-			<li style="background-image: url(images/img_bg_4.jpg);">
-				<div class="overlay"></div>
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
-							<div class="slider-text-inner text-center">
-								<h2>Come &amp; enjoy the unforgetable nights</h2>
-								<h1>In the heart of luxehotel</h1>
-								<p><a class="btn btn-primary btn-demo" href="#"></i> View Detail</a> <a
-										class="btn btn-primary btn-learn">Know More</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
+			
+			
 		</ul>
 	</div>
 </aside>
@@ -235,7 +206,7 @@
 				<div class="desc animate-box">
 
 					<p class="price">
-						<span class="price-room">Free</span>
+						<span class="price-room">Bandung</span>
 					</p>
 					<p>Kota Bandung merupakan kota metropolitan terbesar di Provinsi Jawa Barat,
 						sekaligus menjadi ibu kota provinsi tersebut.

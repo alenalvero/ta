@@ -26,8 +26,33 @@
 					<div class="col-md-6">
 						<div class="about animate-box">
 							<h2>Selamat Datang Di Warok Tour And Travel !</h2>
-							<p>		Warok Tour merupakan biro perjalanan wisata yang memudahkan
-							perjalanan wisata anda, tinggal duduk manis anda akan kami antar sesuai tujuan wisata anda.</p>
+							<p>Warok Tour dan Travel adalah sebuah biro perjalanan wisata di kota Ponorogo yang berdiri pada tanggal 10 Oktober 2017 . Kini Biro ini telah memiliki 7 karyawan yang berpengalaman dan memiliki system yang memnugkinkan siapa saja untuk bergabung memiliki bisnis Biro Perjalanan Wisata.
+<p>Warok Tour Dan Travel di desain dengan tampilan yang simple dan sederhana sehingga memudahkan customer mendapatkan paket wisata yang diharapkan dengan harga yang bersahabat tanpa mengurangi pelayanan (SOP) dan fasilitas yang diberikan. Sampai saat ini kami masih berkembang dan berusaha untuk mencari solusi terbaik untuk anda yang ingin melakukan perjalanan / travelling ke seluruh Indonesia.
+		</p>
+		<b>VISI</b>
+		<p>
+
+
+<i>“The best travelling partner”</i>
+<p>
+Warok Tour dan Travel mampu sebagai perusahaan yang memastikan anda mendapatkan pelayanan yang terbaik.
+
+“Your Satisfaction is Our Pride”
+
+<p>
+<b>MISI</b>
+</p>
+<p>
+
+
+   - Membantu mencarikan solusi terbaik bagi anda para pelaku bisnis atau wisatawan untuk melakukan perjalanan wisata / mendapatkan paket wisata dengan harga terbaik.
+   <p>
+   - Menjadi perusahaan penyedia jasa transportasi dengan layanan yang berkualitas, ramah dan nyaman.
+   <p>
+   - Menjadi mitra strategis bagi anda yang memiliki kesibukan di balik meja kerja.
+
+
+
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -43,7 +68,7 @@
 					<div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
 						<span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span>
 						<h2>CEO & Tour Leader</h2>
-						<p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+						<p></p>
 					</div>
 				</div>
 				<div class="row">

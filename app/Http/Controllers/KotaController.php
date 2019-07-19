@@ -53,11 +53,11 @@ class KotaController extends Controller
 
 	public function update(Request $request, $id)
 	{
-		$Kota = Kota::findOrFail($id);
-		$kota->harga = $request->input('harga');
+		$kota = Kota::findOrFail($id);
 		$kota->nama_kota = $request->input('nama_kota');
-		$provinsi->provinsi = $request->input('provinsi');
-		$bis->save();
+		$kota->provinsi = $request->input('provinsi');
+		$kota->harga = $request->input('harga');
+		$kota->save();
 
 		return redirect('operator/kota');
 	}

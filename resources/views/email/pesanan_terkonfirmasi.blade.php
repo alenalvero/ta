@@ -6,5 +6,5 @@
     <li>{{$item->wisata->nama}}</li>
     @endforeach
   </ul>
-  Sekarang anda sudah dapat melanjutkan ke pembayaran, dengan mentransfer ke rekening bank banktut kami 3131321313123 atas nama nama_saya sejumlah Rp. {{number_format($harga,2,',','.')}}.
+  Sekarang anda sudah dapat melanjutkan ke pembayaran, dengan mentransfer ke rekening Bank Cimb Niaga kami 704879737100 atas nama Randa Arinta Nugraha sejumlah Rp. {{number_format($harga,2,',','.')}}.
 </p>

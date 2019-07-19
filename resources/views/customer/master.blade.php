@@ -79,7 +79,7 @@
 								<li ><a href="/">Home</a></li>
 								<li ><a href="/customer_PaketTour">Paket Tour</a></li>
 								<li><a href="/about">About</a></li>
-								<li><a href="contact.html">Contact</a></li>
+								
 								@if(Auth::check())
 									<li><a href="/profile">Profile</a></li>
 									<li><a href="/pelanggan/logout">Logout</a></li>
@@ -119,11 +119,15 @@
 						</p>
 					</div>
 					<div class="col-md-3">
-						<h4>Recents Blog Post</h4>
+						<h4>Visi dan Misi</h4>
 						<ul class="colorlib-footer-links">
-							<li><a href="#">The Ultimate Packing List For Female Travelers</a></li>
-							<li><a href="#">How These 5 People Found The Path to Their Dream Trip</a></li>
-							<li><a href="#">A Definitive Guide to the Best Dining and Drinking Venues in the City</a></li>
+							<i>“The best travelling partner”</i>
+<p>
+Warok Tour dan Travel mampu sebagai perusahaan yang memastikan anda mendapatkan pelayanan yang terbaik.
+
+“Your Satisfaction is Our Pride”
+
+<p>
 						</ul>
 					</div>
 
