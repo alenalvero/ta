@@ -60,6 +60,7 @@ Route::group(
 		Route::resource('operator/rekap', 'RekapController');
 		Route::get('operator/cetak_bulan', 'RekapController@cetak_bulan')->name('rekap.cetak_bulan');
 		Route::get('operator/cetak_tahun', 'RekapController@cetak_tahun')->name('rekap.cetak_tahun');
+		Route::get('/operator/review', 'ReviewController@index');
 	}
 );
 Route::get('/get_wisata/{id}', 'TrayekController@get_wisata');
@@ -108,4 +109,6 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
 	Route::post('/pelanggan/upload_struk/{id}', 'CustomerController@proses_upload_struk');
 	Route::resource('/profile', 'ProfileController');
 	Route::get('/struk/{id}', 'CustomerController@cetak_struk');
+	Route::get('/review/{id}', 'ReviewController@review');
+	Route::post('/review/store', 'ReviewController@store');
 });

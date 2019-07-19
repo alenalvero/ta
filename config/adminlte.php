@@ -203,6 +203,12 @@ return [
             'role' => 'operator'
         ],
         [
+            'text' => 'Review',
+            'url'  => 'operator/review',
+            'icon' => 'comment',
+            'role' => 'operator'
+        ],
+        [
             'text' => 'User',
             'url'  => 'admin/user',
             'icon' => 'user-plus',
