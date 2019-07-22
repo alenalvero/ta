@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 14, 2019 at 11:30 AM
+-- Generation Time: Jul 22, 2019 at 02:11 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.0.32
 
@@ -42,9 +42,10 @@ CREATE TABLE `biss` (
 --
 
 INSERT INTO `biss` (`id`, `nama_po`, `harga_small`, `harga_large`, `created_at`, `updated_at`) VALUES
-(3, 'jaya', 10000, 20000, NULL, NULL),
-(4, 'aneka', 80000, 30000, NULL, NULL),
-(7, 'sumber rejeki', 10000, 20000, NULL, NULL);
+(3, 'jaya', 3000000, 5000000, NULL, NULL),
+(4, 'aneka', 2500000, 4500000, NULL, NULL),
+(7, 'sumber rejeki', 2000000, 4000000, NULL, NULL),
+(8, 'Bus Pariwisata SHD/HDD', 3500000, 7000000, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -76,7 +77,21 @@ INSERT INTO `detail_pemesanans` (`id`, `id_pemesanan`, `id_wisata`, `created_at`
 (28, 15, 12, '2019-07-14 02:23:48', '2019-07-14 02:23:48'),
 (29, 15, 13, '2019-07-14 02:23:48', '2019-07-14 02:23:48'),
 (30, 15, 14, '2019-07-14 02:23:48', '2019-07-14 02:23:48'),
-(31, 15, 15, '2019-07-14 02:23:49', '2019-07-14 02:23:49');
+(31, 15, 15, '2019-07-14 02:23:49', '2019-07-14 02:23:49'),
+(36, 17, 1, '2019-07-15 09:45:07', '2019-07-15 09:45:07'),
+(37, 17, 2, '2019-07-15 09:45:07', '2019-07-15 09:45:07'),
+(38, 17, 4, '2019-07-15 09:45:07', '2019-07-15 09:45:07'),
+(39, 17, 5, '2019-07-15 09:45:07', '2019-07-15 09:45:07'),
+(40, 17, 7, '2019-07-15 09:45:07', '2019-07-15 09:45:07'),
+(41, 17, 8, '2019-07-15 09:45:07', '2019-07-15 09:45:07'),
+(42, 17, 10, '2019-07-15 09:45:07', '2019-07-15 09:45:07'),
+(43, 18, 1, '2019-07-15 19:57:10', '2019-07-15 19:57:10'),
+(44, 18, 2, '2019-07-15 19:57:10', '2019-07-15 19:57:10'),
+(45, 18, 4, '2019-07-15 19:57:10', '2019-07-15 19:57:10'),
+(46, 18, 7, '2019-07-15 19:57:10', '2019-07-15 19:57:10'),
+(47, 20, 51, '2019-07-18 23:09:52', '2019-07-18 23:09:52'),
+(48, 20, 54, '2019-07-18 23:09:52', '2019-07-18 23:09:52'),
+(49, 20, 57, '2019-07-18 23:09:52', '2019-07-18 23:09:52');
 
 -- --------------------------------------------------------
 
@@ -150,6 +165,14 @@ CREATE TABLE `konfirmasi_pembayarans` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `konfirmasi_pembayarans`
+--
+
+INSERT INTO `konfirmasi_pembayarans` (`id`, `id_pemesanan_paket`, `foto`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Bodong1.PNG', '1', NULL, NULL),
+(2, 2, 'Bodong1.PNG', '1', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -170,7 +193,10 @@ CREATE TABLE `konfirmasi_pemesanans` (
 --
 
 INSERT INTO `konfirmasi_pemesanans` (`id`, `id_pemesanan`, `foto`, `status`, `created_at`, `updated_at`) VALUES
-(6, 15, 'struk/8uEogoL4lr2zqgT6z3QFP7ZdbkcdZ9jUzbpRDGvR.jpeg', '1', '2019-07-14 02:25:46', '2019-07-14 02:26:04');
+(6, 15, 'struk/8uEogoL4lr2zqgT6z3QFP7ZdbkcdZ9jUzbpRDGvR.jpeg', '1', '2019-07-14 02:25:46', '2019-07-14 02:26:04'),
+(7, 17, 'struk/0Xr6fDNNWICyG5FNwRbMSVfEUWRXfX1JbvQpMURp.jpeg', '1', '2019-07-15 09:49:21', '2019-07-15 09:49:46'),
+(8, 18, 'struk/Rzydqk4oxRtDu77KEspqTiIrsEocLjaMxQqzy935.jpeg', '1', '2019-07-15 20:02:45', '2019-07-15 20:04:26'),
+(9, 19, 'struk/sPESdF1zrndGMymw6Z9vOHEHuIRjdtKtB2Gf4UQz.jpeg', '1', '2019-07-18 23:12:26', '2019-07-18 23:12:47');
 
 -- --------------------------------------------------------
 
@@ -192,12 +218,12 @@ CREATE TABLE `kotas` (
 --
 
 INSERT INTO `kotas` (`id`, `nama_kota`, `provinsi`, `harga`, `created_at`, `updated_at`) VALUES
-(1, 'surabaya', 'jawa timur', 10000, NULL, NULL),
-(2, 'jakarta', 'DKI jakarta', 10000, NULL, NULL),
-(3, 'malang', 'jawa timur', 10000, NULL, NULL),
-(4, 'jogjakarta', 'DIY', 10000, NULL, NULL),
-(5, 'bandung', 'jawa barat', 10000, NULL, NULL),
-(6, 'bali', 'bali', 10000, NULL, NULL);
+(1, 'surabaya', 'jawa timur', 500000, NULL, NULL),
+(2, 'jakarta', 'DKI jakarta', 1750000, NULL, NULL),
+(3, 'malang', 'jawa timur', 550000, NULL, NULL),
+(4, 'jogjakarta', 'DIY', 450000, NULL, NULL),
+(5, 'bandung', 'jawa barat', 1500000, NULL, NULL),
+(6, 'bali', 'bali', 1800000, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -370,6 +396,7 @@ CREATE TABLE `pemesanans` (
   `id_mobil` int(99) UNSIGNED DEFAULT NULL,
   `tgl` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tgl2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `jumlah_kamar` varchar(999) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `id_hotel` int(99) UNSIGNED DEFAULT NULL,
   `jumlah_total` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -380,8 +407,12 @@ CREATE TABLE `pemesanans` (
 -- Dumping data for table `pemesanans`
 --
 
-INSERT INTO `pemesanans` (`id`, `id_user`, `nama_pelanggan`, `alamat`, `no_telp`, `jumlah_orang`, `id_kota`, `id_bis`, `id_mobil`, `tgl`, `tgl2`, `id_hotel`, `jumlah_total`, `created_at`, `updated_at`) VALUES
-(15, 11, 'Alen Alvero', 'Jalan Sulawesi', '081252017566', 4, 3, NULL, 3, '7/14/2019', '7/17/2019', 2, NULL, '2019-07-14 02:23:48', '2019-07-14 02:25:46');
+INSERT INTO `pemesanans` (`id`, `id_user`, `nama_pelanggan`, `alamat`, `no_telp`, `jumlah_orang`, `id_kota`, `id_bis`, `id_mobil`, `tgl`, `tgl2`, `jumlah_kamar`, `id_hotel`, `jumlah_total`, `created_at`, `updated_at`) VALUES
+(15, 11, 'Alen Alvero', 'Jalan Sulawesi', '081252017566', 4, 3, NULL, 3, '7/14/2019', '7/17/2019', NULL, 2, NULL, '2019-07-14 02:23:48', '2019-07-14 02:25:46'),
+(17, 12, 'Bayu', 'Jalan s.parman no 50 ponorogo', '0832732737', 4, 4, NULL, 3, '7/16/2019', '7/20/2019', NULL, 2, NULL, '2019-07-15 09:45:07', '2019-07-15 09:49:21'),
+(18, 12, 'alen alvero', 'Jlan.s. parman no 50 ponorogo', '081252017566', 5, 4, NULL, 3, '7/17/2019', '7/18/2019', '2', 3, NULL, '2019-07-15 19:57:10', '2019-07-15 20:02:45'),
+(19, 12, 'alenalvero', 'jalan s paraman no 50 ponorogo', '3442342342', 2, 1, NULL, 2, '7/25/2019', '7/30/2019', '2', 2, NULL, '2019-07-18 23:08:40', '2019-07-18 23:12:26'),
+(20, 12, NULL, NULL, NULL, 3, 2, NULL, NULL, '7/24/2019', '7/26/2019', '3', 2, NULL, '2019-07-18 23:09:52', '2019-07-18 23:09:52');
 
 -- --------------------------------------------------------
 
@@ -400,6 +431,14 @@ CREATE TABLE `pemesanan_paket_tours` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `pemesanan_paket_tours`
+--
+
+INSERT INTO `pemesanan_paket_tours` (`id`, `id_user`, `nama_pelanggan_paket`, `alamat`, `no_telp`, `id_paket`, `tgl`, `created_at`, `updated_at`) VALUES
+(1, 11, 'alen alvero', 'jalan sulawesi 48 ponorogo', '081252017566', 1, '7/15/2019', '2019-07-14 20:45:02', '2019-07-14 20:45:02'),
+(2, 11, 'Alvero Rajendra', 'Ponorogo', '435353', 7, '7/15/2019', '2019-07-14 20:53:34', '2019-07-14 20:53:34');
 
 -- --------------------------------------------------------
 
@@ -439,8 +478,8 @@ CREATE TABLE `promos` (
 INSERT INTO `promos` (`id`, `nama_promo`, `kode`, `start`, `expired`, `diskon_persen`, `maksimal_diskon`, `foto`) VALUES
 (1, 'Promo baru', 'WarokHa\'e', '2019-07-08', '2019-07-09', 10, 100000, 'promo/5E7jXhapnmeWY8oeP7nmLbgMJfe86gyzDwBTnFcN.jpeg'),
 (2, 'Diskon Akhir Bulan', 'AkhirBulan2019', '2019-07-10', '2019-07-31', 10, 50000, 'promo/z4ztdLnPJbGOzPPPAiWibzObTexvFiq7g5L3mkR8.jpeg'),
-(4, 'ddd', 'ddd1', '2019-07-09', '2019-07-24', 10, 100000, 'promo/mtIJmzy8huCh8wBpq0dnz0MBuPtMeX1SiWQgocwQ.jpeg'),
-(5, 'Promo baru', '3123', '2019-07-16', '2019-07-24', 10, 100000, 'promo/JXGroqf4WADEbWGTyXKg3Hh5GajmwsL1EsostF4a.jpeg');
+(4, 'Liburan Seru', 'serubanget', '2019-07-09', '2019-07-24', 10, 100000, 'promo/q9dneaTB8DjYqluMSpSDE479EcFw0irlAqj1T5MM.jpeg'),
+(5, 'Promo baru', '3123', '2019-07-18', '2019-07-24', 5, 20000, 'promo/UPZxUVuyMwbpoUxUUGU4eE7EgL4BECEFPotk69KM.jpeg');
 
 -- --------------------------------------------------------
 
@@ -464,7 +503,8 @@ INSERT INTO `promo_paket` (`id`, `id_promo`, `id_paket`) VALUES
 (3, 2, 1),
 (4, 2, 8),
 (5, 4, 7),
-(6, 4, 8);
+(6, 4, 8),
+(7, 5, 9);
 
 -- --------------------------------------------------------
 
@@ -483,7 +523,9 @@ CREATE TABLE `promo_pemesanan_paket` (
 --
 
 INSERT INTO `promo_pemesanan_paket` (`id`, `id_promo`, `id_pemesanan_paket`) VALUES
-(1, 2, 18);
+(1, 2, 18),
+(2, 2, 1),
+(3, 4, 2);
 
 -- --------------------------------------------------------
 
@@ -496,6 +538,28 @@ CREATE TABLE `promo_user` (
   `id_user` int(11) DEFAULT '0',
   `id_promo` int(11) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `review`
+--
+
+CREATE TABLE `review` (
+  `id` int(99) NOT NULL,
+  `rating` int(99) NOT NULL,
+  `tgl` datetime(6) DEFAULT NULL,
+  `review` text,
+  `id_pemesanan` int(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `review`
+--
+
+INSERT INTO `review` (`id`, `rating`, `tgl`, `review`, `id_pemesanan`) VALUES
+(1, 4, '2019-07-20 03:01:38.000000', 'sangat menyenangkan dan membahagiakan. terima kasih warok tour.', 17),
+(2, 4, '2019-07-20 05:20:16.000000', 'sangat bagus', 18);
 
 -- --------------------------------------------------------
 
@@ -654,9 +718,9 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `type`, `remember_token`
 (6, 'dsaadasd', 'sadsad', '$2y$10$AOo5i.rNq4SQtMaij8u0Ke6Lv5tj3ZAeCLglkw.cZQidzWNB1cBd2', 'user', NULL, '2018-12-16 20:05:55', '2018-12-16 20:05:55'),
 (7, 'dsada', 'sdadasd', '$2y$10$D0DD9t3mB6FY/hlKSFer3ew0w3Zh/2w/7sRwNSSt8hraZNZpNV.uK', 'admin', NULL, '2018-12-16 20:07:26', '2018-12-16 20:07:26'),
 (9, 'cxzczczxCXZC', 'CXZCZXC', '$2y$10$qvhLY.OJhbcxx.TFWNadSu.oHXTREy6SdXIocB87ZnGroDmdVEP3C', 'admin', NULL, '2018-12-16 20:09:26', '2018-12-16 20:09:26'),
-(10, 'operator', 'operator@yahoo.com', '$2y$10$2hAy.hPZbVCh/VitVVsT..qQNKhGtgcRJM741dixalqQFG1iXPROC', 'operator', 'MREPtiZ4cXCYbAN4GXR8wnSwUBLG3jhxJbU6MbNHq6p6XYgPX5qHyCf9Idi1', '2018-12-21 08:45:57', '2018-12-21 08:45:57'),
-(11, 'bayu', 'fanani707@gmail.com', '$2y$10$LadlLO4IKLy7lkokpR6/q.6Izez1laeFPAx9/4nMhRHj6JANXgj9W', 'user', '1wozOOyzGpxVe7iLeADHzBpMOatRMr3lpUvYIMLJwYyRD7kHSsGiLCZmHr9X', '2019-06-25 07:37:35', '2019-06-25 07:37:35'),
-(12, 'alen alvero', 'arrow1658229alen@gmail.com', '$2y$10$urVvBOkyckKwgTT.ypT3SOEgmmx/LLJ40ibyz7vwY1b6P6xeOmOIe', 'user', 'wTSqGDO15057QLZb0dPYnHJMc85Rfr9KzFwR051yIwlhtWJt2KtMZd0qXt7l', '2019-06-25 21:06:17', '2019-06-25 21:06:17');
+(10, 'operator', 'operator@yahoo.com', '$2y$10$2hAy.hPZbVCh/VitVVsT..qQNKhGtgcRJM741dixalqQFG1iXPROC', 'operator', '5ss6IRr7A4tf1LW09M19cYO9zKhBjzPmDM0BWxlx6N6bcKhpPFMhU0mFK490', '2018-12-21 08:45:57', '2018-12-21 08:45:57'),
+(11, 'bayu', 'fanani707@gmail.com', '$2y$10$LadlLO4IKLy7lkokpR6/q.6Izez1laeFPAx9/4nMhRHj6JANXgj9W', 'user', '6I5bUHNuJmyzhKiIrWDtUfj6FYgJRMkVPk0kLQctnAuokuwbGHGPV4O6MVj3', '2019-06-25 07:37:35', '2019-06-25 07:37:35'),
+(12, 'alen alvero', 'arrow1658229alen@gmail.com', '$2y$10$urVvBOkyckKwgTT.ypT3SOEgmmx/LLJ40ibyz7vwY1b6P6xeOmOIe', 'user', 'ojR9U5E5qPP9PsR9FWo0FT3PBATpc01YuhOiw58Coz8x6TbbNR4KYPNOfWSh', '2019-06-25 21:06:17', '2019-06-25 21:06:17');
 
 --
 -- Indexes for dumped tables
@@ -804,6 +868,12 @@ ALTER TABLE `promo_user`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `review`
+--
+ALTER TABLE `review`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
@@ -845,13 +915,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `biss`
 --
 ALTER TABLE `biss`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `detail_pemesanans`
 --
 ALTER TABLE `detail_pemesanans`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `foto_paket_tour`
@@ -875,13 +945,13 @@ ALTER TABLE `karyawans`
 -- AUTO_INCREMENT for table `konfirmasi_pembayarans`
 --
 ALTER TABLE `konfirmasi_pembayarans`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `konfirmasi_pemesanans`
 --
 ALTER TABLE `konfirmasi_pemesanans`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `kotas`
@@ -911,13 +981,13 @@ ALTER TABLE `paket_tours`
 -- AUTO_INCREMENT for table `pemesanans`
 --
 ALTER TABLE `pemesanans`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `pemesanan_paket_tours`
 --
 ALTER TABLE `pemesanan_paket_tours`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -935,19 +1005,25 @@ ALTER TABLE `promos`
 -- AUTO_INCREMENT for table `promo_paket`
 --
 ALTER TABLE `promo_paket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `promo_pemesanan_paket`
 --
 ALTER TABLE `promo_pemesanan_paket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `promo_user`
 --
 ALTER TABLE `promo_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `review`
+--
+ALTER TABLE `review`
+  MODIFY `id` int(99) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `roles`
