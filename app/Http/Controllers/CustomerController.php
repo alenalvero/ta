@@ -61,6 +61,10 @@ class CustomerController extends Controller
 	{
 		$view = view('customer.form_input_paket');
 		$view->paket_tour = Paket_tour::findOrFail($id);
+		$konfirmed = Pemesanan_paket_tour::where('id_paket', $id)->whereHas('konfirmasi_pembayaran', function ($q) {
+			$q->where('status', 1);
+		})->sum('jumlah_orang');
+		$view->konfirmed = $konfirmed;
 		return $view;
 	}
 

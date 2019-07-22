@@ -32,6 +32,11 @@ class Konfirmasi_pembayaranController extends Controller
 	{
 		$view = view('customer.konfirmasi_pembayaran');
 		$view->pemesanan_paket_tour = Pemesanan_paket_tour::findOrFail($id);
+		$konfirmed = Pemesanan_paket_tour::whereHas('konfirmasi_pembayaran', function ($q) {
+			$q->where('status', 1);
+		})->sum('jumlah_orang');
+		// dd($konfirmed);
+		$view->konfirmed = $konfirmed;
 		return $view;
 	}
 
