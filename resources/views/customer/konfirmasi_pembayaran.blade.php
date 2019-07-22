@@ -64,6 +64,10 @@ border-width: 5px;
 										<b>Alamat</b><br/>
 										{{$pemesanan_paket_tour->alamat}}
 									</p>
+									<p>
+										<b>Jumlah orang</b><br/>
+										{{$pemesanan_paket_tour->jumlah_orang}}
+									</p>
 								</div>
 								<div class="col-md-6">
 									<p>
@@ -72,7 +76,7 @@ border-width: 5px;
 									</p>
 									<p>
 										<b>Tanggal Berangkat</b><br/>
-										{{$pemesanan_paket_tour->tgl}}
+										{{$pemesanan_paket_tour->paket_tour->tgl_berangkat->format('d F Y')}}
 									</p>
 									<div class="alert alert-info" role="alert">
 										<p>
@@ -88,7 +92,21 @@ border-width: 5px;
 
 						<div class="col-md-4 col-md-pull-7">
 							<div class="aside animate-box">
-								<h3><b>Form Konfirmasi Pembayaran Paket</b><hr></h3>
+								<h3><b>Form Konfirmasi Pembayaran Paket </b></h3>
+								@if(!is_null($pemesanan_paket_tour->konfirmasi_pembayaran) and $pemesanan_paket_tour->konfirmasi_pembayaran->status == 1)
+								<div class="label label-success">Sudah terkonfirmasi</div>
+								@endif
+								<hr>
+								<p>
+									<b>Kuota tersedia </b>
+									<div style="font-size: 18pt; text-align: center; margin: 0">
+										{{$pemesanan_paket_tour->paket_tour->kuota-$konfirmed}}
+									</div>
+									@if(!is_null($pemesanan_paket_tour->konfirmasi_pembayaran) and $pemesanan_paket_tour->konfirmasi_pembayaran->status != 1)
+									Ayo segera konfirmasi pembayaran anda untuk mendapat kan tempat
+									@endif
+								</p>
+							@if(is_null($pemesanan_paket_tour->konfirmasi_pembayaran))
 							<form method="post" action="{{url('profile/konfirmasi_pembayaran')}}" class="colorlib-form">
 										{{csrf_field()}}
 										<div class="row">
@@ -108,6 +126,7 @@ border-width: 5px;
 										</div>
 									</div>
 								</form>
+								@endif
 							</div>
 						</div>
 					</div>

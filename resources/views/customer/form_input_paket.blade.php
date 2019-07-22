@@ -51,7 +51,11 @@ border-width: 5px;
 					</div>
 					<div class="col-md-4 col-md-pull-7">
 						<div class="aside animate-box">
-							<h3><b>Form Reservasi</b><hr></h3>
+							<h3><b>Form Reservasi</b></h3>
+							<div class="label label-info" style="font-size: 14pt">
+									Tempat Tersedia: {{$paket_tour->kuota-$konfirmed}}
+								</div>
+								<hr>
 							<form method="post" action="{{url('customer_PaketTour')}}" class="colorlib-form">
 								{{csrf_field()}}
 								<div class="row">
@@ -98,10 +102,9 @@ border-width: 5px;
 									</div>
 									<div class="col-md-12">
 										<div class="form-group">
-											<label for="tgl">Tanggal</label>
+											<label for="jumlah_orang">Jumlah orang</label>
 											<div class="form-field">
-												<i class="icon icon-calendar2"></i>
-												<input type="text" name="tgl" id="tgl" class="form-control" placeholder="Tanggal" value="{{old('tgl')}}">
+												<input type="number" name="jumlah_orang" id="jumlah_orang" class="form-control" placeholder="Jumlah orang" required value="{{old('jumlah_orang')}}">
 											</div>
 										</div>
 									</div>

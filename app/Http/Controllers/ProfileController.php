@@ -11,7 +11,7 @@ class ProfileController extends Controller
 {
 	public function index()
 	{
-		$user =	 User::where('id', auth()->user()->id)->first();
+		// $user =	 User::where('id', auth()->user()->id)->first();
 		// $data= [
 		// 	'profile'=>$user->pemesanan,
 		// 	'profile1'=>$user->pemesanan_paket_tour,
