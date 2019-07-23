@@ -124,7 +124,7 @@ table td, th {
 											{{$item->konfirmasi_pembayaran != null ? $item->konfirmasi_pembayaran->status == 1 ? 'Sudah dibayar' : 'Menunggu verfikasi' : "Belum dibayar"}}
 										</a>
 									</td>
-									<td>Rp. {{number_format(($item->paket_tour->harga - $item->diskon), 2, ',', '.')}}</td>
+									<td>Rp. {{number_format(($item->paket_tour->harga * $item->jumlah_orang - $item->diskon), 2, ',', '.')}}</td>
 								</tr>
 								@endforeach
 							</table>
