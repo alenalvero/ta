@@ -51,6 +51,18 @@
                 </div>
               </div>
             </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="tgl_berangkat" >Tanggal Berangkat</label>
+              <div class="col-sm-10">
+                <input  class="form-control datepicker" placeholder="Masukkan Nama Paket" name="tgl_berangkat" type="text">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="kuota" >Kuota</label>
+              <div class="col-sm-10">
+                <input  class="form-control" placeholder="Masukkan Nama Paket" name="kuota" type="text">
+              </div>
+            </div>
             <div class="box-footer">
               <button class="btn btn-info btn-flat pull-right" type="submit">Submit </button>
             </div>

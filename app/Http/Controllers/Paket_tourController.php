@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Paket_tour;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class Paket_tourController extends Controller
 {
@@ -54,6 +55,8 @@ class Paket_tourController extends Controller
 			$paket_tour->harga = $request->input('harga');
 			$paket_tour->foto = $foto->getClientOriginalName();
 			$paket_tour->keterangan = $request->input('keterangan');
+			$paket_tour->tgl_berangkat = Carbon::createFromFormat('d/m/Y', $request->input('tgl_berangkat'));
+			$paket_tour->kuota = $request->input('kuota');
 			$paket_tour->save();
 		}
 		return redirect('operator/paket_tour');
@@ -69,7 +72,7 @@ class Paket_tourController extends Controller
 	public function update(Request $request, $id)
 	{
 		$paket_tour = "N";
-		if ($request->hasFile('foto')); {
+		if ($request->hasFile('foto')) {
 			$destination = "images";
 			$foto = $request->file('foto');
 			$foto->move($destination, $foto->getClientOriginalName());
@@ -77,12 +80,15 @@ class Paket_tourController extends Controller
 		}
 
 		if ($paket_tour = "Y") {
-		$paket_tour = Paket_tour::findOrFail($id);
-		$paket_tour->nama_tour = $request->input('nama_tour');
-		$paket_tour->foto = $foto->getClientOriginalName();
-		$paket_tour->harga = $request->input('harga');
-		$paket_tour->keterangan = $request->input('keterangan');
-		$paket_tour->save();
+			$paket_tour = Paket_tour::findOrFail($id);
+			$paket_tour->nama_tour = $request->input('nama_tour');
+			if ($request->hasFile('foto'))
+				$paket_tour->foto = $foto->getClientOriginalName();
+			$paket_tour->harga = $request->input('harga');
+			$paket_tour->keterangan = $request->input('keterangan');
+			$paket_tour->tgl_berangkat = Carbon::createFromFormat('d/m/Y', $request->input('tgl_berangkat'));
+			$paket_tour->kuota = $request->input('kuota');
+			$paket_tour->save();
 		}
 		return redirect('operator/paket_tour');
 	}

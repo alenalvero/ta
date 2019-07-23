@@ -33,6 +33,7 @@
                     <th>Harga</th>
                     <th>Foto</th>
                     <th>Keterangan</th>
+                    <th>Kuota</th>
                     <th>Aksi</th>  
                   </tr>
                 </thead>
@@ -44,6 +45,7 @@
                     </td>
                     <td><img src="{{asset('images/'.$item->foto)}}" height="50" width="50"></td> 
                     <td>{!!$item->keterangan!!}</td>
+                    <td>{{$item->kuota}}</td>
                     <td> 
                       <div class="btn-group">
                         <a href="/operator/paket_tour/{{$item->id}}/edit" class="btn btn-info btn-flat btn-xs"><i class="fa fa-edit"></i></a>
