@@ -82,8 +82,8 @@ border-width: 5px;
 										<p>
 											<b>Total</b><br/>
 											(harga) - (diskon) <br/>
-											Rp. {{number_format($pemesanan_paket_tour->paket_tour->harga, 2, ',', '.')}} - Rp. {{number_format($pemesanan_paket_tour->diskon, 2, ',', '.')}}<br/>
-											<b>Total bayar:</b> Rp. {{number_format($pemesanan_paket_tour->paket_tour->harga - $pemesanan_paket_tour->diskon, 2, ',', '.')}}
+											Rp. {{number_format($pemesanan_paket_tour->paket_tour->harga * $pemesanan_paket_tour->jumlah_orang, 2, ',', '.')}} - Rp. {{number_format($pemesanan_paket_tour->diskon, 2, ',', '.')}}<br/>
+											<b>Total bayar:</b> Rp. {{number_format($pemesanan_paket_tour->paket_tour->harga * $pemesanan_paket_tour->jumlah_orang - $pemesanan_paket_tour->diskon, 2, ',', '.')}}
 										</p>
 									</div>
 								</div>
